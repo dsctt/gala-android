@@ -23,7 +23,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             // already signed in
-            startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
+            startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
             finish();
         } else {
             // not signed in
@@ -45,7 +45,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
-                startActivity(new Intent(PhoneNumberAuthentication.this,HomeActivity.class));
+                startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
                 finish();
                 return;
             } else {

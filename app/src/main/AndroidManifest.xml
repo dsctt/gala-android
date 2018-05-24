@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecoveryEmail"></activity>
+        <activity android:name=".RecoveryEmail" />
+        <activity android:name=".ScreenNameActivity" />
+        <activity android:name=".MeActivity" />
+        <activity android:name=".ThemActivity"></activity>
     </application>
 
 </manifest>
