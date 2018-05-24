@@ -1,9 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     tools:context=".ThemActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="I want to meet.."/>
+
+    <LinearLayout
+        android:id="@+id/numberPickerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/titleTextView">
+
+        <NumberPicker
+            android:id="@+id/minAgeNumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </NumberPicker>
+
+        <NumberPicker
+            android:id="@+id/maxAgeNumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </NumberPicker>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/numberPickerLinearLayout">
+
+        <Button
+            android:id="@+id/maleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MALE"/>
+
+        <Button
+            android:id="@+id/femaleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FEMALE"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
