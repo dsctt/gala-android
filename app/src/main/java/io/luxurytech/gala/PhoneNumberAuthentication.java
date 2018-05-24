@@ -11,11 +11,15 @@ import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.ResultCodes;
 import com.google.firebase.auth.FirebaseAuth;
 import java.util.Arrays;
+
+/** Verifies if user is already signed in with phone. If not, let's them sign up. */
 public class PhoneNumberAuthentication extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize firebase
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             // already signed in
