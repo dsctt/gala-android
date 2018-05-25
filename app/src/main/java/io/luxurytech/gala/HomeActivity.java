@@ -1,6 +1,7 @@
 package io.luxurytech.gala;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.support.annotation.NonNull;
@@ -9,17 +10,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Callback{
 
+    /** Camera preview components */
     final int CAMERA_REQUEST_CODE = 1;
     Camera camera;
     SurfaceView surfaceView;
     SurfaceHolder surfaceHolder;
+
+    /** UI Components */
+    Button settingsButton;
+    Button goButton;
+    TextView selectEchelonTextView;
+    TextView echelonTextView;
+    TextView cloutTextView;
+
 
 
 
@@ -46,6 +59,20 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
 
+        // Setup UI
+        settingsButton = (Button) findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setUIInvisible();
+                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+            }
+        });
+
+        goButton = (Button) findViewById(R.id.goButton);
+        selectEchelonTextView = (TextView) findViewById(R.id.selectEchelonTextView);
+        cloutTextView = (TextView) findViewById(R.id.cloutTextView);
+        echelonTextView = (TextView) findViewById(R.id.echelonTextView);
     }
 
 
@@ -54,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(SurfaceHolder sh) {
         // Start the camera
-        camera = Camera.open();
+        camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
         Camera.Parameters parameters;
         parameters = camera.getParameters();
 
@@ -100,4 +127,14 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
             }
         }
     }
+
+    private void setUIInvisible() {
+        goButton.setVisibility(View.INVISIBLE);
+        settingsButton.setVisibility(View.INVISIBLE);
+        cloutTextView.setVisibility(View.INVISIBLE);
+        selectEchelonTextView.setVisibility(View.INVISIBLE);
+        echelonTextView.setVisibility(View.INVISIBLE);
+
+    }
+
 }
