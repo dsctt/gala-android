@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Gala</string>
+
+    <string-array name="select_echelon_choices">
+        <item>Bar</item>
+        <item>House Party</item>
+        <item>Nightclub</item>
+        <item>Gala</item>
+        <item>Met Gala</item>
+    </string-array>
 </resources>

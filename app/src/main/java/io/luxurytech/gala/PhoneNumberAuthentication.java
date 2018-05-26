@@ -25,53 +25,19 @@ import java.util.Arrays;
 public class PhoneNumberAuthentication extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
 
+    /** Firebase authentication */
+    FirebaseAuth auth;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Initialize firebase
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
-            DocumentReference drUser;
-            FirebaseFirestore db;
-            String uid = null;
-            FirebaseUser authUser;
-
-            db = FirebaseFirestore.getInstance();
-            authUser = auth.getCurrentUser();
-            if(authUser != null) {
-                uid = authUser.getUid();
-            }
-            drUser = db.collection("Users").document(uid);
-
-            // Check if user already has full user information
-            // If so, skip to home
-            drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if(task.isSuccessful()){
-                        DocumentSnapshot doc = task.getResult();
-                        if(doc.get("desiredGender") != ""  && doc.get("desiredGender") != null &&
-                                doc.get("desiredMaxAge") != ""  && doc.get("desiredMaxAge") != null &&
-                                doc.get("desiredMinAge") != ""  && doc.get("desiredMinAge") != null &&
-                                doc.get("recoveryEmail") != ""  && doc.get("recoveryEmail") != null &&
-                                doc.get("screenName") != ""  && doc.get("screenName") != null &&
-                                doc.get("userAge") != ""  && doc.get("userAge") != null &&
-                                doc.get("userGender") != ""  && doc.get("userGender") != null){
-                            startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
-                            finish();
-                        }
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                        }
-                    });
-
-
+            goHomeIfUserInfoComplete();
 
             // If not, go thru process
             startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
@@ -96,6 +62,10 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
+                // Check if they've previously completed the sign in process
+                goHomeIfUserInfoComplete();
+
+                // If not, go thru process
                 startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
                 finish();
                 return;
@@ -117,5 +87,45 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
             }
             Log.e("Login","Unknown sign in response");
         }
+    }
+
+    private void goHomeIfUserInfoComplete() {
+        DocumentReference drUser;
+        FirebaseFirestore db;
+        String uid = null;
+        FirebaseUser authUser;
+
+        db = FirebaseFirestore.getInstance();
+        authUser = auth.getCurrentUser();
+        if(authUser != null) {
+            uid = authUser.getUid();
+        }
+        drUser = db.collection("Users").document(uid);
+
+        // Check if user already has full user information
+        // If so, skip to home
+        drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot doc = task.getResult();
+                    if(doc.get("desiredGender") != ""  && doc.get("desiredGender") != null &&
+                            doc.get("desiredMaxAge") != ""  && doc.get("desiredMaxAge") != null &&
+                            doc.get("desiredMinAge") != ""  && doc.get("desiredMinAge") != null &&
+                            doc.get("recoveryEmail") != ""  && doc.get("recoveryEmail") != null &&
+                            doc.get("screenName") != ""  && doc.get("screenName") != null &&
+                            doc.get("userAge") != ""  && doc.get("userAge") != null &&
+                            doc.get("userGender") != ""  && doc.get("userGender") != null){
+                        startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
+                        finish();
+                    }
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+            }
+        });
+
     }
 }

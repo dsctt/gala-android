@@ -37,12 +37,10 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/cloutTextView"/>
 
-    <TextView
-        android:id="@+id/selectEchelonTextView"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/selectEchelonSpinner"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="(select echelon)"
-        android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
@@ -52,6 +50,6 @@
         android:layout_height="wrap_content"
         android:text="GO"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/selectEchelonTextView"/>
+        android:layout_above="@id/selectEchelonSpinner"/>
 
 </RelativeLayout>

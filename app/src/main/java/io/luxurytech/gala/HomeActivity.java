@@ -12,13 +12,16 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 
-public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Callback{
+public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Callback, AdapterView.OnItemSelectedListener{
 
     /** Camera preview components */
     final int CAMERA_REQUEST_CODE = 1;
@@ -29,7 +32,7 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     /** UI Components */
     Button settingsButton;
     Button goButton;
-    TextView selectEchelonTextView;
+    Spinner selectEchelonSpinner;
     TextView echelonTextView;
     TextView cloutTextView;
 
@@ -70,9 +73,13 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         });
 
         goButton = (Button) findViewById(R.id.goButton);
-        selectEchelonTextView = (TextView) findViewById(R.id.selectEchelonTextView);
         cloutTextView = (TextView) findViewById(R.id.cloutTextView);
         echelonTextView = (TextView) findViewById(R.id.echelonTextView);
+        selectEchelonSpinner = (Spinner) findViewById(R.id.selectEchelonSpinner);
+        ArrayAdapter<CharSequence> selectEchelonSpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.select_echelon_choices, android.R.layout.simple_spinner_item);
+        selectEchelonSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectEchelonSpinner.setAdapter(selectEchelonSpinnerAdapter);
     }
 
 
@@ -81,7 +88,7 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(SurfaceHolder sh) {
         // Start the camera
-        camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
+        camera = Camera.open();
         Camera.Parameters parameters;
         parameters = camera.getParameters();
 
@@ -101,13 +108,9 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         camera.startPreview();
     }
     @Override
-    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
-    }
+    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
     @Override
-    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-
-    }
+    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {}
 
     /** Handle if permissions needed to be asked for */
     @Override
@@ -128,11 +131,18 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
     }
 
+    /** OnItemSelectedListener */
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        //parent.getItemAtPosition(pos)
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {}
+
     private void setUIInvisible() {
         goButton.setVisibility(View.INVISIBLE);
         settingsButton.setVisibility(View.INVISIBLE);
         cloutTextView.setVisibility(View.INVISIBLE);
-        selectEchelonTextView.setVisibility(View.INVISIBLE);
+        selectEchelonSpinner.setVisibility(View.INVISIBLE);
         echelonTextView.setVisibility(View.INVISIBLE);
 
     }
