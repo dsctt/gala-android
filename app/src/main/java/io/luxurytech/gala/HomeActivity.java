@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -88,7 +89,15 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(SurfaceHolder sh) {
         // Start the camera
-        camera = Camera.open();
+        try {
+            releaseCameraAndPreview();
+            camera = Camera.open();
+        } catch (Exception e){
+            Log.e(getString(R.string.app_name), "failed to open Camera");
+            e.printStackTrace();
+            return;
+        }
+
         Camera.Parameters parameters;
         parameters = camera.getParameters();
 
@@ -110,7 +119,11 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
     @Override
-    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {}
+    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        camera.stopPreview();
+        camera.release();
+        camera = null;
+    }
 
     /** Handle if permissions needed to be asked for */
     @Override
@@ -145,6 +158,14 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         selectEchelonSpinner.setVisibility(View.INVISIBLE);
         echelonTextView.setVisibility(View.INVISIBLE);
 
+    }
+
+    private void releaseCameraAndPreview() {
+        //myCameraPreview.setCamera(null);
+        if (camera != null) {
+            camera.release();
+            camera = null;
+        }
     }
 
 }

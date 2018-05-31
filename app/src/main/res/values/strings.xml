@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Gala</string>
 
+    <string name="preference_file_key">io.luxurytech.gala.PREFERENCE_FILE_KEY</string>
+
     <string-array name="select_echelon_choices">
         <item>Bar</item>
         <item>House Party</item>

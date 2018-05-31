@@ -39,7 +39,10 @@
         <activity android:name=".ScreenNameActivity" />
         <activity android:name=".MeActivity" />
         <activity android:name=".ThemActivity" />
-        <activity android:name=".SettingsActivity" android:theme="@style/Theme.Transparent"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".VideoActivity"></activity>
     </application>
 
 </manifest>

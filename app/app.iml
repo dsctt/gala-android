@@ -129,6 +129,7 @@
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-firestore-15.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7-27.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.twilio:video-android-2.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-interop-15.0.0" level="project" />
@@ -145,6 +146,7 @@
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-database-collection-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.6.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-15.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.getkeepsafe.relinker:relinker-1.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sf.kxml:kxml2:2.3.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-15.0.2" level="project" />

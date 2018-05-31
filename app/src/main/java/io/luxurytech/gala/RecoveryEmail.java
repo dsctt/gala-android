@@ -71,8 +71,7 @@ public class RecoveryEmail extends AppCompatActivity {
             return;
         }
 
-        // Create a new user in the firestore db
-        // There will not be one already created at this point
+        // Change recovery email in firebase
         Map<String, Object> dbUser = new HashMap<>();
         dbUser.put("recoveryEmail", recoveryEmailEditText.getText().toString());
         db.collection("Users")
@@ -81,14 +80,14 @@ public class RecoveryEmail extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("FirestoreWrite", "User added");
+                        Log.d("RecoveryEmail", "Recovery Email added");
                         goToNextScreen();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("FirestoreWrite", "Error adding user", e);
+                        Log.w("RecoveryEmail", "Error adding recovery email", e);
                     }
                 });
 

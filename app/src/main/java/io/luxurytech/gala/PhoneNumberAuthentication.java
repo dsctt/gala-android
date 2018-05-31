@@ -1,6 +1,8 @@
 package io.luxurytech.gala;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,9 +30,14 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
     /** Firebase authentication */
     FirebaseAuth auth;
 
+    /** Activity context */
+    Context context;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        context = this;
 
         // Initialize firebase
         auth = FirebaseAuth.getInstance();
@@ -89,6 +96,8 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         }
     }
 
+    /** Checks if user info is already filled in and then takes the user Home if true
+     * Also updates SharedPreferences */
     private void goHomeIfUserInfoComplete() {
         DocumentReference drUser;
         FirebaseFirestore db;
@@ -103,19 +112,42 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         drUser = db.collection("Users").document(uid);
 
         // Check if user already has full user information
-        // If so, skip to home
+        // If so, save to shared prefs, and skip to home
         drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
-                    if(doc.get("desiredGender") != ""  && doc.get("desiredGender") != null &&
-                            doc.get("desiredMaxAge") != ""  && doc.get("desiredMaxAge") != null &&
-                            doc.get("desiredMinAge") != ""  && doc.get("desiredMinAge") != null &&
-                            doc.get("recoveryEmail") != ""  && doc.get("recoveryEmail") != null &&
-                            doc.get("screenName") != ""  && doc.get("screenName") != null &&
-                            doc.get("userAge") != ""  && doc.get("userAge") != null &&
-                            doc.get("userGender") != ""  && doc.get("userGender") != null){
+
+                    String desiredGender = doc.get("desiredGender").toString();
+                    String recoveryEmail = doc.get("recoveryEmail").toString();
+                    String screenName = doc.get("screenName").toString();
+                    String userGender = doc.get("userGender").toString();
+                    String desiredMaxAge = doc.get("desiredMaxAge").toString();
+                    String desiredMinAge = doc.get("desiredMinAge").toString();
+                    String userAge = doc.get("userAge").toString();
+
+
+                    if(desiredGender != null && desiredGender != "" &&
+                            recoveryEmail != null && recoveryEmail != "" &&
+                            screenName != null && screenName != "" &&
+                            userGender != null && userGender != "" &&
+                            desiredMaxAge != null && desiredMaxAge != "" &&
+                            desiredMinAge != null && desiredMinAge != "" &&
+                            userAge != null && userAge != ""){
+
+                        SharedPreferences sharedPref = context.getSharedPreferences(
+                                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("desiredGender", desiredGender);
+                        editor.putString("recoveryEmail", recoveryEmail);
+                        editor.putString("screenName", screenName);
+                        editor.putString("userGender", userGender);
+                        editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
+                        editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
+                        editor.putInt("userAge", Integer.parseInt(userAge));
+                        editor.commit();
+
                         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
                         finish();
                     }
