@@ -52,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
-        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         sharedPrefEditor = sharedPref.edit();
 
         // Setup UI
@@ -92,13 +92,14 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void changeRecoveryEmail() {
+        // Setup firebase
+        setupFirebase();
+
+
         // Check if there is a user
         if(authUser == null) {
             return;
         }
-
-        // Setup firebase
-        setupFirebase();
 
         // Get new value
         final String newRecoveryEmail = recoveryEmailEditText.getText().toString();
