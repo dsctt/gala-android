@@ -3,6 +3,13 @@
 
     <string name="preference_file_key">io.luxurytech.gala.PREFERENCE_FILE_KEY</string>
 
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="desiredMinAge">desiredMinAge</string>
+    <string name="desiredMaxAge">desiredMaxAge</string>
+    <string name="desiredGender">desiredGender</string>
+    <string name="recoveryEmail">recoveryEmail</string>
+
     <string-array name="select_echelon_choices">
         <item>Bar</item>
         <item>House Party</item>

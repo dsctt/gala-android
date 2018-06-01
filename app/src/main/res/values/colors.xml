@@ -11,4 +11,6 @@
     <color name="deepPurple">#6f5193</color>
     <color name="neonPurple">#9354dd</color>
     <color name="lavender">#E6E6FA</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

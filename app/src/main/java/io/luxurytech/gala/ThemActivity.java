@@ -62,23 +62,6 @@ public class ThemActivity extends AppCompatActivity {
         // Setup UI components
         minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
         maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
-        maleButton = (Button) findViewById(R.id.maleButton);
-        maleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedGender = "male";
-                saveData();
-            }
-        });
-        femaleButton = (Button) findViewById(R.id.femaleButton);
-        femaleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedGender = "female";
-                saveData();
-            }
-        });
-
         minAgeNumberPicker.setMinValue(13);
         minAgeNumberPicker.setMaxValue(100);
 
@@ -100,6 +83,25 @@ public class ThemActivity extends AppCompatActivity {
                 //textview.setText("Selected Value is : " + newVal);
             }
         });
+
+        maleButton = (Button) findViewById(R.id.maleButton);
+        maleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedGender = "male";
+                saveData();
+            }
+        });
+        femaleButton = (Button) findViewById(R.id.femaleButton);
+        femaleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedGender = "female";
+                saveData();
+            }
+        });
+
+
 
     }
 
@@ -177,7 +179,7 @@ public class ThemActivity extends AppCompatActivity {
                         editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
                         editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
                         editor.putInt("userAge", Integer.parseInt(userAge));
-                        editor.commit();
+                        editor.apply();
 
                     }
                 }

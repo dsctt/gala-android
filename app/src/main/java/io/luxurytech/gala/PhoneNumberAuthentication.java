@@ -146,7 +146,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                         editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
                         editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
                         editor.putInt("userAge", Integer.parseInt(userAge));
-                        editor.commit();
+                        editor.apply();
 
                         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
                         finish();
