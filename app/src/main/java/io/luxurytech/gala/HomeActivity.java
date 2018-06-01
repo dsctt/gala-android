@@ -2,6 +2,7 @@ package io.luxurytech.gala;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.support.annotation.NonNull;
@@ -34,16 +35,15 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     Button settingsButton;
     Button goButton;
     Spinner selectEchelonSpinner;
-    TextView echelonTextView;
     TextView cloutTextView;
 
-
-
-
+    /** Shared Prefs */
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
 
         // Hide status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -74,8 +74,10 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         });
 
         goButton = (Button) findViewById(R.id.goButton);
+
         cloutTextView = (TextView) findViewById(R.id.cloutTextView);
-        echelonTextView = (TextView) findViewById(R.id.echelonTextView);
+        cloutTextView.setText(":) " + sharedPref.getInt(getString(R.string.userClout), 1));
+
         selectEchelonSpinner = (Spinner) findViewById(R.id.selectEchelonSpinner);
         ArrayAdapter<CharSequence> selectEchelonSpinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.select_echelon_choices, android.R.layout.simple_spinner_item);
@@ -156,7 +158,6 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         settingsButton.setVisibility(View.INVISIBLE);
         cloutTextView.setVisibility(View.INVISIBLE);
         selectEchelonSpinner.setVisibility(View.INVISIBLE);
-        echelonTextView.setVisibility(View.INVISIBLE);
 
     }
 

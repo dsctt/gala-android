@@ -9,6 +9,10 @@
     <string name="desiredMaxAge">desiredMaxAge</string>
     <string name="desiredGender">desiredGender</string>
     <string name="recoveryEmail">recoveryEmail</string>
+    <string name="userClout">userClout</string>
+    <string name="screenName">screenName</string>
+    <string name="userGender">userGender</string>
+    <string name="userAge">userAge</string>
 
     <string-array name="select_echelon_choices">
         <item>Bar</item>

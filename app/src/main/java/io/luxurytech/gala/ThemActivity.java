@@ -179,6 +179,7 @@ public class ThemActivity extends AppCompatActivity {
                         editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
                         editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
                         editor.putInt("userAge", Integer.parseInt(userAge));
+                        editor.putInt(getString(R.string.userClout), 1);
                         editor.apply();
 
                     }

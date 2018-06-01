@@ -126,6 +126,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                     String desiredMaxAge = doc.get("desiredMaxAge").toString();
                     String desiredMinAge = doc.get("desiredMinAge").toString();
                     String userAge = doc.get("userAge").toString();
+                    int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
 
 
                     if(desiredGender != null && desiredGender != "" &&
@@ -139,13 +140,14 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                         SharedPreferences sharedPref = context.getSharedPreferences(
                                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString("desiredGender", desiredGender);
-                        editor.putString("recoveryEmail", recoveryEmail);
-                        editor.putString("screenName", screenName);
-                        editor.putString("userGender", userGender);
-                        editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
-                        editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
-                        editor.putInt("userAge", Integer.parseInt(userAge));
+                        editor.putString(getString(R.string.desiredGender), desiredGender);
+                        editor.putString(getString(R.string.recoveryEmail), recoveryEmail);
+                        editor.putString(getString(R.string.screenName), screenName);
+                        editor.putString(getString(R.string.userGender), userGender);
+                        editor.putInt(getString(R.string.desiredMaxAge), Integer.parseInt(desiredMaxAge));
+                        editor.putInt(getString(R.string.desiredMinAge), Integer.parseInt(desiredMinAge));
+                        editor.putInt(getString(R.string.userAge), Integer.parseInt(userAge));
+                        editor.putInt(getString(R.string.userClout), userClout);
                         editor.apply();
 
                         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
