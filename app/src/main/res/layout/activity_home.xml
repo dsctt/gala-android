@@ -15,7 +15,7 @@
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:background="@drawable/ic_add_white_24dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"/>
 
@@ -39,7 +39,7 @@
         android:id="@+id/goButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GO"
+        android:background="@drawable/outline_videocam_white_24"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/selectEchelonSpinner"/>
 
