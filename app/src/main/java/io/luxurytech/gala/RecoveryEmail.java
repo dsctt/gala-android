@@ -76,7 +76,7 @@ public class RecoveryEmail extends AppCompatActivity {
         dbUser.put("recoveryEmail", recoveryEmailEditText.getText().toString());
         db.collection("Users")
                 .document(uid)
-                .update(dbUser)
+                .set(dbUser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

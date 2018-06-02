@@ -119,23 +119,23 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
 
-                    String desiredGender = doc.get("desiredGender").toString();
-                    String recoveryEmail = doc.get("recoveryEmail").toString();
-                    String screenName = doc.get("screenName").toString();
-                    String userGender = doc.get("userGender").toString();
-                    String desiredMaxAge = doc.get("desiredMaxAge").toString();
-                    String desiredMinAge = doc.get("desiredMinAge").toString();
-                    String userAge = doc.get("userAge").toString();
-                    int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
 
+                    if(doc.get(getString(R.string.desiredGender)) != null && doc.get(getString(R.string.desiredGender)).toString() != "" &&
+                            doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
+                            doc.get(getString(R.string.screenName)) != null && doc.get(getString(R.string.screenName)).toString() != "" &&
+                            doc.get(getString(R.string.userGender)) != null && doc.get(getString(R.string.userGender)).toString() != "" &&
+                            doc.get(getString(R.string.desiredMaxAge)) != null && doc.get(getString(R.string.desiredMaxAge)).toString() != "" &&
+                            doc.get(getString(R.string.desiredMinAge)) != null && doc.get(getString(R.string.desiredMinAge)).toString() != "" &&
+                            doc.get(getString(R.string.userAge)) != null && doc.get(getString(R.string.userAge)).toString() != "") {
 
-                    if(desiredGender != null && desiredGender != "" &&
-                            recoveryEmail != null && recoveryEmail != "" &&
-                            screenName != null && screenName != "" &&
-                            userGender != null && userGender != "" &&
-                            desiredMaxAge != null && desiredMaxAge != "" &&
-                            desiredMinAge != null && desiredMinAge != "" &&
-                            userAge != null && userAge != ""){
+                        String desiredGender = doc.get(getString(R.string.desiredGender)).toString();
+                        String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
+                        String screenName = doc.get(getString(R.string.screenName)).toString();
+                        String userGender = doc.get(getString(R.string.userGender)).toString();
+                        String desiredMaxAge = doc.get(getString(R.string.desiredMaxAge)).toString();
+                        String desiredMinAge = doc.get(getString(R.string.desiredMinAge)).toString();
+                        String userAge = doc.get(getString(R.string.userAge)).toString();
+                        int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
 
                         SharedPreferences sharedPref = context.getSharedPreferences(
                                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
