@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,7 +40,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     /** UI components */
     Button exitButton, changeRecoveryEmailButton, signOutButton;
+    Button maleButton;
+    Button femaleButton;
     EditText recoveryEmailEditText;
+    TextView cloutTextView;
 
     /** Determines whether we need to save new information upon exit of Activity
      *  (not applicable to recoveryEmail)
@@ -58,9 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
     NumberPicker minAgeNumberPicker;
     NumberPicker maxAgeNumberPicker;
 
-    /** Male and female buttons */
-    Button maleButton;
-    Button femaleButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +125,6 @@ public class SettingsActivity extends AppCompatActivity {
                 desiredMinAgeHasChanged = true;
                 needFirebaseForDesiredSettings = true;
                 newDesiredMinAge = newVal;
-                //textview.setText("Selected Value is : " + newVal);
             }
         });
 
@@ -141,8 +142,6 @@ public class SettingsActivity extends AppCompatActivity {
                 desiredMaxAgeHasChanged = true;
                 needFirebaseForDesiredSettings = true;
                 newDesiredMaxAge = newVal;
-
-                //textview.setText("Selected Value is : " + newVal);
             }
         });
 
@@ -183,6 +182,9 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        cloutTextView = (TextView) findViewById(R.id.cloutTextView);
+        cloutTextView.setText(":) " + sharedPref.getInt(getString(R.string.userClout), 1));
     }
 
     private void changeRecoveryEmail() {
