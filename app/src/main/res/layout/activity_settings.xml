@@ -61,7 +61,7 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/dividerView"
+        android:id="@+id/dividerView1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/white"
@@ -74,7 +74,7 @@
         android:id="@+id/ImLookingForTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dividerView"
+        android:layout_below="@id/dividerView1"
         android:layout_alignParentLeft="true"
         android:text="I'm looking for.."
         android:textSize="20dp"/>
@@ -101,6 +101,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/genderLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -119,6 +120,27 @@
             android:text="FEMALE"/>
 
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/signOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Sign Out"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+    <View
+        android:id="@+id/dividerView2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/white"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_above="@id/signOutButton">
+    </View>
 
 
 </RelativeLayout>

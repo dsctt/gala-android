@@ -38,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     String uid;
 
     /** UI components */
-    Button exitButton, changeRecoveryEmailButton;
+    Button exitButton, changeRecoveryEmailButton, signOutButton;
     EditText recoveryEmailEditText;
 
     /** Determines whether we need to save new information upon exit of Activity
@@ -172,7 +172,17 @@ public class SettingsActivity extends AppCompatActivity {
         else {
             setGenderButtonUI(false);
         }
-        //System.out.println((sharedPref.getString(this.getString(R.string.desiredGender), "LEL")) + "!!!!!!!");
+
+        signOutButton = (Button) findViewById(R.id.signOutButton);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setupFirebase();
+                auth.signOut();
+                startActivity(new Intent(SettingsActivity.this, PhoneNumberAuthentication.class));
+                finish();
+            }
+        });
     }
 
     private void changeRecoveryEmail() {

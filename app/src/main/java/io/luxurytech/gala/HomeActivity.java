@@ -122,9 +122,9 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {}
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-        camera.stopPreview();
-        camera.release();
-        camera = null;
+//        camera.stopPreview();
+  //      camera.release();
+    //    camera = null;
     }
 
     /** Handle if permissions needed to be asked for */
