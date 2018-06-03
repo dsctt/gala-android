@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Gala</string>
-
     <string name="preference_file_key">io.luxurytech.gala.PREFERENCE_FILE_KEY</string>
+
+    <string name="ok">OK</string>
+    <string name="errorDesiredAge">The maximum age must be greater than or equal to the minimum age.</string>
 
     <string name="male">male</string>
     <string name="female">female</string>
@@ -21,4 +23,5 @@
         <item>Gala</item>
         <item>Met Gala</item>
     </string-array>
+
 </resources>

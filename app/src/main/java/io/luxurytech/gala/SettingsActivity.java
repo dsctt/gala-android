@@ -1,9 +1,11 @@
 package io.luxurytech.gala;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -116,7 +118,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
         minAgeNumberPicker.setMinValue(13);
-        minAgeNumberPicker.setMaxValue(100);
+        minAgeNumberPicker.setMaxValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), 100));
         minAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), 13));
 
         minAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -127,12 +129,16 @@ public class SettingsActivity extends AppCompatActivity {
                 desiredMinAgeHasChanged = true;
                 needFirebaseForDesiredSettings = true;
                 newDesiredMinAge = newVal;
+
+                // Update minimum max value
+                maxAgeNumberPicker.setDisplayedValues(null);
+                maxAgeNumberPicker.setMinValue(newVal);
             }
         });
 
 
         maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
-        maxAgeNumberPicker.setMinValue(13);
+        maxAgeNumberPicker.setMinValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), 100));
         maxAgeNumberPicker.setMaxValue(100);
         maxAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), 100));
 
@@ -144,6 +150,11 @@ public class SettingsActivity extends AppCompatActivity {
                 desiredMaxAgeHasChanged = true;
                 needFirebaseForDesiredSettings = true;
                 newDesiredMaxAge = newVal;
+
+                // Update maximum min value
+                minAgeNumberPicker.setDisplayedValues(null);
+                minAgeNumberPicker.setMaxValue(newVal);
+
             }
         });
 
@@ -300,6 +311,17 @@ public class SettingsActivity extends AppCompatActivity {
             femaleButton.setTextColor(getResources().getColor(R.color.primaryColor));
         }
 
+    }
+
+    private void showAlertDialog (String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+            }
+        });
+        AlertDialog dialog = builder.create();
     }
 
 

@@ -88,17 +88,33 @@
         android:gravity="center"
         android:layout_below="@id/ImLookingForTextView">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age:"
+            android:layout_weight="1"/>
+
         <NumberPicker
             android:id="@+id/minAgeNumberPicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
         </NumberPicker>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="to"
+            android:layout_weight="1"/>
 
         <NumberPicker
             android:id="@+id/maxAgeNumberPicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
         </NumberPicker>
+
+
 
     </LinearLayout>
 
