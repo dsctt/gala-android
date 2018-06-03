@@ -42,13 +42,11 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         // Initialize firebase
         auth = FirebaseAuth.getInstance();
 
+        // TODO: If-statement techincally not necessary anymore because it will always be false if this class is called.
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
             goHomeIfUserInfoComplete();
 
-            // If not, go thru process
-            startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
-            finish();
         } else {
             // not signed in
             startActivityForResult(
@@ -152,8 +150,13 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
 
                         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
                         finish();
+                    } else {
+                        // If not, go thru process
+                        startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
+                        finish();
                     }
                 }
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
