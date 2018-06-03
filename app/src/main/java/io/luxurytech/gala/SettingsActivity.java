@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -106,8 +107,19 @@ public class SettingsActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                changeRecoveryEmailButton.setEnabled(true);
-                changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.white));
+
+                // Check if valid email
+                String currEmail = recoveryEmailEditText.getText().toString();
+                if(!TextUtils.isEmpty(currEmail) && android.util.Patterns.EMAIL_ADDRESS.matcher(currEmail).matches()) {
+                    changeRecoveryEmailButton.setEnabled(true);
+                    changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.white));
+                }
+
+                else {
+                    changeRecoveryEmailButton.setEnabled(false);
+                    changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.darkGray));
+                }
+
             }
 
             @Override
@@ -312,17 +324,5 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
     }
-
-    private void showAlertDialog (String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(message);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-            }
-        });
-        AlertDialog dialog = builder.create();
-    }
-
 
 }

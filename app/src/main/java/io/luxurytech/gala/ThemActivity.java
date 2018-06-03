@@ -33,6 +33,7 @@ public class ThemActivity extends AppCompatActivity {
     /** The user */
     FirebaseUser authUser;
     String uid;
+    int initialUserClout = 1;
 
     /** Number pickers for age */
     NumberPicker minAgeNumberPicker;
@@ -69,7 +70,9 @@ public class ThemActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-                //textview.setText("Selected Value is : " + newVal);
+                // Update minimum max value
+                maxAgeNumberPicker.setDisplayedValues(null);
+                maxAgeNumberPicker.setMinValue(newVal);
             }
         });
 
@@ -80,7 +83,10 @@ public class ThemActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-                //textview.setText("Selected Value is : " + newVal);
+                // Update maximum min value
+                minAgeNumberPicker.setDisplayedValues(null);
+                minAgeNumberPicker.setMaxValue(newVal);
+
             }
         });
 
@@ -118,6 +124,7 @@ public class ThemActivity extends AppCompatActivity {
         dbUser.put("desiredGender", selectedGender);
         dbUser.put("desiredMinAge", minAgeNumberPicker.getValue());
         dbUser.put("desiredMaxAge", maxAgeNumberPicker.getValue());
+        dbUser.put(getString(R.string.userClout), initialUserClout);
         db.collection("Users")
                 .document(uid)
                 .update(dbUser)
@@ -179,7 +186,7 @@ public class ThemActivity extends AppCompatActivity {
                         editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
                         editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
                         editor.putInt("userAge", Integer.parseInt(userAge));
-                        editor.putInt(getString(R.string.userClout), 1);
+                        editor.putInt(getString(R.string.userClout), initialUserClout);
                         editor.apply();
 
                     }

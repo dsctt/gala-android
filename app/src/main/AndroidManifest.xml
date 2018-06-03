@@ -28,21 +28,29 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhoneNumberAuthentication">
+        <activity android:name=".PhoneNumberAuthentication"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecoveryEmail" />
-        <activity android:name=".ScreenNameActivity" />
-        <activity android:name=".MeActivity" />
-        <activity android:name=".ThemActivity" />
+        <activity android:name=".RecoveryEmail"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ScreenNameActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ThemActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SettingsActivity"
-            android:theme="@style/Theme.Transparent" />
-        <activity android:name=".VideoActivity"></activity>
+            android:theme="@style/Theme.Transparent"
+            android:screenOrientation="portrait" />
+        <activity android:name=".VideoActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -54,7 +57,35 @@ public class RecoveryEmail extends AppCompatActivity {
 
         // Setup UI components
         recoveryEmailEditText = (EditText) findViewById(R.id.recoveryEmailEditText);
+        recoveryEmailEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                // Check if valid email
+                String currEmail = recoveryEmailEditText.getText().toString();
+                if(!TextUtils.isEmpty(currEmail) && android.util.Patterns.EMAIL_ADDRESS.matcher(currEmail).matches()) {
+                    saveButton.setEnabled(true);
+                }
+
+                else {
+                    saveButton.setEnabled(false);
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setEnabled(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
