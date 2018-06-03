@@ -92,6 +92,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
         changeRecoveryEmailButton.setEnabled(false);
+        changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.darkGray));
 
         recoveryEmailEditText = (EditText) findViewById(R.id.recoveryEmailEditText);
         recoveryEmailEditText.setText(sharedPref.getString(getString(R.string.recoveryEmail), ""));
@@ -104,6 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 changeRecoveryEmailButton.setEnabled(true);
+                changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.white));
             }
 
             @Override
@@ -211,6 +213,7 @@ public class SettingsActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Log.d("Settings Activity", "Recovery Email added");
                         changeRecoveryEmailButton.setEnabled(false);
+                        changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.darkGray));
                         // Update shared pref
                         sharedPrefEditor.putString(getString(R.string.recoveryEmail), newRecoveryEmail);
                         sharedPrefEditor.apply();

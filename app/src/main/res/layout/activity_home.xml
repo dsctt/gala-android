@@ -13,9 +13,9 @@
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_add_white_24dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/outline_settings_white_24"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"/>
 
@@ -37,8 +37,8 @@
 
     <Button
         android:id="@+id/goButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@drawable/outline_videocam_white_24"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/selectEchelonSpinner"/>
