@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Recovery email"
+        android:inputType="textEmailAddress"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"/>
 
