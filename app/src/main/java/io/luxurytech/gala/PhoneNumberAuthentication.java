@@ -69,10 +69,6 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
             if (resultCode == ResultCodes.OK) {
                 // Check if they've previously completed the sign in process
                 goHomeIfUserInfoComplete();
-
-                // If not, go thru process
-                startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
-                finish();
                 return;
             } else {
                 // Sign in failed
@@ -95,7 +91,8 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
     }
 
     /** Checks if user info is already filled in and then takes the user Home if true
-     * Also updates SharedPreferences */
+     * Also updates SharedPreferences
+     */
     private void goHomeIfUserInfoComplete() {
         DocumentReference drUser;
         FirebaseFirestore db;

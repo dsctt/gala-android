@@ -7,15 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2146910-e4de-45f2-92dc-24b8826606ea" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java" />
     </list>
@@ -74,10 +65,10 @@
       <file leaf-file-name="PhoneNumberAuthentication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="44" column="120" lean-forward="false" selection-start-line="44" selection-start-column="120" selection-end-line="44" selection-end-column="120" />
+            <state relative-caret-position="169">
+              <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
               <folding>
-                <element signature="e#6382#6411#0" expanded="true" />
+                <element signature="e#6221#6250#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,40 +77,40 @@
       <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+            <state relative-caret-position="495">
+              <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
-                <element signature="e#2346#2379#0" expanded="true" />
-                <element signature="e#2400#2433#0" expanded="true" />
-                <element signature="e#2491#2524#0" expanded="true" />
-                <element signature="e#2544#2577#0" expanded="true" />
-                <element signature="e#2635#2665#0" expanded="true" />
-                <element signature="e#2686#2716#0" expanded="true" />
-                <element signature="e#2774#2804#0" expanded="true" />
-                <element signature="e#2825#2855#0" expanded="true" />
-                <element signature="e#2913#2946#0" expanded="true" />
-                <element signature="e#2967#3000#0" expanded="true" />
-                <element signature="e#3058#3091#0" expanded="true" />
-                <element signature="e#3112#3145#0" expanded="true" />
-                <element signature="e#3203#3230#0" expanded="true" />
-                <element signature="e#3251#3278#0" expanded="true" />
-                <element signature="e#3356#3389#0" expanded="true" />
-                <element signature="e#3458#3491#0" expanded="true" />
-                <element signature="e#3557#3587#0" expanded="true" />
-                <element signature="e#3653#3683#0" expanded="true" />
-                <element signature="e#3752#3785#0" expanded="true" />
-                <element signature="e#3854#3887#0" expanded="true" />
-                <element signature="e#3950#3977#0" expanded="true" />
-                <element signature="e#4056#4085#0" expanded="true" />
-                <element signature="e#4218#4257#0" expanded="true" />
-                <element signature="e#4400#4433#0" expanded="true" />
-                <element signature="e#4492#4525#0" expanded="true" />
-                <element signature="e#4584#4614#0" expanded="true" />
-                <element signature="e#4670#4700#0" expanded="true" />
-                <element signature="e#4753#4786#0" expanded="true" />
-                <element signature="e#4860#4893#0" expanded="true" />
-                <element signature="e#4967#4994#0" expanded="true" />
-                <element signature="e#5062#5091#0" expanded="true" />
+                <element signature="e#2351#2384#0" expanded="true" />
+                <element signature="e#2405#2438#0" expanded="true" />
+                <element signature="e#2496#2529#0" expanded="true" />
+                <element signature="e#2549#2582#0" expanded="true" />
+                <element signature="e#2640#2670#0" expanded="true" />
+                <element signature="e#2691#2721#0" expanded="true" />
+                <element signature="e#2779#2809#0" expanded="true" />
+                <element signature="e#2830#2860#0" expanded="true" />
+                <element signature="e#2918#2951#0" expanded="true" />
+                <element signature="e#2972#3005#0" expanded="true" />
+                <element signature="e#3063#3096#0" expanded="true" />
+                <element signature="e#3117#3150#0" expanded="true" />
+                <element signature="e#3208#3235#0" expanded="true" />
+                <element signature="e#3256#3283#0" expanded="true" />
+                <element signature="e#3361#3394#0" expanded="true" />
+                <element signature="e#3463#3496#0" expanded="true" />
+                <element signature="e#3562#3592#0" expanded="true" />
+                <element signature="e#3658#3688#0" expanded="true" />
+                <element signature="e#3757#3790#0" expanded="true" />
+                <element signature="e#3859#3892#0" expanded="true" />
+                <element signature="e#3955#3982#0" expanded="true" />
+                <element signature="e#4061#4090#0" expanded="true" />
+                <element signature="e#4223#4262#0" expanded="true" />
+                <element signature="e#4405#4438#0" expanded="true" />
+                <element signature="e#4497#4530#0" expanded="true" />
+                <element signature="e#4589#4619#0" expanded="true" />
+                <element signature="e#4675#4705#0" expanded="true" />
+                <element signature="e#4758#4791#0" expanded="true" />
+                <element signature="e#4865#4898#0" expanded="true" />
+                <element signature="e#4972#4999#0" expanded="true" />
+                <element signature="e#5067#5096#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2566,6 +2557,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2583,7 +2575,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24878837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3017,50 +3009,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+        <state relative-caret-position="495">
+          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
-            <element signature="e#2346#2379#0" expanded="true" />
-            <element signature="e#2400#2433#0" expanded="true" />
-            <element signature="e#2491#2524#0" expanded="true" />
-            <element signature="e#2544#2577#0" expanded="true" />
-            <element signature="e#2635#2665#0" expanded="true" />
-            <element signature="e#2686#2716#0" expanded="true" />
-            <element signature="e#2774#2804#0" expanded="true" />
-            <element signature="e#2825#2855#0" expanded="true" />
-            <element signature="e#2913#2946#0" expanded="true" />
-            <element signature="e#2967#3000#0" expanded="true" />
-            <element signature="e#3058#3091#0" expanded="true" />
-            <element signature="e#3112#3145#0" expanded="true" />
-            <element signature="e#3203#3230#0" expanded="true" />
-            <element signature="e#3251#3278#0" expanded="true" />
-            <element signature="e#3356#3389#0" expanded="true" />
-            <element signature="e#3458#3491#0" expanded="true" />
-            <element signature="e#3557#3587#0" expanded="true" />
-            <element signature="e#3653#3683#0" expanded="true" />
-            <element signature="e#3752#3785#0" expanded="true" />
-            <element signature="e#3854#3887#0" expanded="true" />
-            <element signature="e#3950#3977#0" expanded="true" />
-            <element signature="e#4056#4085#0" expanded="true" />
-            <element signature="e#4218#4257#0" expanded="true" />
-            <element signature="e#4400#4433#0" expanded="true" />
-            <element signature="e#4492#4525#0" expanded="true" />
-            <element signature="e#4584#4614#0" expanded="true" />
-            <element signature="e#4670#4700#0" expanded="true" />
-            <element signature="e#4753#4786#0" expanded="true" />
-            <element signature="e#4860#4893#0" expanded="true" />
-            <element signature="e#4967#4994#0" expanded="true" />
-            <element signature="e#5062#5091#0" expanded="true" />
+            <element signature="e#2351#2384#0" expanded="true" />
+            <element signature="e#2405#2438#0" expanded="true" />
+            <element signature="e#2496#2529#0" expanded="true" />
+            <element signature="e#2549#2582#0" expanded="true" />
+            <element signature="e#2640#2670#0" expanded="true" />
+            <element signature="e#2691#2721#0" expanded="true" />
+            <element signature="e#2779#2809#0" expanded="true" />
+            <element signature="e#2830#2860#0" expanded="true" />
+            <element signature="e#2918#2951#0" expanded="true" />
+            <element signature="e#2972#3005#0" expanded="true" />
+            <element signature="e#3063#3096#0" expanded="true" />
+            <element signature="e#3117#3150#0" expanded="true" />
+            <element signature="e#3208#3235#0" expanded="true" />
+            <element signature="e#3256#3283#0" expanded="true" />
+            <element signature="e#3361#3394#0" expanded="true" />
+            <element signature="e#3463#3496#0" expanded="true" />
+            <element signature="e#3562#3592#0" expanded="true" />
+            <element signature="e#3658#3688#0" expanded="true" />
+            <element signature="e#3757#3790#0" expanded="true" />
+            <element signature="e#3859#3892#0" expanded="true" />
+            <element signature="e#3955#3982#0" expanded="true" />
+            <element signature="e#4061#4090#0" expanded="true" />
+            <element signature="e#4223#4262#0" expanded="true" />
+            <element signature="e#4405#4438#0" expanded="true" />
+            <element signature="e#4497#4530#0" expanded="true" />
+            <element signature="e#4589#4619#0" expanded="true" />
+            <element signature="e#4675#4705#0" expanded="true" />
+            <element signature="e#4758#4791#0" expanded="true" />
+            <element signature="e#4865#4898#0" expanded="true" />
+            <element signature="e#4972#4999#0" expanded="true" />
+            <element signature="e#5067#5096#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="44" column="120" lean-forward="false" selection-start-line="44" selection-start-column="120" selection-end-line="44" selection-end-column="120" />
+        <state relative-caret-position="169">
+          <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
           <folding>
-            <element signature="e#6382#6411#0" expanded="true" />
+            <element signature="e#6221#6250#0" expanded="true" />
           </folding>
         </state>
       </provider>

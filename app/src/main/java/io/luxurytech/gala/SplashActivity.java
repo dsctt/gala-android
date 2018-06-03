@@ -44,7 +44,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     /** Checks if user info is already filled in and then takes the user Home if true
-     * Also updates SharedPreferences */
+     * Also updates SharedPreferences
+     */
     private void goHomeIfUserInfoComplete() {
         DocumentReference drUser;
         FirebaseFirestore db;
