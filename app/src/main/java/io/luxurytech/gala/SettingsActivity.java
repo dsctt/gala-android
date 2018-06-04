@@ -312,6 +312,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         startActivity(new Intent(SettingsActivity.this, HomeActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void setGenderButtonUI(boolean maleButtonIsChosen) {

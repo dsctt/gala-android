@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
             public void onClick(View v) {
                 setUIInvisible();
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
