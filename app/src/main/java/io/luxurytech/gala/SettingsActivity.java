@@ -129,9 +129,9 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
-        minAgeNumberPicker.setMinValue(13);
-        minAgeNumberPicker.setMaxValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), 100));
-        minAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), 13));
+        minAgeNumberPicker.setMinValue(Constants.MIN_AGE);
+        minAgeNumberPicker.setMaxValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
+        minAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE));
 
         minAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -150,9 +150,9 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
-        maxAgeNumberPicker.setMinValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), 100));
-        maxAgeNumberPicker.setMaxValue(100);
-        maxAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), 100));
+        maxAgeNumberPicker.setMinValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MAX_AGE));
+        maxAgeNumberPicker.setMaxValue(Constants.MAX_AGE);
+        maxAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
 
         maxAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override

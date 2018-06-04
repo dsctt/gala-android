@@ -63,8 +63,8 @@ public class ThemActivity extends AppCompatActivity {
         // Setup UI components
         minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
         maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
-        minAgeNumberPicker.setMinValue(13);
-        minAgeNumberPicker.setMaxValue(100);
+        minAgeNumberPicker.setMinValue(Constants.MIN_AGE);
+        minAgeNumberPicker.setMaxValue(Constants.MAX_AGE);
 
         minAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -76,8 +76,8 @@ public class ThemActivity extends AppCompatActivity {
             }
         });
 
-        maxAgeNumberPicker.setMinValue(13);
-        maxAgeNumberPicker.setMaxValue(100);
+        maxAgeNumberPicker.setMinValue(Constants.MIN_AGE);
+        maxAgeNumberPicker.setMaxValue(Constants.MAX_AGE);
 
         maxAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -94,7 +94,7 @@ public class ThemActivity extends AppCompatActivity {
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedGender = "male";
+                selectedGender = getString(R.string.male);
                 saveData();
             }
         });
@@ -102,7 +102,7 @@ public class ThemActivity extends AppCompatActivity {
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedGender = "female";
+                selectedGender = getString(R.string.female);
                 saveData();
             }
         });
