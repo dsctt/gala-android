@@ -201,10 +201,7 @@ public class SettingsActivity extends AppCompatActivity {
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setupFirebase();
-                auth.signOut();
-                startActivity(new Intent(SettingsActivity.this, PhoneNumberAuthentication.class));
-                finish();
+                showAlert(getString(R.string.signOutMessage));
             }
         });
 
@@ -329,6 +326,32 @@ public class SettingsActivity extends AppCompatActivity {
 
     public String getEmojiByUnicode(int unicode){
         return new String(Character.toChars(unicode));
+    }
+
+    private void showAlert(String message) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+        // Add the message
+        builder.setMessage(message);
+        // Add the buttons
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                setupFirebase();
+                auth.signOut();
+                startActivity(new Intent(SettingsActivity.this, PhoneNumberAuthentication.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
