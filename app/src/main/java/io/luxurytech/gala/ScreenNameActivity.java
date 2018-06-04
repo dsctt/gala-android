@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +52,31 @@ public class ScreenNameActivity extends AppCompatActivity {
 
         // Setup UI components
         screenNameEditText = (EditText) findViewById(R.id.screenNameEditText);
+        screenNameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String currEmail = screenNameEditText.getText().toString();
+                if(!TextUtils.isEmpty(currEmail)) {
+                    saveButton.setEnabled(true);
+                }
+
+                else {
+                    saveButton.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setEnabled(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +104,7 @@ public class ScreenNameActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Log.d("FirestoreWrite", "Screen name added");
                         startActivity(new Intent(ScreenNameActivity.this, MeActivity.class));
+                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
                         finish();
                     }
                 })
@@ -88,4 +116,8 @@ public class ScreenNameActivity extends AppCompatActivity {
                 });
 
     }
+
+    @Override
+    public void onBackPressed() { }
+
 }

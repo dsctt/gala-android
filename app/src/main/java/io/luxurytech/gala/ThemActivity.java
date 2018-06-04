@@ -134,6 +134,7 @@ public class ThemActivity extends AppCompatActivity {
                         Log.d("FirestoreWrite", "Gender and Age added");
                         saveToSharedPrefs();
                         startActivity(new Intent(ThemActivity.this, HomeActivity.class));
+                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
                         finish();
                     }
                 })
@@ -199,4 +200,7 @@ public class ThemActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() { }
 }

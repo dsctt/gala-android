@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#9354dd</color>
+    <color name="colorPrimaryDark">#6f5193</color>
+    <color name="colorAccent">#9354dd</color>
 
-    <color name="primaryColor">#9354dd</color>
-    <color name="normalPurple">#967bb6</color>
-    <color name="altColor">#b47bb6</color>
-    <color name="darkPurple">#7c5aa4</color>
+    <color name="normalPurple">#7c5aa4</color>
     <color name="deepPurple">#6f5193</color>
-    <color name="neonPurple">#9354dd</color>
+    <color name="alt">#b47bb6</color>
     <color name="lavender">#E6E6FA</color>
 
     <color name="white">#FFFFFF</color>

@@ -173,4 +173,7 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         return new String(Character.toChars(unicode));
     }
 
+    @Override
+    public void onBackPressed() { }
+
 }

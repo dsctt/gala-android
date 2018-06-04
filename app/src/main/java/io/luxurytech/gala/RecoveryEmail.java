@@ -126,6 +126,10 @@ public class RecoveryEmail extends AppCompatActivity {
 
     public void goToNextScreen(){
         startActivity(new Intent(RecoveryEmail.this, ScreenNameActivity.class));
+        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
         finish();
     }
+
+    @Override
+    public void onBackPressed() { }
 }

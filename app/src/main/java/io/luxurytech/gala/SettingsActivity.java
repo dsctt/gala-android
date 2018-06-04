@@ -316,12 +316,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void setGenderButtonUI(boolean maleButtonIsChosen) {
         if(maleButtonIsChosen) {
-            maleButton.setTextColor(getResources().getColor(R.color.primaryColor));
+            maleButton.setTextColor(getResources().getColor(R.color.colorPrimary));
             femaleButton.setTextColor(getResources().getColor(R.color.white));
         }
         else {
             maleButton.setTextColor(getResources().getColor(R.color.white));
-            femaleButton.setTextColor(getResources().getColor(R.color.primaryColor));
+            femaleButton.setTextColor(getResources().getColor(R.color.colorPrimary));
         }
 
     }

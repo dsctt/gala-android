@@ -102,6 +102,7 @@ public class MeActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Log.d("FirestoreWrite", "Gender and Age added");
                         startActivity(new Intent(MeActivity.this, ThemActivity.class));
+                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
                         finish();
                     }
                 })
@@ -113,4 +114,7 @@ public class MeActivity extends AppCompatActivity {
                 });
 
     }
+
+    @Override
+    public void onBackPressed() { }
 }

@@ -162,4 +162,9 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() { }
+
+    // TODO: Make a method for starting activity intent
 }

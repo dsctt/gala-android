@@ -14,6 +14,8 @@ public class Constants {
 
     public final static int PURPLE_HEART_UNICODE = 0x1F49C;
 
+    // TODO: Add common methods (goHomeIf..)
+
 
 
 }
