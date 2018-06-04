@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
         goButton = (Button) findViewById(R.id.goButton);
 
         cloutTextView = (TextView) findViewById(R.id.cloutTextView);
-        cloutTextView.setText(":) " + sharedPref.getInt(getString(R.string.userClout), 1));
+        cloutTextView.setText(getEmojiByUnicode(Constants.PURPLE_HEART_UNICODE) + sharedPref.getInt(getString(R.string.userClout), 1));
 
         selectEchelonSpinner = (Spinner) findViewById(R.id.selectEchelonSpinner);
         ArrayAdapter<CharSequence> selectEchelonSpinnerAdapter = ArrayAdapter.createFromResource(this,
@@ -167,6 +167,10 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
             camera.release();
             camera = null;
         }
+    }
+
+    public String getEmojiByUnicode(int unicode){
+        return new String(Character.toChars(unicode));
     }
 
 }

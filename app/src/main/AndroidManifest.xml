@@ -37,10 +37,12 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".RecoveryEmail"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".ScreenNameActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".MeActivity"
             android:screenOrientation="portrait" />

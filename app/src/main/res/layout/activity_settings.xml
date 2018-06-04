@@ -26,15 +26,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"/>
 
-    <TextView
-        android:id="@+id/echelonTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@android:color/white"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/cloutTextView"/>
-
     <LinearLayout
         android:id="@+id/changeRecoveryEmailLinearLayout"
         android:layout_width="match_parent"

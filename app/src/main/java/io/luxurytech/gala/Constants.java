@@ -12,4 +12,8 @@ public class Constants {
     public final static int MAX_AGE = 100;
 
 
+    public final static int PURPLE_HEART_UNICODE = 0x1F49C;
+
+
+
 }

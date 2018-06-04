@@ -209,7 +209,8 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         cloutTextView = (TextView) findViewById(R.id.cloutTextView);
-        cloutTextView.setText(":) " + sharedPref.getInt(getString(R.string.userClout), 1));
+        cloutTextView.setText(getEmojiByUnicode(Constants.PURPLE_HEART_UNICODE) + sharedPref.getInt(getString(R.string.userClout), 1));
+
     }
 
     private void changeRecoveryEmail() {
@@ -323,6 +324,16 @@ public class SettingsActivity extends AppCompatActivity {
             femaleButton.setTextColor(getResources().getColor(R.color.primaryColor));
         }
 
+    }
+
+    public String getEmojiByUnicode(int unicode){
+        return new String(Character.toChars(unicode));
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Make sure everything gets saved
+        exitButtonClicked();
     }
 
 }

@@ -7,9 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2146910-e4de-45f2-92dc-24b8826606ea" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ThemActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ThemActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,99 +76,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PhoneNumberAuthentication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java">
+      <file leaf-file-name="activity_screen_name.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_screen_name.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-836">
-              <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
-              <folding>
-                <element signature="e#6221#6250#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+              <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThemActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ThemActivity.java">
+      <file leaf-file-name="activity_recovery_email.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recovery_email.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="104" column="58" lean-forward="false" selection-start-line="104" selection-start-column="58" selection-end-line="104" selection-end-column="58" />
-              <folding>
-                <element signature="e#3228#3252#0" expanded="true" />
-                <element signature="e#4174#4203#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+              <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_them.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="64" column="52" lean-forward="false" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1755">
-              <caret line="154" column="111" lean-forward="false" selection-start-line="154" selection-start-column="111" selection-end-line="154" selection-end-column="111" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+            <state relative-caret-position="4065">
+              <caret line="334" column="42" lean-forward="false" selection-start-line="334" selection-start-column="42" selection-end-line="334" selection-end-column="42" />
               <folding>
-                <element signature="e#2351#2384#0" expanded="true" />
-                <element signature="e#2405#2438#0" expanded="true" />
-                <element signature="e#2496#2529#0" expanded="true" />
-                <element signature="e#2549#2582#0" expanded="true" />
-                <element signature="e#2640#2670#0" expanded="true" />
-                <element signature="e#2691#2721#0" expanded="true" />
-                <element signature="e#2779#2809#0" expanded="true" />
-                <element signature="e#2830#2860#0" expanded="true" />
-                <element signature="e#2918#2951#0" expanded="true" />
-                <element signature="e#2972#3005#0" expanded="true" />
-                <element signature="e#3063#3096#0" expanded="true" />
-                <element signature="e#3117#3150#0" expanded="true" />
-                <element signature="e#3208#3235#0" expanded="true" />
-                <element signature="e#3256#3283#0" expanded="true" />
-                <element signature="e#3361#3394#0" expanded="true" />
-                <element signature="e#3463#3496#0" expanded="true" />
-                <element signature="e#3562#3592#0" expanded="true" />
-                <element signature="e#3658#3688#0" expanded="true" />
-                <element signature="e#3757#3790#0" expanded="true" />
-                <element signature="e#3859#3892#0" expanded="true" />
-                <element signature="e#3955#3982#0" expanded="true" />
-                <element signature="e#4061#4090#0" expanded="true" />
-                <element signature="e#4223#4262#0" expanded="true" />
-                <element signature="e#4405#4438#0" expanded="true" />
-                <element signature="e#4497#4530#0" expanded="true" />
-                <element signature="e#4589#4619#0" expanded="true" />
-                <element signature="e#4675#4705#0" expanded="true" />
-                <element signature="e#4758#4791#0" expanded="true" />
-                <element signature="e#4865#4898#0" expanded="true" />
-                <element signature="e#4972#4999#0" expanded="true" />
-                <element signature="e#5067#5096#0" expanded="true" />
+                <element signature="e#2357#2396#0" expanded="true" />
+                <element signature="e#2579#2732#0" expanded="true" />
+                <element signature="e#2731#2732#0" expanded="true" />
+                <element signature="e#2880#3035#0" expanded="true" />
+                <element signature="e#3034#3035#0" expanded="true" />
+                <element signature="e#3327#3360#0" expanded="true" />
+                <element signature="e#4636#4674#0" expanded="true" />
+                <element signature="e#4751#4789#0" expanded="true" />
+                <element signature="e#4866#5384#0" expanded="true" />
+                <element signature="e#5383#5384#0" expanded="true" />
+                <element signature="e#5529#5567#0" expanded="true" />
+                <element signature="e#5703#5741#0" expanded="true" />
+                <element signature="e#5818#6337#0" expanded="true" />
+                <element signature="e#6336#6337#0" expanded="true" />
+                <element signature="e#6440#6761#0" expanded="true" />
+                <element signature="e#6671#6695#0" expanded="true" />
+                <element signature="e#6760#6761#0" expanded="true" />
+                <element signature="e#6869#7193#0" expanded="true" />
+                <element signature="e#7100#7126#0" expanded="true" />
+                <element signature="e#7192#7193#0" expanded="true" />
+                <element signature="e#7228#7266#0" expanded="true" />
+                <element signature="e#7279#7303#0" expanded="true" />
+                <element signature="e#7526#7832#0" expanded="true" />
+                <element signature="e#7831#7832#0" expanded="true" />
+                <element signature="e#8005#8034#0" expanded="true" />
+                <element signature="e#8469#8502#0" expanded="true" />
+                <element signature="e#8655#9265#0" expanded="true" />
+                <element signature="e#9122#9155#0" expanded="true" />
+                <element signature="e#9264#9265#0" expanded="true" />
+                <element signature="e#9305#9552#0" expanded="true" />
+                <element signature="e#9551#9552#0" expanded="true" />
+                <element signature="e#10441#10474#0" expanded="true" />
+                <element signature="e#10522#10555#0" expanded="true" />
+                <element signature="e#10673#10706#0" expanded="true" />
+                <element signature="e#10754#10787#0" expanded="true" />
+                <element signature="e#10908#10941#0" expanded="true" />
+                <element signature="e#10989#11022#0" expanded="true" />
+                <element signature="e#11244#11519#0" expanded="true" />
+                <element signature="e#11518#11519#0" expanded="true" />
+                <element signature="e#11563#11805#0" expanded="true" />
+                <element signature="e#11804#11805#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="77" column="68" lean-forward="false" selection-start-line="77" selection-start-column="68" selection-end-line="78" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -166,8 +173,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+            <state relative-caret-position="660">
+              <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -2237,28 +2244,28 @@
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_screen_name.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_me.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ScreenNameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/CameraPreviewClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/VideoActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recovery_email.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_phone_number_authentication.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ThemActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" />
       </list>
     </option>
@@ -2601,7 +2608,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2619,7 +2625,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24878837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2784,17 +2790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_screen_name.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_me.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -2876,56 +2871,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="83" lean-forward="false" selection-start-line="5" selection-start-column="83" selection-end-line="5" selection-end-column="83" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recovery_email.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="50" column="12" lean-forward="false" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java">
@@ -2987,23 +2938,12 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/PhoneNumberAuthentication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-836">
           <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
           <folding>
-            <element signature="e#6221#6250#0" expanded="true" />
+            <element signature="e#6221#6250#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3013,54 +2953,38 @@
         <state relative-caret-position="495">
           <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
-            <element signature="e#2351#2384#0" expanded="true" />
-            <element signature="e#2405#2438#0" expanded="true" />
-            <element signature="e#2496#2529#0" expanded="true" />
-            <element signature="e#2549#2582#0" expanded="true" />
-            <element signature="e#2640#2670#0" expanded="true" />
-            <element signature="e#2691#2721#0" expanded="true" />
-            <element signature="e#2779#2809#0" expanded="true" />
-            <element signature="e#2830#2860#0" expanded="true" />
-            <element signature="e#2918#2951#0" expanded="true" />
-            <element signature="e#2972#3005#0" expanded="true" />
-            <element signature="e#3063#3096#0" expanded="true" />
-            <element signature="e#3117#3150#0" expanded="true" />
-            <element signature="e#3208#3235#0" expanded="true" />
-            <element signature="e#3256#3283#0" expanded="true" />
-            <element signature="e#3361#3394#0" expanded="true" />
-            <element signature="e#3463#3496#0" expanded="true" />
-            <element signature="e#3562#3592#0" expanded="true" />
-            <element signature="e#3658#3688#0" expanded="true" />
-            <element signature="e#3757#3790#0" expanded="true" />
-            <element signature="e#3859#3892#0" expanded="true" />
-            <element signature="e#3955#3982#0" expanded="true" />
-            <element signature="e#4061#4090#0" expanded="true" />
-            <element signature="e#4223#4262#0" expanded="true" />
-            <element signature="e#4405#4438#0" expanded="true" />
-            <element signature="e#4497#4530#0" expanded="true" />
-            <element signature="e#4589#4619#0" expanded="true" />
-            <element signature="e#4675#4705#0" expanded="true" />
-            <element signature="e#4758#4791#0" expanded="true" />
-            <element signature="e#4865#4898#0" expanded="true" />
-            <element signature="e#4972#4999#0" expanded="true" />
-            <element signature="e#5067#5096#0" expanded="true" />
+            <element signature="e#2351#2384#0" expanded="false" />
+            <element signature="e#2405#2438#0" expanded="false" />
+            <element signature="e#2496#2529#0" expanded="false" />
+            <element signature="e#2549#2582#0" expanded="false" />
+            <element signature="e#2640#2670#0" expanded="false" />
+            <element signature="e#2691#2721#0" expanded="false" />
+            <element signature="e#2779#2809#0" expanded="false" />
+            <element signature="e#2830#2860#0" expanded="false" />
+            <element signature="e#2918#2951#0" expanded="false" />
+            <element signature="e#2972#3005#0" expanded="false" />
+            <element signature="e#3063#3096#0" expanded="false" />
+            <element signature="e#3117#3150#0" expanded="false" />
+            <element signature="e#3208#3235#0" expanded="false" />
+            <element signature="e#3256#3283#0" expanded="false" />
+            <element signature="e#3361#3394#0" expanded="false" />
+            <element signature="e#3463#3496#0" expanded="false" />
+            <element signature="e#3562#3592#0" expanded="false" />
+            <element signature="e#3658#3688#0" expanded="false" />
+            <element signature="e#3757#3790#0" expanded="false" />
+            <element signature="e#3859#3892#0" expanded="false" />
+            <element signature="e#3955#3982#0" expanded="false" />
+            <element signature="e#4061#4090#0" expanded="false" />
+            <element signature="e#4223#4262#0" expanded="false" />
+            <element signature="e#4405#4438#0" expanded="false" />
+            <element signature="e#4497#4530#0" expanded="false" />
+            <element signature="e#4589#4619#0" expanded="false" />
+            <element signature="e#4675#4705#0" expanded="false" />
+            <element signature="e#4758#4791#0" expanded="false" />
+            <element signature="e#4865#4898#0" expanded="false" />
+            <element signature="e#4972#4999#0" expanded="false" />
+            <element signature="e#5067#5096#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="77" column="68" lean-forward="false" selection-start-line="77" selection-start-column="68" selection-end-line="78" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3069,17 +2993,145 @@
         <state relative-caret-position="1065">
           <caret line="104" column="58" lean-forward="false" selection-start-line="104" selection-start-column="58" selection-end-line="104" selection-end-column="58" />
           <folding>
-            <element signature="e#3228#3252#0" expanded="true" />
-            <element signature="e#4174#4203#0" expanded="true" />
+            <element signature="e#3228#3252#0" expanded="false" />
+            <element signature="e#4174#4203#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="171" column="4" lean-forward="true" selection-start-line="171" selection-start-column="4" selection-end-line="173" selection-end-column="5" />
+          <folding>
+            <element signature="e#2825#2854#0" expanded="false" />
+            <element signature="e#6105#6106#0" expanded="false" />
+            <element signature="e#6166#6167#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="58" lean-forward="false" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_screen_name.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recovery_email.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="64" column="52" lean-forward="false" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1755">
-          <caret line="154" column="111" lean-forward="false" selection-start-line="154" selection-start-column="111" selection-end-line="154" selection-end-column="111" />
-          <folding />
+        <state relative-caret-position="4065">
+          <caret line="334" column="42" lean-forward="false" selection-start-line="334" selection-start-column="42" selection-end-line="334" selection-end-column="42" />
+          <folding>
+            <element signature="e#2357#2396#0" expanded="true" />
+            <element signature="e#2579#2732#0" expanded="true" />
+            <element signature="e#2731#2732#0" expanded="true" />
+            <element signature="e#2880#3035#0" expanded="true" />
+            <element signature="e#3034#3035#0" expanded="true" />
+            <element signature="e#3327#3360#0" expanded="true" />
+            <element signature="e#4636#4674#0" expanded="true" />
+            <element signature="e#4751#4789#0" expanded="true" />
+            <element signature="e#4866#5384#0" expanded="true" />
+            <element signature="e#5383#5384#0" expanded="true" />
+            <element signature="e#5529#5567#0" expanded="true" />
+            <element signature="e#5703#5741#0" expanded="true" />
+            <element signature="e#5818#6337#0" expanded="true" />
+            <element signature="e#6336#6337#0" expanded="true" />
+            <element signature="e#6440#6761#0" expanded="true" />
+            <element signature="e#6671#6695#0" expanded="true" />
+            <element signature="e#6760#6761#0" expanded="true" />
+            <element signature="e#6869#7193#0" expanded="true" />
+            <element signature="e#7100#7126#0" expanded="true" />
+            <element signature="e#7192#7193#0" expanded="true" />
+            <element signature="e#7228#7266#0" expanded="true" />
+            <element signature="e#7279#7303#0" expanded="true" />
+            <element signature="e#7526#7832#0" expanded="true" />
+            <element signature="e#7831#7832#0" expanded="true" />
+            <element signature="e#8005#8034#0" expanded="true" />
+            <element signature="e#8469#8502#0" expanded="true" />
+            <element signature="e#8655#9265#0" expanded="true" />
+            <element signature="e#9122#9155#0" expanded="true" />
+            <element signature="e#9264#9265#0" expanded="true" />
+            <element signature="e#9305#9552#0" expanded="true" />
+            <element signature="e#9551#9552#0" expanded="true" />
+            <element signature="e#10441#10474#0" expanded="true" />
+            <element signature="e#10522#10555#0" expanded="true" />
+            <element signature="e#10673#10706#0" expanded="true" />
+            <element signature="e#10754#10787#0" expanded="true" />
+            <element signature="e#10908#10941#0" expanded="true" />
+            <element signature="e#10989#11022#0" expanded="true" />
+            <element signature="e#11244#11519#0" expanded="true" />
+            <element signature="e#11518#11519#0" expanded="true" />
+            <element signature="e#11563#11805#0" expanded="true" />
+            <element signature="e#11804#11805#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
