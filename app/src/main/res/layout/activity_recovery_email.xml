@@ -12,7 +12,7 @@
         android:id="@+id/recoveryEmailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Recovery email"
+        android:hint="Set your recovery email"
         android:inputType="textEmailAddress"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
@@ -36,7 +36,7 @@
         android:layout_marginBottom="12dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="Click below to recover an existing account attached to this email address. An email will be sent with a verification code."/>
+        android:text="..or click below to recover an existing account attached to this email address. An email will be sent with a verification code."/>
 
     <Button
         android:id="@+id/recoverAccountButton"

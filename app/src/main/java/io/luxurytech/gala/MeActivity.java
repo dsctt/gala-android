@@ -35,10 +35,11 @@ public class MeActivity extends AppCompatActivity {
     /** Number picker for age */
     NumberPicker ageNumberPicker;
 
-    /** Male and female buttons */
-    ImageButton maleButton;
-    ImageButton femaleButton;
+    /** UI */
+    Button maleButton;
+    Button femaleButton;
     int selectedGender;
+    ImageButton saveButton;
 
     /** Context */
     Context context;
@@ -59,24 +60,25 @@ public class MeActivity extends AppCompatActivity {
 
         // Setup UI components
         ageNumberPicker = (NumberPicker) findViewById(R.id.ageNumberPicker);
-        maleButton = (ImageButton) findViewById(R.id.maleButton);
-        maleButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+
+        maleButton = (Button) findViewById(R.id.maleButton);
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedGender = Constants.MALE;
-                saveData();
+                setGenderButtonUI(true);
             }
         });
-        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
-        femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+        femaleButton = (Button) findViewById(R.id.femaleButton);
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedGender = Constants.FEMALE;
-                saveData();
+                setGenderButtonUI(false);
             }
         });
+        selectedGender = Constants.FEMALE; // Default
+        setGenderButtonUI(false); // Default
 
         ageNumberPicker.setMinValue(Constants.MIN_AGE);
         ageNumberPicker.setMaxValue(Constants.MAX_AGE);
@@ -86,6 +88,15 @@ public class MeActivity extends AppCompatActivity {
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
                 //textview.setText("Selected Value is : " + newVal);
+            }
+        });
+
+        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
             }
         });
 
@@ -135,6 +146,20 @@ public class MeActivity extends AppCompatActivity {
 //                    }
 //                });
 
+    }
+
+    private void setGenderButtonUI(boolean maleSelected) {
+        if(maleSelected) {
+            maleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+        } else {
+            maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+    }
+
+    public String getEmojiByUnicode(int unicode){
+        return new String(Character.toChars(unicode));
     }
 
     @Override

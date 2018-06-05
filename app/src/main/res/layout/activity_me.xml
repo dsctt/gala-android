@@ -15,67 +15,54 @@
         android:textSize="24dp"
         android:textColor="@color/colorPrimaryDark"
         android:text="I am.."
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="8dp"/>
+
+    <NumberPicker
+        android:id="@+id/ageNumberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp">
+    </NumberPicker>
 
 
     <LinearLayout
+        android:id="@+id/genderLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/titleTextView">
+        android:layout_below="@id/ageNumberPicker"
+        android:gravity="center"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_marginBottom="60dp">
 
-        <NumberPicker
-            android:id="@+id/ageNumberPicker"
+
+        <Button
+            android:id="@+id/femaleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
-        </NumberPicker>
+            android:layout_weight="1"/>
 
-        <LinearLayout
+        <Button
+            android:id="@+id/maleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Girl"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boy"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_weight="1">
-
-            <ImageButton
-                android:id="@+id/femaleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_arrow_forward_primary"
-                android:background="@drawable/background_state"/>
-
-            <ImageButton
-                android:id="@+id/maleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_arrow_forward_primary"
-                android:background="@drawable/background_state"/>
-        </LinearLayout>
+            android:layout_weight="1"/>
 
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_arrow_forward_primary"
+        android:background="@drawable/background_state"
+        android:layout_below="@id/genderLinearLayout"
+        android:layout_centerHorizontal="true"/>
+
 
 
 

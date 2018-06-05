@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,9 +41,10 @@ public class ThemActivity extends AppCompatActivity {
     NumberPicker minAgeNumberPicker;
     NumberPicker maxAgeNumberPicker;
 
-    /** Male and female buttons */
+    /** Buttons */
     Button maleButton;
     Button femaleButton;
+    ImageButton saveButton;
     int selectedGender;
 
     /** Values from previous registration screens to save in db */
@@ -103,7 +105,7 @@ public class ThemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedGender = Constants.MALE;
-                saveData();
+                setGenderButtonUI(true);
             }
         });
         femaleButton = (Button) findViewById(R.id.femaleButton);
@@ -111,9 +113,11 @@ public class ThemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedGender = Constants.FEMALE;
-                saveData();
+                setGenderButtonUI(false);
             }
         });
+        selectedGender = Constants.FEMALE; // Default
+        setGenderButtonUI(false); // Default
 
         // Get values from sharedPrefs for use in saving to db
         SharedPreferences sharedPref = context.getSharedPreferences(
@@ -122,6 +126,15 @@ public class ThemActivity extends AppCompatActivity {
         regScreenName = sharedPref.getString(getString(R.string.screenName), "");
         regUserGender = sharedPref.getInt(getString(R.string.userGender), Constants.MALE);
         regUserAge = sharedPref.getInt(getString(R.string.userAge), Constants.MIN_AGE);
+
+        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
 
 
     }
@@ -225,6 +238,20 @@ public class ThemActivity extends AppCompatActivity {
 //        });
 //
 //    }
+
+    private void setGenderButtonUI(boolean maleSelected) {
+        if(maleSelected) {
+            maleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+        } else {
+            maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+    }
+
+    public String getEmojiByUnicode(int unicode){
+        return new String(Character.toChars(unicode));
+    }
 
     @Override
     public void onBackPressed() { }
