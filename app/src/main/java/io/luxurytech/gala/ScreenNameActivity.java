@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,7 +38,7 @@ public class ScreenNameActivity extends AppCompatActivity {
     EditText screenNameEditText;
 
     /** Save button */
-    Button saveButton;
+    ImageButton saveButton;
 
     /** Context */
     Context context;
@@ -68,11 +69,11 @@ public class ScreenNameActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String currEmail = screenNameEditText.getText().toString();
                 if(!TextUtils.isEmpty(currEmail)) {
-                    saveButton.setEnabled(true);
+                    setSaveButtonUI(true);
                 }
 
                 else {
-                    saveButton.setEnabled(false);
+                    setSaveButtonUI(false);
                 }
             }
 
@@ -81,8 +82,8 @@ public class ScreenNameActivity extends AppCompatActivity {
 
             }
         });
-        saveButton = (Button) findViewById(R.id.saveButton);
-        saveButton.setEnabled(false);
+        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        setSaveButtonUI(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +134,18 @@ public class ScreenNameActivity extends AppCompatActivity {
 //                    }
 //                });
 
+    }
+
+    /** Sets UI of save button */
+    private void setSaveButtonUI(boolean en) {
+        if(en) {
+            saveButton.setEnabled(true);
+            saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+        } else {
+
+            saveButton.setEnabled(false);
+            saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_gray));
+        }
     }
 
     @Override

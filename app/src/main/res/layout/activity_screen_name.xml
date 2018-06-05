@@ -14,13 +14,16 @@
         android:layout_height="wrap_content"
         android:hint="Screen name"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="36dp"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAVE"
-        android:layout_below="@id/screenNameEditText"/>
+        app:srcCompat="@drawable/baseline_arrow_forward_gray"
+        android:background="@drawable/background_state"
+        android:layout_below="@id/screenNameEditText"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

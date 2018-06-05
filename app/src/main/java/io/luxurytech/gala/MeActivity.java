@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,8 +36,8 @@ public class MeActivity extends AppCompatActivity {
     NumberPicker ageNumberPicker;
 
     /** Male and female buttons */
-    Button maleButton;
-    Button femaleButton;
+    ImageButton maleButton;
+    ImageButton femaleButton;
     int selectedGender;
 
     /** Context */
@@ -58,7 +59,8 @@ public class MeActivity extends AppCompatActivity {
 
         // Setup UI components
         ageNumberPicker = (NumberPicker) findViewById(R.id.ageNumberPicker);
-        maleButton = (Button) findViewById(R.id.maleButton);
+        maleButton = (ImageButton) findViewById(R.id.maleButton);
+        maleButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +68,8 @@ public class MeActivity extends AppCompatActivity {
                 saveData();
             }
         });
-        femaleButton = (Button) findViewById(R.id.femaleButton);
+        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
+        femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

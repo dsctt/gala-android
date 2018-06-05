@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:padding="16dp"
     tools:context=".MeActivity">
 
     <TextView
@@ -13,34 +12,68 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="I am.."/>
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="I am.."
+        android:layout_marginTop="20dp"/>
 
-    <NumberPicker
-        android:id="@+id/ageNumberPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/titleTextView">
-
-    </NumberPicker>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/ageNumberPicker">
+        android:layout_below="@id/titleTextView">
 
-        <Button
-            android:id="@+id/maleButton"
+        <NumberPicker
+            android:id="@+id/ageNumberPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MALE"/>
+            android:layout_weight="2">
+        </NumberPicker>
 
-        <Button
-            android:id="@+id/femaleButton"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FEMALE"/>
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Girl"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Boy"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/femaleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/baseline_arrow_forward_primary"
+                android:background="@drawable/background_state"/>
+
+            <ImageButton
+                android:id="@+id/maleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/baseline_arrow_forward_primary"
+                android:background="@drawable/background_state"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

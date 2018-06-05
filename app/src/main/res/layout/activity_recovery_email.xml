@@ -15,13 +15,37 @@
         android:hint="Recovery email"
         android:inputType="textEmailAddress"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="36dp"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SAVE"
-        android:layout_below="@id/recoveryEmailEditText"/>
+        app:srcCompat="@drawable/baseline_arrow_forward_gray"
+        android:background="@drawable/background_state"
+        android:layout_below="@id/recoveryEmailEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"/>
+
+    <TextView
+        android:id="@+id/recoverAccountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saveButton"
+        android:layout_marginBottom="12dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Click below to recover an existing account attached to this email address. An email will be sent with a verification code."/>
+
+    <Button
+        android:id="@+id/recoverAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECOVER ACCOUNT"
+        android:background="@android:color/transparent"
+        android:textColor="@color/lightGray"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/recoverAccountTextView"/>
 
 </RelativeLayout>

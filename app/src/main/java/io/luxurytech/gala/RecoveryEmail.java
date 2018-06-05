@@ -11,8 +11,12 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,8 +45,9 @@ public class RecoveryEmail extends AppCompatActivity {
     /** Recovery Email Edittext */
     EditText recoveryEmailEditText;
 
-    /** Save button */
-    Button saveButton;
+    /** Buttons */
+    ImageButton saveButton;
+    Button recoverAccountButton;
 
     /** Activity Context */
     Context context;
@@ -74,11 +79,13 @@ public class RecoveryEmail extends AppCompatActivity {
                 // Check if valid email
                 String currEmail = recoveryEmailEditText.getText().toString();
                 if(!TextUtils.isEmpty(currEmail) && android.util.Patterns.EMAIL_ADDRESS.matcher(currEmail).matches()) {
-                    saveButton.setEnabled(true);
+                    setSaveButtonUI(true);
+                    setRecoverAccountButtonUI(true);
                 }
 
                 else {
-                    saveButton.setEnabled(false);
+                    setSaveButtonUI(false);
+                    setRecoverAccountButtonUI(false);
                 }
 
 
@@ -89,14 +96,33 @@ public class RecoveryEmail extends AppCompatActivity {
 
             }
         });
-        saveButton = (Button) findViewById(R.id.saveButton);
-        saveButton.setEnabled(false);
+        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        setSaveButtonUI(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveButtonClicked();
             }
         });
+
+        recoverAccountButton = (Button) findViewById(R.id.recoverAccountButton);
+        setRecoverAccountButtonUI(false);
+        recoverAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Lower keyboard
+                View view = getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+
+                Toast toast = Toast.makeText(context, "Sent!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
     }
 
     /** Called when the SAVE button is clicked. Adds email to cache */
@@ -141,6 +167,28 @@ public class RecoveryEmail extends AppCompatActivity {
 //                    }
 //                });
 
+    }
+
+    /** Sets UI of save button */
+    private void setSaveButtonUI(boolean en) {
+        if(en) {
+            saveButton.setEnabled(true);
+            saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+        } else {
+            saveButton.setEnabled(false);
+            saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_gray));
+        }
+    }
+
+    /** Sets UI of recover button */
+    private void setRecoverAccountButtonUI(boolean en) {
+        if(en) {
+            recoverAccountButton.setEnabled(true);
+            recoverAccountButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+        } else {
+            recoverAccountButton.setEnabled(false);
+            recoverAccountButton.setTextColor(getResources().getColor(R.color.lightGray));
+        }
     }
 
     @Override

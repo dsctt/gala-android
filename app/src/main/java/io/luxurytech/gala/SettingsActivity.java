@@ -93,8 +93,7 @@ public class SettingsActivity extends AppCompatActivity {
                 changeRecoveryEmail();
             }
         });
-        changeRecoveryEmailButton.setEnabled(false);
-        changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.darkGray));
+        setChangeRecoveryEmailButtonUI(false);
 
         recoveryEmailEditText = (EditText) findViewById(R.id.recoveryEmailEditText);
         recoveryEmailEditText.setText(sharedPref.getString(getString(R.string.recoveryEmail), ""));
@@ -110,13 +109,11 @@ public class SettingsActivity extends AppCompatActivity {
                 // Check if valid email
                 String currEmail = recoveryEmailEditText.getText().toString();
                 if(!TextUtils.isEmpty(currEmail) && android.util.Patterns.EMAIL_ADDRESS.matcher(currEmail).matches()) {
-                    changeRecoveryEmailButton.setEnabled(true);
-                    changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.white));
+                    setChangeRecoveryEmailButtonUI(true);
                 }
 
                 else {
-                    changeRecoveryEmailButton.setEnabled(false);
-                    changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.darkGray));
+                    setChangeRecoveryEmailButtonUI(false);
                 }
 
             }
@@ -228,8 +225,7 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("Settings Activity", "Recovery Email added");
-                        changeRecoveryEmailButton.setEnabled(false);
-                        changeRecoveryEmailButton.setTextColor(getResources().getColor(R.color.darkGray));
+                        setChangeRecoveryEmailButtonUI(false);
                         // Update shared pref
                         sharedPrefEditor.putString(getString(R.string.recoveryEmail), newRecoveryEmail);
                         sharedPrefEditor.apply();
@@ -282,6 +278,7 @@ public class SettingsActivity extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
+
     /** Sets UI for gender buttons based on which is selected */
     private void setGenderButtonUI(boolean maleButtonIsChosen) {
         if(maleButtonIsChosen) {
@@ -331,6 +328,18 @@ public class SettingsActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Make sure everything gets saved
         exitButtonClicked();
+    }
+
+    /** Sets UI of save button */
+    private void setChangeRecoveryEmailButtonUI(boolean en) {
+        if(en) {
+            changeRecoveryEmailButton.setEnabled(true);
+            changeRecoveryEmailButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        } else {
+
+            changeRecoveryEmailButton.setEnabled(false);
+            changeRecoveryEmailButton.setBackgroundColor(getResources().getColor(R.color.darkGray));
+        }
     }
 
 }
