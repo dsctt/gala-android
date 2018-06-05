@@ -8,8 +8,7 @@
     <string name="no">NO</string>
     <string name="signOutMessage">You will now be signed out of Gala.</string>
 
-    <string name="male">male</string>
-    <string name="female">female</string>
+
     <string name="desiredMinAge">desiredMinAge</string>
     <string name="desiredMaxAge">desiredMaxAge</string>
     <string name="desiredGender">desiredGender</string>
@@ -18,6 +17,9 @@
     <string name="screenName">screenName</string>
     <string name="userGender">userGender</string>
     <string name="userAge">userAge</string>
+    <string name="phoneNumber">phoneNumber</string>
+
+    <string name="DB_COLLECTION_USERS">Users</string>
 
     <string-array name="select_echelon_choices">
         <item>Bar</item>

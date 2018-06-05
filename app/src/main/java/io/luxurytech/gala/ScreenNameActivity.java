@@ -1,6 +1,8 @@
 package io.luxurytech.gala;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,12 +26,12 @@ import java.util.Map;
 public class ScreenNameActivity extends AppCompatActivity {
 
     /** Firebase components */
-    FirebaseFirestore db;
-    FirebaseAuth auth;
+//    FirebaseFirestore db;
+//    FirebaseAuth auth;
 
     /** The user */
-    FirebaseUser authUser;
-    String uid;
+//    FirebaseUser authUser;
+//    String uid;
 
     /** Screen name Edittext */
     EditText screenNameEditText;
@@ -37,18 +39,22 @@ public class ScreenNameActivity extends AppCompatActivity {
     /** Save button */
     Button saveButton;
 
+    /** Context */
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_name);
+        context = this;
 
         // Setup firebase
-        db = FirebaseFirestore.getInstance();
-        auth = FirebaseAuth.getInstance();
-        authUser = auth.getCurrentUser();
-        if(authUser != null) {
-            uid = authUser.getUid();
-        }
+//        db = FirebaseFirestore.getInstance();
+//        auth = FirebaseAuth.getInstance();
+//        authUser = auth.getCurrentUser();
+//        if(authUser != null) {
+//            uid = authUser.getUid();
+//        }
 
         // Setup UI components
         screenNameEditText = (EditText) findViewById(R.id.screenNameEditText);
@@ -88,32 +94,44 @@ public class ScreenNameActivity extends AppCompatActivity {
     /** Called when the SAVE button is clicked. Adds user to db with UID and recovery email */
     public void saveButtonClicked () {
 
-        // Check if there is a user
-        if(authUser == null) {
-            return;
-        }
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
-        // Add screen name value to the db
-        Map<String, Object> dbUser = new HashMap<>();
-        dbUser.put("screenName", screenNameEditText.getText().toString());
-        db.collection("Users")
-                .document(uid)
-                .update(dbUser)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("FirestoreWrite", "Screen name added");
-                        startActivity(new Intent(ScreenNameActivity.this, MeActivity.class));
-                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
-                        finish();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("FirestoreWrite", "Error adding user", e);
-                    }
-                });
+        editor.putString(getString(R.string.screenName), screenNameEditText.getText().toString());
+        editor.apply();
+
+        // Go to next screen
+        startActivity(new Intent(ScreenNameActivity.this, MeActivity.class));
+        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
+        finish();
+
+//        // Check if there is a user
+//        if(authUser == null) {
+//            return;
+//        }
+//
+//        // Add screen name value to the db
+//        Map<String, Object> dbUser = new HashMap<>();
+//        dbUser.put("screenName", screenNameEditText.getText().toString());
+//        db.collection("Users")
+//                .document(uid)
+//                .update(dbUser)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Log.d("FirestoreWrite", "Screen name added");
+//                        startActivity(new Intent(ScreenNameActivity.this, MeActivity.class));
+//                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
+//                        finish();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w("FirestoreWrite", "Error adding user", e);
+//                    }
+//                });
 
     }
 

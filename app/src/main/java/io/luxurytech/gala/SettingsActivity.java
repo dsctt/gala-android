@@ -51,10 +51,9 @@ public class SettingsActivity extends AppCompatActivity {
     /** Determines whether we need to save new information upon exit of Activity
      *  (not applicable to recoveryEmail)
      */
-    boolean needFirebaseForDesiredSettings = false;
     boolean desiredMinAgeHasChanged = false, desiredMaxAgeHasChanged = false, desiredGenderHasChanged = false;
     int newDesiredMinAge, newDesiredMaxAge;
-    String newDesiredGender;
+    int newDesiredGender;
 
 
     /** Shared Prefs */
@@ -139,7 +138,6 @@ public class SettingsActivity extends AppCompatActivity {
 
                 // Update variables
                 desiredMinAgeHasChanged = true;
-                needFirebaseForDesiredSettings = true;
                 newDesiredMinAge = newVal;
 
                 // Update minimum max value
@@ -160,7 +158,6 @@ public class SettingsActivity extends AppCompatActivity {
 
                 // Update variables
                 desiredMaxAgeHasChanged = true;
-                needFirebaseForDesiredSettings = true;
                 newDesiredMaxAge = newVal;
 
                 // Update maximum min value
@@ -175,8 +172,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 desiredGenderHasChanged = true;
-                needFirebaseForDesiredSettings = true;
-                newDesiredGender = getString(R.string.male);
+                newDesiredGender = Constants.MALE;
                 setGenderButtonUI(true);
             }
         });
@@ -185,12 +181,11 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 desiredGenderHasChanged = true;
-                needFirebaseForDesiredSettings = true;
-                newDesiredGender = getString(R.string.female);
+                newDesiredGender = Constants.FEMALE;
                 setGenderButtonUI(false);
             }
         });
-        if(sharedPref.getString(this.getString(R.string.desiredGender), "").equals(getString(R.string.male))){
+        if(sharedPref.getInt(getString(R.string.desiredGender), Constants.FEMALE) == Constants.MALE){
             setGenderButtonUI(true);
         }
         else {
@@ -266,52 +261,28 @@ public class SettingsActivity extends AppCompatActivity {
         isFirebaseSetup = true;
     }
 
-    /** Updates Shared Prefs and Firebase if necessary, before closing */
+    /** Updates Shared Prefs if necessary, before closing */
     private void exitButtonClicked(){
 
 
-        // Update shared prefs and firebase
-        if(needFirebaseForDesiredSettings) {
-            setupFirebase();
-            Map<String, Object> dbUser = new HashMap<>();
+        // Update shared prefs
 
-            if (desiredMinAgeHasChanged) {
-                sharedPrefEditor.putInt(getString(R.string.desiredMinAge), newDesiredMinAge);
-                dbUser.put(getString(R.string.desiredMinAge), newDesiredMinAge);
-            }
-            if (desiredMaxAgeHasChanged) {
-                sharedPrefEditor.putInt(getString(R.string.desiredMaxAge), newDesiredMaxAge);
-                dbUser.put(getString(R.string.desiredMaxAge), newDesiredMaxAge);
-            }
-            if (desiredGenderHasChanged) {
-                sharedPrefEditor.putString(getString(R.string.desiredGender), newDesiredGender);
-                dbUser.put(getString(R.string.desiredGender), newDesiredGender);
-            }
-
-            sharedPrefEditor.apply();
-            db.collection("Users")
-                    .document(uid)
-                    .update(dbUser)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d("FirestoreWrite", "Success");
-                            finish();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("FirestoreWrite", "Error", e);
-                        }
-                    });
+        if (desiredMinAgeHasChanged) {
+            sharedPrefEditor.putInt(getString(R.string.desiredMinAge), newDesiredMinAge);
+        }
+        if (desiredMaxAgeHasChanged) {
+            sharedPrefEditor.putInt(getString(R.string.desiredMaxAge), newDesiredMaxAge);
+        }
+        if (desiredGenderHasChanged) {
+            sharedPrefEditor.putInt(getString(R.string.desiredGender), newDesiredGender);
         }
 
-
+        sharedPrefEditor.apply();
         startActivity(new Intent(SettingsActivity.this, HomeActivity.class));
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
+    /** Sets UI for gender buttons based on which is selected */
     private void setGenderButtonUI(boolean maleButtonIsChosen) {
         if(maleButtonIsChosen) {
             maleButton.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -324,10 +295,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+    /** Gets emoji from unicode value */
     public String getEmojiByUnicode(int unicode){
         return new String(Character.toChars(unicode));
     }
 
+    /** Pops up an alert with message */
     private void showAlert(String message) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 

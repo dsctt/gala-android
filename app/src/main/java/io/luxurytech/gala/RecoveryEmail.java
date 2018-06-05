@@ -1,6 +1,8 @@
 package io.luxurytech.gala;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,13 +30,13 @@ import java.util.Map;
 public class RecoveryEmail extends AppCompatActivity {
 
     /** Firebase components */
-    FirebaseFirestore db;
-    FirebaseAuth auth;
+//    FirebaseFirestore db;
+//    FirebaseAuth auth;
 
 
     /** The user */
-    FirebaseUser authUser;
-    String uid;
+//    FirebaseUser authUser;
+//    String uid;
 
     /** Recovery Email Edittext */
     EditText recoveryEmailEditText;
@@ -42,18 +44,21 @@ public class RecoveryEmail extends AppCompatActivity {
     /** Save button */
     Button saveButton;
 
+    /** Activity Context */
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recovery_email);
-
+        context = this;
         // Setup firebase
-        db = FirebaseFirestore.getInstance();
-        auth = FirebaseAuth.getInstance();
-        authUser = auth.getCurrentUser();
-        if(authUser != null) {
-            uid = authUser.getUid();
-        }
+//        db = FirebaseFirestore.getInstance();
+//        auth = FirebaseAuth.getInstance();
+//        authUser = auth.getCurrentUser();
+//        if(authUser != null) {
+//            uid = authUser.getUid();
+//        }
 
         // Setup UI components
         recoveryEmailEditText = (EditText) findViewById(R.id.recoveryEmailEditText);
@@ -94,40 +99,48 @@ public class RecoveryEmail extends AppCompatActivity {
         });
     }
 
-    /** Called when the SAVE button is clicked. Adds user to db with UID and recovery email */
+    /** Called when the SAVE button is clicked. Adds email to cache */
     public void saveButtonClicked () {
 
-        // Check if there is a user
-        if(authUser == null) {
-            return;
-        }
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
-        // Change recovery email in firebase
-        Map<String, Object> dbUser = new HashMap<>();
-        dbUser.put("recoveryEmail", recoveryEmailEditText.getText().toString());
-        db.collection("Users")
-                .document(uid)
-                .set(dbUser)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("RecoveryEmail", "Recovery Email added");
-                        goToNextScreen();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("RecoveryEmail", "Error adding recovery email", e);
-                    }
-                });
+        editor.putString(getString(R.string.recoveryEmail), recoveryEmailEditText.getText().toString());
+        editor.apply();
 
-    }
-
-    public void goToNextScreen(){
+        // Go to next screen
         startActivity(new Intent(RecoveryEmail.this, ScreenNameActivity.class));
         overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
         finish();
+
+
+
+        // Check if there is a user
+//        if(authUser == null) {
+//            return;
+//        }
+//
+//        // Change recovery email in firebase
+//        Map<String, Object> dbUser = new HashMap<>();
+//        dbUser.put("recoveryEmail", recoveryEmailEditText.getText().toString());
+//        db.collection("Users")
+//                .document(uid)
+//                .set(dbUser)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Log.d("RecoveryEmail", "Recovery Email added");
+//                        goToNextScreen();
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w("RecoveryEmail", "Error adding recovery email", e);
+//                    }
+//                });
+
     }
 
     @Override

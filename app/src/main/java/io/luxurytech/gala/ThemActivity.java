@@ -33,6 +33,7 @@ public class ThemActivity extends AppCompatActivity {
     /** The user */
     FirebaseUser authUser;
     String uid;
+    String userPhoneNumber;
     int initialUserClout = 1;
 
     /** Number pickers for age */
@@ -42,7 +43,13 @@ public class ThemActivity extends AppCompatActivity {
     /** Male and female buttons */
     Button maleButton;
     Button femaleButton;
-    String selectedGender;
+    int selectedGender;
+
+    /** Values from previous registration screens to save in db */
+    String regRecoveryEmail;
+    String regScreenName;
+    int regUserGender;
+    int regUserAge;
 
     Context context;
 
@@ -58,6 +65,7 @@ public class ThemActivity extends AppCompatActivity {
         authUser = auth.getCurrentUser();
         if(authUser != null) {
             uid = authUser.getUid();
+            userPhoneNumber = authUser.getPhoneNumber();
         }
 
         // Setup UI components
@@ -94,7 +102,7 @@ public class ThemActivity extends AppCompatActivity {
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedGender = getString(R.string.male);
+                selectedGender = Constants.MALE;
                 saveData();
             }
         });
@@ -102,16 +110,23 @@ public class ThemActivity extends AppCompatActivity {
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedGender = getString(R.string.female);
+                selectedGender = Constants.FEMALE;
                 saveData();
             }
         });
 
+        // Get values from sharedPrefs for use in saving to db
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        regRecoveryEmail = sharedPref.getString(getString(R.string.recoveryEmail), "");
+        regScreenName = sharedPref.getString(getString(R.string.screenName), "");
+        regUserGender = sharedPref.getInt(getString(R.string.userGender), Constants.MALE);
+        regUserAge = sharedPref.getInt(getString(R.string.userAge), Constants.MIN_AGE);
 
 
     }
 
-    /** Called when a gender button is clicked. Adds desired gender and age range to user in db. */
+    /** Called when a gender button is clicked. Adds all cached items to the db. */
     public void saveData () {
 
         // Check if there is a user
@@ -119,20 +134,33 @@ public class ThemActivity extends AppCompatActivity {
             return;
         }
 
-        // Add desired gender and age range to user
+        // Save 'Them' values and clout and phone number to shared prefs
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(getString(R.string.desiredGender), selectedGender);
+        editor.putInt(getString(R.string.desiredMaxAge), maxAgeNumberPicker.getValue());
+        editor.putInt(getString(R.string.desiredMinAge), minAgeNumberPicker.getValue());
+        editor.putInt(getString(R.string.userClout), initialUserClout);
+        editor.putString(getString(R.string.phoneNumber), userPhoneNumber);
+        editor.apply();
+
+        // Add appropriate values to db
         Map<String, Object> dbUser = new HashMap<>();
-        dbUser.put("desiredGender", selectedGender);
-        dbUser.put("desiredMinAge", minAgeNumberPicker.getValue());
-        dbUser.put("desiredMaxAge", maxAgeNumberPicker.getValue());
+        dbUser.put(getString(R.string.recoveryEmail), regRecoveryEmail);
+        dbUser.put(getString(R.string.screenName), regScreenName);
+        dbUser.put(getString(R.string.userAge), regUserAge);
+        dbUser.put(getString(R.string.userGender), regUserGender);
         dbUser.put(getString(R.string.userClout), initialUserClout);
-        db.collection("Users")
+        dbUser.put(getString(R.string.phoneNumber), userPhoneNumber);
+        db.collection(getString(R.string.DB_COLLECTION_USERS))
                 .document(uid)
-                .update(dbUser)
+                .set(dbUser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("FirestoreWrite", "Gender and Age added");
-                        saveToSharedPrefs();
+                        Log.d("FirestoreWrite", "Sucesss");
+                        //saveToSharedPrefs();
                         startActivity(new Intent(ThemActivity.this, HomeActivity.class));
                         overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
                         finish();
@@ -141,65 +169,62 @@ public class ThemActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("FirestoreWrite", "Error adding user", e);
+                        Log.w("FirestoreWrite", "Error", e);
                     }
                 });
 
     }
 
     /** Checks if user info is already filled in and saves to sharedprefs */
-    private void saveToSharedPrefs() {
-        DocumentReference drUser;
-        drUser = db.collection("Users").document(uid);
-
-        // Check if user already has full user information
-        // If so, save to shared prefs, and skip to home
-        drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot doc = task.getResult();
-
-                    String desiredGender = doc.get("desiredGender").toString();
-                    String recoveryEmail = doc.get("recoveryEmail").toString();
-                    String screenName = doc.get("screenName").toString();
-                    String userGender = doc.get("userGender").toString();
-                    String desiredMaxAge = doc.get("desiredMaxAge").toString();
-                    String desiredMinAge = doc.get("desiredMinAge").toString();
-                    String userAge = doc.get("userAge").toString();
-
-
-                    if(desiredGender != null && desiredGender != "" &&
-                            recoveryEmail != null && recoveryEmail != "" &&
-                            screenName != null && screenName != "" &&
-                            userGender != null && userGender != "" &&
-                            desiredMaxAge != null && desiredMaxAge != "" &&
-                            desiredMinAge != null && desiredMinAge != "" &&
-                            userAge != null && userAge != ""){
-
-                        SharedPreferences sharedPref = context.getSharedPreferences(
-                                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString("desiredGender", desiredGender);
-                        editor.putString("recoveryEmail", recoveryEmail);
-                        editor.putString("screenName", screenName);
-                        editor.putString("userGender", userGender);
-                        editor.putInt("desiredMaxAge", Integer.parseInt(desiredMaxAge));
-                        editor.putInt("desiredMinAge", Integer.parseInt(desiredMinAge));
-                        editor.putInt("userAge", Integer.parseInt(userAge));
-                        editor.putInt(getString(R.string.userClout), initialUserClout);
-                        editor.apply();
-
-                    }
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-            }
-        });
-
-    }
+//    private void saveToSharedPrefs() {
+//        DocumentReference drUser;
+//        drUser = db.collection(getString(R.string.DB_COLLECTION_USERS)).document(uid);
+//
+//        // Check if user already has full user information
+//        // If so, save to shared prefs, and skip to home
+//        drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if(task.isSuccessful()){
+//                    DocumentSnapshot doc = task.getResult();
+//
+//                    String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
+//                    String screenName = doc.get(getString(R.string.screenName)).toString();
+//                    String userGender = doc.get(getString(R.string.userGender)).toString();
+//                    String userAge = doc.get(getString(R.string.userAge)).toString();
+//                    String phoneNumber = doc.get(getString(R.string.phoneNumber)).toString();
+//
+//
+//                    if(recoveryEmail != null && recoveryEmail != "" &&
+//                            screenName != null && screenName != "" &&
+//                            userGender != null && userGender != "" &&
+//                            userAge != null && userAge != "" &&
+//                            phoneNumber != null && phoneNumber != ""){
+//
+//                        SharedPreferences sharedPref = context.getSharedPreferences(
+//                                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPref.edit();
+//                        editor.putString(getString(R.string.desiredGender), desiredGender);
+//                        editor.putString(getString(R.string.recoveryEmail), recoveryEmail);
+//                        editor.putString(getString(R.string.screenName), screenName);
+//                        editor.putString(getString(R.string.userGender), userGender);
+//                        editor.putInt(getString(R.string.desiredMaxAge), Integer.parseInt(desiredMaxAge));
+//                        editor.putInt(getString(R.string.desiredMinAge), Integer.parseInt(desiredMinAge));
+//                        editor.putInt(getString(R.string.userAge), Integer.parseInt(userAge));
+//                        editor.putInt(getString(R.string.userClout), initialUserClout);
+//                        editor.putString(getString(R.string.phoneNumber), userPhoneNumber);
+//                        editor.apply();
+//
+//                    }
+//                }
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//            }
+//        });
+//
+//    }
 
     @Override
     public void onBackPressed() { }

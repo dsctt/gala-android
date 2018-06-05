@@ -57,7 +57,7 @@ public class SplashActivity extends AppCompatActivity {
         if(authUser != null) {
             uid = authUser.getUid();
         }
-        drUser = db.collection("Users").document(uid);
+        drUser = db.collection(getString(R.string.DB_COLLECTION_USERS)).document(uid);
 
         // Check if user already has full user information
         // If so, save to shared prefs, and skip to home
@@ -68,32 +68,26 @@ public class SplashActivity extends AppCompatActivity {
                     DocumentSnapshot doc = task.getResult();
 
 
-                    if(doc.get(getString(R.string.desiredGender)) != null && doc.get(getString(R.string.desiredGender)).toString() != "" &&
-                            doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
+                    if(doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
                             doc.get(getString(R.string.screenName)) != null && doc.get(getString(R.string.screenName)).toString() != "" &&
                             doc.get(getString(R.string.userGender)) != null && doc.get(getString(R.string.userGender)).toString() != "" &&
-                            doc.get(getString(R.string.desiredMaxAge)) != null && doc.get(getString(R.string.desiredMaxAge)).toString() != "" &&
-                            doc.get(getString(R.string.desiredMinAge)) != null && doc.get(getString(R.string.desiredMinAge)).toString() != "" &&
-                            doc.get(getString(R.string.userAge)) != null && doc.get(getString(R.string.userAge)).toString() != "") {
+                            doc.get(getString(R.string.userAge)) != null && doc.get(getString(R.string.userAge)).toString() != "" &&
+                            doc.get(getString(R.string.phoneNumber)) != null && doc.get(getString(R.string.phoneNumber)).toString() != "") {
 
-                        String desiredGender = doc.get(getString(R.string.desiredGender)).toString();
                         String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
                         String screenName = doc.get(getString(R.string.screenName)).toString();
                         String userGender = doc.get(getString(R.string.userGender)).toString();
-                        String desiredMaxAge = doc.get(getString(R.string.desiredMaxAge)).toString();
-                        String desiredMinAge = doc.get(getString(R.string.desiredMinAge)).toString();
                         String userAge = doc.get(getString(R.string.userAge)).toString();
+                        String phoneNumber = doc.get(getString(R.string.phoneNumber)).toString();
                         int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
 
                         SharedPreferences sharedPref = context.getSharedPreferences(
                                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString(getString(R.string.desiredGender), desiredGender);
                         editor.putString(getString(R.string.recoveryEmail), recoveryEmail);
                         editor.putString(getString(R.string.screenName), screenName);
                         editor.putString(getString(R.string.userGender), userGender);
-                        editor.putInt(getString(R.string.desiredMaxAge), Integer.parseInt(desiredMaxAge));
-                        editor.putInt(getString(R.string.desiredMinAge), Integer.parseInt(desiredMinAge));
+                        editor.putString(getString(R.string.phoneNumber), phoneNumber);
                         editor.putInt(getString(R.string.userAge), Integer.parseInt(userAge));
                         editor.putInt(getString(R.string.userClout), userClout);
                         editor.apply();
