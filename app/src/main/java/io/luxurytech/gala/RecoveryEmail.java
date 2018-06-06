@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -113,13 +114,17 @@ public class RecoveryEmail extends AppCompatActivity {
 
                 //Lower keyboard
                 View view = getCurrentFocus();
-                if (view != null) {
+                if (getCurrentFocus() != null) {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
 
-                Toast toast = Toast.makeText(context, "Sent!", Toast.LENGTH_SHORT);
-                toast.show();
+//                Toast toast = Toast.makeText(context, "Sent!", Toast.LENGTH_SHORT);
+//                toast.show();
+
+                Snackbar.make(findViewById(R.id.recoveryEmailLayoutID), "Sent!",
+                        Snackbar.LENGTH_SHORT)
+                        .show();
             }
         });
 

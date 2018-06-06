@@ -44,7 +44,8 @@ public class SettingsActivity extends AppCompatActivity {
     String uid;
 
     /** UI components */
-    Button exitButton, changeRecoveryEmailButton, signOutButton;
+    Button exitButton, signOutButton;
+    ImageButton changeRecoveryEmailButton;
     ImageButton maleButton;
     ImageButton femaleButton;
     EditText recoveryEmailEditText;
@@ -86,7 +87,8 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        changeRecoveryEmailButton = (Button) findViewById(R.id.changeRecoveryEmailButton);
+        changeRecoveryEmailButton = (ImageButton) findViewById(R.id.changeRecoveryEmailButton);
+        changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_gray));
         changeRecoveryEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -352,11 +354,11 @@ public class SettingsActivity extends AppCompatActivity {
     private void setChangeRecoveryEmailButtonUI(boolean en) {
         if(en) {
             changeRecoveryEmailButton.setEnabled(true);
-            changeRecoveryEmailButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_primary));
         } else {
 
             changeRecoveryEmailButton.setEnabled(false);
-            changeRecoveryEmailButton.setBackgroundColor(getResources().getColor(R.color.darkGray));
+            changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_gray));
         }
     }
 

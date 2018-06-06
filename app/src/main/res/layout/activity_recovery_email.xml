@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context=".RecoveryEmail">
+    tools:context=".RecoveryEmail"
+    android:id="@+id/recoveryEmailLayoutID">
 
     <EditText
         android:id="@+id/recoveryEmailEditText"

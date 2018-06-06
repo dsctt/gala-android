@@ -17,7 +17,8 @@
         android:layout_height="32dp"
         android:background="@drawable/outline_settings_white_24"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_margin="8dp"/>
 
     <TextView
         android:id="@+id/cloutTextView"
@@ -27,7 +28,8 @@
         android:textColor="@android:color/white"
         android:textSize="18dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"/>
 
     <Spinner
         android:id="@+id/selectEchelonSpinner"

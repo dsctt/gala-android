@@ -15,7 +15,8 @@
         android:layout_height="32dp"
         android:background="@drawable/outline_clear_white_24"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_margin="8dp"/>
 
     <TextView
         android:id="@+id/cloutTextView"
@@ -25,7 +26,8 @@
         android:textSize="18dp"
         android:textColor="@android:color/white"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"/>
 
     <LinearLayout
         android:id="@+id/changeRecoveryEmailLinearLayout"
@@ -33,7 +35,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/exitButton"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
 
         <EditText
             android:id="@+id/recoveryEmailEditText"
@@ -45,12 +49,12 @@
             android:maxLength="29"
             android:layout_weight="3"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/changeRecoveryEmailButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change"
-            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_check_primary"
+            android:background="@drawable/background_state"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -74,7 +78,8 @@
         android:layout_alignParentLeft="true"
         android:text="I'm looking for.."
         android:textSize="20dp"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="8dp"/>
 
     <TextView
         android:id="@+id/ageTextView"
@@ -83,7 +88,8 @@
         android:text="Age:"
         android:layout_weight="1"
         android:layout_below="@id/ImLookingForTextView"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"/>
 
 
 
@@ -118,7 +124,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_below="@id/ageRangeBar">
+        android:layout_below="@id/ageRangeBar"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp">
 
         <ImageButton
             android:id="@+id/femaleButton"
@@ -143,7 +151,8 @@
         android:text="Sign Out"
         android:textColor="@android:color/holo_red_light"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"/>
 
     <View
         android:id="@+id/dividerView2"
