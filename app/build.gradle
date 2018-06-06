@@ -38,6 +38,8 @@ dependencies {
 
     implementation 'com.twilio:video-android:2.0.2'
 
+    implementation 'com.appyvet:materialrangebar:1.4.2'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
