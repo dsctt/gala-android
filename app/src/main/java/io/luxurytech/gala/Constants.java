@@ -9,7 +9,7 @@ public class Constants {
 
 
     public final static int MIN_AGE = 18;
-    public final static int MAX_AGE = 100;
+    public final static int MAX_AGE = 55;
     public final static int FEMALE = 0;
     public final static int MALE = 1;
 

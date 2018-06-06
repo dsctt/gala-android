@@ -32,7 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/exitButton">
+        android:layout_below="@id/exitButton"
+        android:layout_marginBottom="12dp">
 
         <EditText
             android:id="@+id/recoveryEmailEditText"
@@ -61,6 +62,7 @@
         android:background="@android:color/white"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginBottom="12dp"
         android:layout_below="@id/changeRecoveryEmailLinearLayout">
     </View>
 
@@ -71,45 +73,44 @@
         android:layout_below="@id/dividerView1"
         android:layout_alignParentLeft="true"
         android:text="I'm looking for.."
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:layout_marginBottom="12dp"/>
 
-    <LinearLayout
-        android:id="@+id/numberPickerLinearLayout"
+    <TextView
+        android:id="@+id/ageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age:"
+        android:layout_weight="1"
+        android:layout_below="@id/ImLookingForTextView"
+        android:layout_marginBottom="24dp"/>
+
+
+
+    <com.appyvet.materialrangebar.RangeBar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ageRangeBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_below="@id/ImLookingForTextView">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Age:"
-            android:layout_weight="1"/>
-
-        <NumberPicker
-            android:id="@+id/minAgeNumberPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </NumberPicker>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="to"
-            android:layout_weight="1"/>
-
-        <NumberPicker
-            android:id="@+id/maxAgeNumberPicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </NumberPicker>
-
-
-
-    </LinearLayout>
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:mrb_pinMaxFont="10sp"
+        app:mrb_rangeBarPaddingBottom="12dp"
+        app:mrb_selectorColor="@color/colorPrimary"
+        app:mrb_selectorBoundaryColor="@color/colorPrimary"
+        app:mrb_selectorBoundarySize="2dp"
+        app:mrb_pinTextColor="@color/white"
+        app:mrb_pinColor="@color/colorPrimary"
+        app:mrb_selectorSize="10dp"
+        app:mrb_temporaryPins="true"
+        app:mrb_tickEnd="100"
+        app:mrb_tickInterval="1"
+        app:mrb_tickStart="18"
+        app:mrb_tickColor="@android:color/transparent"
+        app:mrb_rangeBarColor="@color/white"
+        app:mrb_connectingLineColor="@color/colorPrimary"
+        android:layout_below="@id/ageTextView"
+        android:layout_marginBottom="36dp"/>
 
     <LinearLayout
         android:id="@+id/genderLinearLayout"
@@ -117,19 +118,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_below="@id/numberPickerLinearLayout">
+        android:layout_below="@id/ageRangeBar">
 
-        <Button
-            android:id="@+id/maleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MALE"/>
-
-        <Button
+        <ImageButton
             android:id="@+id/femaleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FEMALE"/>
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/maleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -153,29 +154,6 @@
         android:layout_marginRight="15dp"
         android:layout_above="@id/signOutButton">
     </View>
-
-    <com.appyvet.materialrangebar.RangeBar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:mrb_pinMaxFont="10sp"
-        app:mrb_rangeBarPaddingBottom="12dp"
-        app:mrb_selectorColor="@color/colorPrimary"
-        app:mrb_selectorBoundaryColor="@color/white"
-        app:mrb_selectorBoundarySize="2dp"
-        app:mrb_pinTextColor="@color/white"
-        app:mrb_pinColor="@color/colorPrimary"
-        app:mrb_selectorSize="10dp"
-        app:mrb_temporaryPins="true"
-        app:mrb_tickEnd="100"
-        app:mrb_tickInterval="1"
-        app:mrb_tickStart="18"
-        app:mrb_tickColor="@color/colorPrimary"
-        app:mrb_rangeBarColor="@color/white"
-        app:mrb_connectingLineColor="@color/colorPrimary"
-        android:layout_above="@id/dividerView2"/>
 
 
 </RelativeLayout>

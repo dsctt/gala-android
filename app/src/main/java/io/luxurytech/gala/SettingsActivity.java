@@ -16,9 +16,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.appyvet.materialrangebar.RangeBar;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,15 +45,15 @@ public class SettingsActivity extends AppCompatActivity {
 
     /** UI components */
     Button exitButton, changeRecoveryEmailButton, signOutButton;
-    Button maleButton;
-    Button femaleButton;
+    ImageButton maleButton;
+    ImageButton femaleButton;
     EditText recoveryEmailEditText;
     TextView cloutTextView;
 
     /** Determines whether we need to save new information upon exit of Activity
      *  (not applicable to recoveryEmail)
      */
-    boolean desiredMinAgeHasChanged = false, desiredMaxAgeHasChanged = false, desiredGenderHasChanged = false;
+    boolean desiredAgeHasChanged = false, desiredMinAgeHasChanged = false, desiredMaxAgeHasChanged = false, desiredGenderHasChanged = false;
     int newDesiredMinAge, newDesiredMaxAge;
     int newDesiredGender;
 
@@ -60,10 +62,8 @@ public class SettingsActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor sharedPrefEditor;
 
-    /** Number pickers for age */
-    NumberPicker minAgeNumberPicker;
-    NumberPicker maxAgeNumberPicker;
-
+    /** Range bar for age */
+    RangeBar ageRangeBar;
 
 
     @Override
@@ -124,47 +124,63 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
-        minAgeNumberPicker.setMinValue(Constants.MIN_AGE);
-        minAgeNumberPicker.setMaxValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
-        minAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE));
-
-        minAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        ageRangeBar = (RangeBar) findViewById(R.id.ageRangeBar);
+        ageRangeBar.setTickStart(Constants.MIN_AGE);
+        ageRangeBar.setTickEnd(Constants.MAX_AGE);
+        ageRangeBar.setRangePinsByValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE),
+                sharedPref.getInt(getString(R.string.desiredMaxAge), Constants.MAX_AGE));
+        ageRangeBar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
             @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
+            public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex, int rightPinIndex, String leftPinValue, String rightPinValue) {
                 // Update variables
-                desiredMinAgeHasChanged = true;
-                newDesiredMinAge = newVal;
-
-                // Update minimum max value
-                maxAgeNumberPicker.setDisplayedValues(null);
-                maxAgeNumberPicker.setMinValue(newVal);
+                desiredAgeHasChanged = true;
+                newDesiredMinAge = Integer.parseInt(leftPinValue);
+                newDesiredMaxAge = Integer.parseInt(rightPinValue);
             }
         });
 
+//        minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
+//        minAgeNumberPicker.setMinValue(Constants.MIN_AGE);
+//        minAgeNumberPicker.setMaxValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
+//        minAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE));
+//
+//        minAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//
+//                // Update variables
+//                desiredMinAgeHasChanged = true;
+//                newDesiredMinAge = newVal;
+//
+//                // Update minimum max value
+//                maxAgeNumberPicker.setDisplayedValues(null);
+//                maxAgeNumberPicker.setMinValue(newVal);
+//            }
+//        });
+//
+//
+//        maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
+//        maxAgeNumberPicker.setMinValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MAX_AGE));
+//        maxAgeNumberPicker.setMaxValue(Constants.MAX_AGE);
+//        maxAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
+//
+//        maxAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+//            @Override
+//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//
+//                // Update variables
+//                desiredMaxAgeHasChanged = true;
+//                newDesiredMaxAge = newVal;
+//
+//                // Update maximum min value
+//                minAgeNumberPicker.setDisplayedValues(null);
+//                minAgeNumberPicker.setMaxValue(newVal);
+//
+//            }
+//        });
 
-        maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
-        maxAgeNumberPicker.setMinValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MAX_AGE));
-        maxAgeNumberPicker.setMaxValue(Constants.MAX_AGE);
-        maxAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
-
-        maxAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
-                // Update variables
-                desiredMaxAgeHasChanged = true;
-                newDesiredMaxAge = newVal;
-
-                // Update maximum min value
-                minAgeNumberPicker.setDisplayedValues(null);
-                minAgeNumberPicker.setMaxValue(newVal);
-
-            }
-        });
-
-        maleButton = (Button) findViewById(R.id.maleButton);
+        maleButton = (ImageButton) findViewById(R.id.maleButton);
+        maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +189,8 @@ public class SettingsActivity extends AppCompatActivity {
                 setGenderButtonUI(true);
             }
         });
-        femaleButton = (Button) findViewById(R.id.femaleButton);
+        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
+        femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_female));
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,12 +280,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Update shared prefs
 
-        if (desiredMinAgeHasChanged) {
+        if (desiredAgeHasChanged) {
             sharedPrefEditor.putInt(getString(R.string.desiredMinAge), newDesiredMinAge);
-        }
-        if (desiredMaxAgeHasChanged) {
             sharedPrefEditor.putInt(getString(R.string.desiredMaxAge), newDesiredMaxAge);
         }
+//        if (desiredMaxAgeHasChanged) {
+//            sharedPrefEditor.putInt(getString(R.string.desiredMaxAge), newDesiredMaxAge);
+//        }
         if (desiredGenderHasChanged) {
             sharedPrefEditor.putInt(getString(R.string.desiredGender), newDesiredGender);
         }
@@ -282,12 +300,12 @@ public class SettingsActivity extends AppCompatActivity {
     /** Sets UI for gender buttons based on which is selected */
     private void setGenderButtonUI(boolean maleButtonIsChosen) {
         if(maleButtonIsChosen) {
-            maleButton.setTextColor(getResources().getColor(R.color.colorPrimary));
-            femaleButton.setTextColor(getResources().getColor(R.color.white));
+            maleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
         }
         else {
-            maleButton.setTextColor(getResources().getColor(R.color.white));
-            femaleButton.setTextColor(getResources().getColor(R.color.colorPrimary));
+            maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         }
 
     }
