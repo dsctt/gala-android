@@ -38,6 +38,7 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             // If not, go to phone auth
             startActivity(new Intent(SplashActivity.this, PhoneNumberAuthentication.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
 
@@ -93,10 +94,12 @@ public class SplashActivity extends AppCompatActivity {
                         editor.apply();
 
                         startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
                     } else {
                         // If not, go thru process
                         startActivity(new Intent(SplashActivity.this, RecoveryEmail.class));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
                     }
                 }

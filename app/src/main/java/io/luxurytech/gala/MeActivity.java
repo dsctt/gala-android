@@ -25,24 +25,31 @@ import java.util.Map;
 public class MeActivity extends AppCompatActivity {
 
     /** Firebase components */
-//    FirebaseFirestore db;
-//    FirebaseAuth auth;
+    FirebaseFirestore db;
+    FirebaseAuth auth;
 
     /** The user */
-//    FirebaseUser authUser;
-//    String uid;
+    FirebaseUser authUser;
+    String uid;
+    String userPhoneNumber;
+    int initialUserClout = 1;
+    int selectedDesiredGender; // desiredGender
 
     /** Number picker for age */
     NumberPicker ageNumberPicker;
 
     /** UI */
-    Button maleButton;
-    Button femaleButton;
+    ImageButton maleButton;
+    ImageButton femaleButton;
     int selectedGender;
     ImageButton saveButton;
 
     /** Context */
     Context context;
+
+    /** Values from previous registration screens to save in db */
+    String regRecoveryEmail;
+    String regScreenName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +58,19 @@ public class MeActivity extends AppCompatActivity {
         context = this;
 
         // Setup firebase
-//        db = FirebaseFirestore.getInstance();
-//        auth = FirebaseAuth.getInstance();
-//        authUser = auth.getCurrentUser();
-//        if(authUser != null) {
-//            uid = authUser.getUid();
-//        }
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        authUser = auth.getCurrentUser();
+        if(authUser != null) {
+            uid = authUser.getUid();
+            userPhoneNumber = authUser.getPhoneNumber();
+        }
 
         // Setup UI components
         ageNumberPicker = (NumberPicker) findViewById(R.id.ageNumberPicker);
 
-        maleButton = (Button) findViewById(R.id.maleButton);
+        maleButton = (ImageButton) findViewById(R.id.maleButton);
+        maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +78,8 @@ public class MeActivity extends AppCompatActivity {
                 setGenderButtonUI(true);
             }
         });
-        femaleButton = (Button) findViewById(R.id.femaleButton);
+        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
+        femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_female));
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +88,7 @@ public class MeActivity extends AppCompatActivity {
             }
         });
         selectedGender = Constants.FEMALE; // Default
+        selectedDesiredGender = Constants.MALE; // Default
         setGenderButtonUI(false); // Default
 
         ageNumberPicker.setMinValue(Constants.MIN_AGE);
@@ -100,51 +111,77 @@ public class MeActivity extends AppCompatActivity {
             }
         });
 
+        // Get values from sharedPrefs for use in saving to db
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        regRecoveryEmail = sharedPref.getString(getString(R.string.recoveryEmail), "");
+        regScreenName = sharedPref.getString(getString(R.string.screenName), "");
+
     }
 
     /** Called when a gender button is clicked. Adds gender and age to user in db. */
     public void saveData () {
 
+        // Set desired gender
+        if(selectedGender == Constants.FEMALE)
+            selectedDesiredGender = Constants.MALE;
+        else
+            selectedDesiredGender = Constants.FEMALE;
+
+        // Set desired age range
+        int selectedAgeOfUser = ageNumberPicker.getValue();
+        int minAgeFromUserAge, maxAgeFromUserAge;
+
+        if(selectedAgeOfUser <= 27)
+            minAgeFromUserAge = 18;
+        else
+            minAgeFromUserAge = selectedAgeOfUser - 10;
+
+        if(selectedAgeOfUser >= 91)
+            maxAgeFromUserAge = 100;
+        else
+            maxAgeFromUserAge = selectedAgeOfUser + 10;
+
+        // Save 'Them' values and clout and phone number to shared prefs
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-
+        editor.putInt(getString(R.string.desiredGender), selectedDesiredGender);
+        editor.putInt(getString(R.string.desiredMaxAge), maxAgeFromUserAge);
+        editor.putInt(getString(R.string.desiredMinAge), minAgeFromUserAge);
+        editor.putInt(getString(R.string.userClout), initialUserClout);
+        editor.putString(getString(R.string.phoneNumber), userPhoneNumber);
         editor.putInt(getString(R.string.userGender), selectedGender);
-        editor.putInt(getString(R.string.userAge), ageNumberPicker.getValue());
+        editor.putInt(getString(R.string.userAge), selectedAgeOfUser);
         editor.apply();
 
-        // Go to next screen
-        startActivity(new Intent(MeActivity.this, ThemActivity.class));
-        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
-        finish();
-
-//        // Check if there is a user
-//        if(authUser == null) {
-//            return;
-//        }
-//
-//        // Add gender and age to user
-//        Map<String, Object> dbUser = new HashMap<>();
-//        dbUser.put("userGender", selectedGender);
-//        dbUser.put("userAge", ageNumberPicker.getValue());
-//        db.collection("Users")
-//                .document(uid)
-//                .update(dbUser)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("FirestoreWrite", "Gender and Age added");
-//                        startActivity(new Intent(MeActivity.this, ThemActivity.class));
-//                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
-//                        finish();
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w("FirestoreWrite", "Error adding user", e);
-//                    }
-//                });
+        // Add appropriate values to db
+        Map<String, Object> dbUser = new HashMap<>();
+        dbUser.put(getString(R.string.recoveryEmail), regRecoveryEmail);
+        dbUser.put(getString(R.string.screenName), regScreenName);
+        dbUser.put(getString(R.string.userAge), selectedAgeOfUser);
+        dbUser.put(getString(R.string.userGender), selectedGender);
+        dbUser.put(getString(R.string.userClout), initialUserClout);
+        dbUser.put(getString(R.string.phoneNumber), userPhoneNumber);
+        db.collection(getString(R.string.DB_COLLECTION_USERS))
+                .document(uid)
+                .set(dbUser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("FirestoreWrite", "Sucesss");
+                        //saveToSharedPrefs();
+                        startActivity(new Intent(MeActivity.this, HomeActivity.class));
+                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("FirestoreWrite", "Error", e);
+                    }
+                });
 
     }
 

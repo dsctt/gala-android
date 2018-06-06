@@ -17,6 +17,10 @@ public class Constants {
     public final static int PURPLE_HEART_UNICODE = 0x1F49C;
     public final static int MAN_TIPPING_HAND_UNICODE = 0x1F481;
     public final static int WOMAN_TIPPING_HAND_UNICODE = 0x1F481;
+    public final static int MAN_RAISING_HAND_UNICODE = 0x1F64B;
+    public final static int WOMAN_RAISING_HAND_UNICODE = 0x1F64B;
+    public final static int MALE_SYMBOL_UNICODE = 0x2642;
+    public final static int FEMALE_SYMBOL_UNICODE = 0x2640;
 
 
     // TODO: Add common methods (goHomeIf..)

@@ -42,8 +42,8 @@ public class ThemActivity extends AppCompatActivity {
     NumberPicker maxAgeNumberPicker;
 
     /** Buttons */
-    Button maleButton;
-    Button femaleButton;
+    ImageButton maleButton;
+    ImageButton femaleButton;
     ImageButton saveButton;
     int selectedGender;
 
@@ -100,7 +100,8 @@ public class ThemActivity extends AppCompatActivity {
             }
         });
 
-        maleButton = (Button) findViewById(R.id.maleButton);
+        maleButton = (ImageButton) findViewById(R.id.maleButton);
+        maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +109,8 @@ public class ThemActivity extends AppCompatActivity {
                 setGenderButtonUI(true);
             }
         });
-        femaleButton = (Button) findViewById(R.id.femaleButton);
+        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
+        femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_female));
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
