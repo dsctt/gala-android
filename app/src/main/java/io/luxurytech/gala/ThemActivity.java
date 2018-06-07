@@ -127,7 +127,7 @@ public class ThemActivity extends AppCompatActivity {
         regRecoveryEmail = sharedPref.getString(getString(R.string.recoveryEmail), "");
         regScreenName = sharedPref.getString(getString(R.string.screenName), "");
         regUserGender = sharedPref.getInt(getString(R.string.userGender), Constants.MALE);
-        regUserAge = sharedPref.getInt(getString(R.string.userAge), Constants.MIN_AGE);
+        //regUserAge = sharedPref.getInt(getString(R.string.userAge), Constants.MIN_AGE);
 
         saveButton = (ImageButton) findViewById(R.id.saveButton);
         saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
@@ -164,7 +164,7 @@ public class ThemActivity extends AppCompatActivity {
         Map<String, Object> dbUser = new HashMap<>();
         dbUser.put(getString(R.string.recoveryEmail), regRecoveryEmail);
         dbUser.put(getString(R.string.screenName), regScreenName);
-        dbUser.put(getString(R.string.userAge), regUserAge);
+        //dbUser.put(getString(R.string.userAge), regUserAge);
         dbUser.put(getString(R.string.userGender), regUserGender);
         dbUser.put(getString(R.string.userClout), initialUserClout);
         dbUser.put(getString(R.string.phoneNumber), userPhoneNumber);

@@ -14,17 +14,27 @@
         android:layout_alignParentTop="true"
         android:textSize="24dp"
         android:textColor="@color/colorPrimaryDark"
-        android:text="I am.."
-        android:layout_marginTop="8dp"/>
+        android:text="About me.."
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="64dp"/>
 
-    <NumberPicker
-        android:id="@+id/ageNumberPicker"
+    <EditText
+        android:id="@+id/birthdayEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/titleTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp">
-    </NumberPicker>
+        android:layout_marginBottom="24dp"
+        android:cursorVisible="false"/>
+
+    <!--<NumberPicker-->
+        <!--android:id="@+id/ageNumberPicker"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/titleTextView"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="24dp">-->
+    <!--</NumberPicker>-->
 
 
     <LinearLayout
@@ -32,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/ageNumberPicker"
+        android:layout_below="@id/birthdayEditText"
         android:gravity="center"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"

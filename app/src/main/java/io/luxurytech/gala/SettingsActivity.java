@@ -128,7 +128,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         ageRangeBar = (RangeBar) findViewById(R.id.ageRangeBar);
         ageRangeBar.setTickStart(Constants.MIN_AGE);
-        ageRangeBar.setTickEnd(Constants.MAX_AGE);
+        ageRangeBar.setTickEnd(55);
         ageRangeBar.setRangePinsByValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE),
                 sharedPref.getInt(getString(R.string.desiredMaxAge), Constants.MAX_AGE));
         ageRangeBar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {

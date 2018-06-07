@@ -118,13 +118,13 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                     if(doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
                             doc.get(getString(R.string.screenName)) != null && doc.get(getString(R.string.screenName)).toString() != "" &&
                             doc.get(getString(R.string.userGender)) != null && doc.get(getString(R.string.userGender)).toString() != "" &&
-                            doc.get(getString(R.string.userAge)) != null && doc.get(getString(R.string.userAge)).toString() != "" &&
+                            doc.get(getString(R.string.userBirthday)) != null && doc.get(getString(R.string.userBirthday)).toString() != "" &&
                             doc.get(getString(R.string.phoneNumber)) != null && doc.get(getString(R.string.phoneNumber)).toString() != "") {
 
                         String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
                         String screenName = doc.get(getString(R.string.screenName)).toString();
                         String userGender = doc.get(getString(R.string.userGender)).toString();
-                        String userAge = doc.get(getString(R.string.userAge)).toString();
+                        String userBirthday = doc.get(getString(R.string.userBirthday)).toString();
                         String phoneNumber = doc.get(getString(R.string.phoneNumber)).toString();
                         int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
 
@@ -135,7 +135,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                         editor.putString(getString(R.string.screenName), screenName);
                         editor.putString(getString(R.string.userGender), userGender);
                         editor.putString(getString(R.string.phoneNumber), phoneNumber);
-                        editor.putInt(getString(R.string.userAge), Integer.parseInt(userAge));
+                        editor.putString(getString(R.string.userBirthday), userBirthday);
                         editor.putInt(getString(R.string.userClout), userClout);
                         editor.apply();
 

@@ -16,8 +16,9 @@
     <string name="userClout">userClout</string>
     <string name="screenName">screenName</string>
     <string name="userGender">userGender</string>
-    <string name="userAge">userAge</string>
+    <string name="userBirthday">userBirthday</string>
     <string name="phoneNumber">phoneNumber</string>
+    <string name="userFlags">userFlags</string>
 
     <string name="DB_COLLECTION_USERS">Users</string>
 

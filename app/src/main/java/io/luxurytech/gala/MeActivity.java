@@ -8,21 +8,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.tsongkha.spinnerdatepicker.DatePickerDialog;
+import com.tsongkha.spinnerdatepicker.SpinnerDatePickerDialogBuilder;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-public class MeActivity extends AppCompatActivity {
+public class MeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     /** Firebase components */
     FirebaseFirestore db;
@@ -33,16 +40,20 @@ public class MeActivity extends AppCompatActivity {
     String uid;
     String userPhoneNumber;
     int initialUserClout = 1;
+    int initialFlags = 0;
     int selectedDesiredGender; // desiredGender
+    Date selectedBirthday;
 
-    /** Number picker for age */
-    NumberPicker ageNumberPicker;
+    /** Numbers for age */
+    Calendar farthestCal, closestCal;
 
     /** UI */
     ImageButton maleButton;
     ImageButton femaleButton;
     int selectedGender;
     ImageButton saveButton;
+    EditText birthdayEditText;
+    SimpleDateFormat simpleDateFormat;
 
     /** Context */
     Context context;
@@ -66,8 +77,28 @@ public class MeActivity extends AppCompatActivity {
             userPhoneNumber = authUser.getPhoneNumber();
         }
 
+        // Setup dates
+        farthestCal = Calendar.getInstance();
+        farthestCal.add(Calendar.YEAR, (-1 * Constants.MAX_AGE));
+
+        closestCal = Calendar.getInstance();
+        closestCal.add(Calendar.YEAR, (-1 * Constants.MIN_AGE));
+
         // Setup UI components
-        ageNumberPicker = (NumberPicker) findViewById(R.id.ageNumberPicker);
+        simpleDateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
+
+        final Date defaultBirthday = new GregorianCalendar(1996, 00, 01).getTime();
+        selectedBirthday = defaultBirthday;
+        String defaultBirthdayText = getEmojiByUnicode(Constants.BABY_UNICODE)
+                + simpleDateFormat.format(defaultBirthday);
+        birthdayEditText = (EditText) findViewById(R.id.birthdayEditText);
+        birthdayEditText.setText(defaultBirthdayText);
+        birthdayEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDate(1996, 00, 01, R.style.NumberPickerStyle);
+            }
+        });
 
         maleButton = (ImageButton) findViewById(R.id.maleButton);
         maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
@@ -90,17 +121,6 @@ public class MeActivity extends AppCompatActivity {
         selectedGender = Constants.FEMALE; // Default
         selectedDesiredGender = Constants.MALE; // Default
         setGenderButtonUI(false); // Default
-
-        ageNumberPicker.setMinValue(Constants.MIN_AGE);
-        ageNumberPicker.setMaxValue(Constants.MAX_AGE);
-
-        ageNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
-                //textview.setText("Selected Value is : " + newVal);
-            }
-        });
 
         saveButton = (ImageButton) findViewById(R.id.saveButton);
         saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
@@ -129,7 +149,16 @@ public class MeActivity extends AppCompatActivity {
             selectedDesiredGender = Constants.FEMALE;
 
         // Set desired age range
-        int selectedAgeOfUser = ageNumberPicker.getValue();
+        Calendar currCal = Calendar.getInstance();
+        Calendar birthdayCal = Calendar.getInstance();
+        birthdayCal.setTime(selectedBirthday);
+        int selectedAgeOfUser = currCal.get(Calendar.YEAR) - birthdayCal.get(Calendar.YEAR);
+        if(birthdayCal.get(Calendar.MONTH) > currCal.get(Calendar.MONTH) ||
+                (birthdayCal.get(Calendar.MONTH) == currCal.get(Calendar.MONTH)
+                        && birthdayCal.get(Calendar.DATE) > currCal.get(Calendar.DATE))) {
+            selectedAgeOfUser--;
+        }
+
         int minAgeFromUserAge, maxAgeFromUserAge;
 
         if(selectedAgeOfUser <= 27)
@@ -143,6 +172,7 @@ public class MeActivity extends AppCompatActivity {
             maxAgeFromUserAge = selectedAgeOfUser + 10;
 
         // Save 'Them' values and clout and phone number to shared prefs
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -152,17 +182,18 @@ public class MeActivity extends AppCompatActivity {
         editor.putInt(getString(R.string.userClout), initialUserClout);
         editor.putString(getString(R.string.phoneNumber), userPhoneNumber);
         editor.putInt(getString(R.string.userGender), selectedGender);
-        editor.putInt(getString(R.string.userAge), selectedAgeOfUser);
+        editor.putString(getString(R.string.userBirthday), sdf.format(birthdayCal.getTime()));
         editor.apply();
 
         // Add appropriate values to db
         Map<String, Object> dbUser = new HashMap<>();
         dbUser.put(getString(R.string.recoveryEmail), regRecoveryEmail);
         dbUser.put(getString(R.string.screenName), regScreenName);
-        dbUser.put(getString(R.string.userAge), selectedAgeOfUser);
+        dbUser.put(getString(R.string.userBirthday), sdf.format(birthdayCal.getTime()));
         dbUser.put(getString(R.string.userGender), selectedGender);
         dbUser.put(getString(R.string.userClout), initialUserClout);
         dbUser.put(getString(R.string.phoneNumber), userPhoneNumber);
+        dbUser.put(getString(R.string.userFlags), initialFlags);
         db.collection(getString(R.string.DB_COLLECTION_USERS))
                 .document(uid)
                 .set(dbUser)
@@ -193,6 +224,28 @@ public class MeActivity extends AppCompatActivity {
             maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
             femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         }
+    }
+
+    public void onDateSet(com.tsongkha.spinnerdatepicker.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        Calendar calendar = new GregorianCalendar(year, monthOfYear, dayOfMonth);
+        String temp = getEmojiByUnicode(Constants.BABY_UNICODE)
+                + simpleDateFormat.format(calendar.getTime());
+        birthdayEditText.setText(temp);
+        selectedBirthday = calendar.getTime();
+    }
+
+    public void showDate(int year, int monthOfYear, int dayOfMonth, int spinnerTheme) {
+        Calendar cal = Calendar.getInstance();
+        new SpinnerDatePickerDialogBuilder()
+                .context(this)
+                .callback(this)
+                .spinnerTheme(spinnerTheme)
+                .defaultDate(year, monthOfYear, dayOfMonth)
+                .minDate(farthestCal.get(Calendar.YEAR), farthestCal.get(Calendar.MONTH), farthestCal.get(Calendar.DATE))
+                .maxDate(closestCal.get(Calendar.YEAR), closestCal.get(Calendar.MONTH), closestCal.get(Calendar.DATE))
+                .showTitle(false)
+                .build()
+                .show();
     }
 
     public String getEmojiByUnicode(int unicode){
