@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +37,7 @@ import java.util.Map;
 public class RecoveryEmail extends AppCompatActivity {
 
     /** Firebase components */
-//    FirebaseFirestore db;
+      FirebaseFirestore db;
 //    FirebaseAuth auth;
 
 
@@ -45,6 +47,7 @@ public class RecoveryEmail extends AppCompatActivity {
 
     /** Recovery Email Edittext */
     EditText recoveryEmailEditText;
+    TextView existsTextView;
 
     /** Buttons */
     ImageButton saveButton;
@@ -59,7 +62,7 @@ public class RecoveryEmail extends AppCompatActivity {
         setContentView(R.layout.activity_recovery_email);
         context = this;
         // Setup firebase
-//        db = FirebaseFirestore.getInstance();
+          db = FirebaseFirestore.getInstance();
 //        auth = FirebaseAuth.getInstance();
 //        authUser = auth.getCurrentUser();
 //        if(authUser != null) {
@@ -119,58 +122,57 @@ public class RecoveryEmail extends AppCompatActivity {
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
 
-//                Toast toast = Toast.makeText(context, "Sent!", Toast.LENGTH_SHORT);
-//                toast.show();
-
                 Snackbar.make(findViewById(R.id.recoveryEmailLayoutID), "Sent!",
                         Snackbar.LENGTH_SHORT)
                         .show();
             }
         });
 
+        existsTextView = (TextView) findViewById(R.id.existsTextView);
+        existsTextView.setVisibility(View.INVISIBLE);
+
+    }
+
+    /** Checks if this is already in the db */
+    public void saveButtonClicked() {
+
+        String selectedEmail = recoveryEmailEditText.getText().toString().toLowerCase();
+
+
+        db.collection(getString(R.string.DB_COLLECTION_USERS))
+                .whereEqualTo(getString(R.string.recoveryEmail), selectedEmail)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()) {
+                            QuerySnapshot qSnap = task.getResult();
+                            if (!qSnap.isEmpty()) {
+                                // Need to input new screen name
+                                existsTextView.setVisibility(View.VISIBLE);
+                            } else {
+                                // Save and continue
+                                saveToSharedPrefs();
+                            }
+                        }
+                    }
+                });
     }
 
     /** Called when the SAVE button is clicked. Adds email to cache */
-    public void saveButtonClicked () {
+    public void saveToSharedPrefs () {
 
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putString(getString(R.string.recoveryEmail), recoveryEmailEditText.getText().toString());
+        editor.putString(getString(R.string.recoveryEmail), recoveryEmailEditText.getText().toString().toLowerCase());
         editor.apply();
 
         // Go to next screen
         startActivity(new Intent(RecoveryEmail.this, ScreenNameActivity.class));
         overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
         finish();
-
-
-
-        // Check if there is a user
-//        if(authUser == null) {
-//            return;
-//        }
-//
-//        // Change recovery email in firebase
-//        Map<String, Object> dbUser = new HashMap<>();
-//        dbUser.put("recoveryEmail", recoveryEmailEditText.getText().toString());
-//        db.collection("Users")
-//                .document(uid)
-//                .set(dbUser)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("RecoveryEmail", "Recovery Email added");
-//                        goToNextScreen();
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w("RecoveryEmail", "Error adding recovery email", e);
-//                    }
-//                });
 
     }
 

@@ -106,7 +106,7 @@ public class ScreenNameActivity extends AppCompatActivity {
     /** Check if screen name already exists */
     private void saveButtonClicked() {
 
-        String selectedScreenName = screenNameEditText.getText().toString();
+        String selectedScreenName = screenNameEditText.getText().toString().toLowerCase();
 
 
         db.collection(getString(R.string.DB_COLLECTION_USERS))
@@ -132,7 +132,7 @@ public class ScreenNameActivity extends AppCompatActivity {
     /** Called when the screen name is confirmed valid */
     public void saveToSharedPrefs () {
 
-        String selectedScreenName = screenNameEditText.getText().toString();
+        String selectedScreenName = screenNameEditText.getText().toString().toLowerCase();
 
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -145,33 +145,6 @@ public class ScreenNameActivity extends AppCompatActivity {
         startActivity(new Intent(ScreenNameActivity.this, MeActivity.class));
         overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
         finish();
-
-//        // Check if there is a user
-//        if(authUser == null) {
-//            return;
-//        }
-//
-//        // Add screen name value to the db
-//        Map<String, Object> dbUser = new HashMap<>();
-//        dbUser.put("screenName", screenNameEditText.getText().toString());
-//        db.collection("Users")
-//                .document(uid)
-//                .update(dbUser)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d("FirestoreWrite", "Screen name added");
-//                        startActivity(new Intent(ScreenNameActivity.this, MeActivity.class));
-//                        overridePendingTransition(R.anim.fui_slide_in_right, R.anim.fui_slide_out_left);
-//                        finish();
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w("FirestoreWrite", "Error adding user", e);
-//                    }
-//                });
 
     }
 

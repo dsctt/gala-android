@@ -87,7 +87,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         // Setup UI components
         simpleDateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
 
-        final Date defaultBirthday = new GregorianCalendar(1996, 00, 01).getTime();
+        final Date defaultBirthday = new GregorianCalendar(1995, 00, 01).getTime();
         selectedBirthday = defaultBirthday;
         String defaultBirthdayText = getEmojiByUnicode(Constants.BABY_UNICODE)
                 + simpleDateFormat.format(defaultBirthday);
@@ -96,7 +96,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         birthdayEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDate(1996, 00, 01, R.style.NumberPickerStyle);
+                showDate(1995, 00, 01, R.style.NumberPickerStyle);
             }
         });
 

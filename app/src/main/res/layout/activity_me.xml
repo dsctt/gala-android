@@ -16,7 +16,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:text="About me.."
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="64dp"/>
+        android:layout_marginBottom="48dp"/>
 
     <EditText
         android:id="@+id/birthdayEditText"
@@ -24,17 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/titleTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="48dp"
         android:cursorVisible="false"/>
-
-    <!--<NumberPicker-->
-        <!--android:id="@+id/ageNumberPicker"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/titleTextView"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="24dp">-->
-    <!--</NumberPicker>-->
 
 
     <LinearLayout

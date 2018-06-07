@@ -141,46 +141,6 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-//        minAgeNumberPicker = (NumberPicker) findViewById(R.id.minAgeNumberPicker);
-//        minAgeNumberPicker.setMinValue(Constants.MIN_AGE);
-//        minAgeNumberPicker.setMaxValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
-//        minAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE));
-//
-//        minAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-//            @Override
-//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-//
-//                // Update variables
-//                desiredMinAgeHasChanged = true;
-//                newDesiredMinAge = newVal;
-//
-//                // Update minimum max value
-//                maxAgeNumberPicker.setDisplayedValues(null);
-//                maxAgeNumberPicker.setMinValue(newVal);
-//            }
-//        });
-//
-//
-//        maxAgeNumberPicker = (NumberPicker) findViewById(R.id.maxAgeNumberPicker);
-//        maxAgeNumberPicker.setMinValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MAX_AGE));
-//        maxAgeNumberPicker.setMaxValue(Constants.MAX_AGE);
-//        maxAgeNumberPicker.setValue(sharedPref.getInt(this.getString(R.string.desiredMaxAge), Constants.MAX_AGE));
-//
-//        maxAgeNumberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-//            @Override
-//            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-//
-//                // Update variables
-//                desiredMaxAgeHasChanged = true;
-//                newDesiredMaxAge = newVal;
-//
-//                // Update maximum min value
-//                minAgeNumberPicker.setDisplayedValues(null);
-//                minAgeNumberPicker.setMaxValue(newVal);
-//
-//            }
-//        });
-
         maleButton = (ImageButton) findViewById(R.id.maleButton);
         maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
         maleButton.setOnClickListener(new View.OnClickListener() {

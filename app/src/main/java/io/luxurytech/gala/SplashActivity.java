@@ -89,7 +89,7 @@ public class SplashActivity extends AppCompatActivity {
                         editor.putString(getString(R.string.screenName), screenName);
                         editor.putString(getString(R.string.userGender), userGender);
                         editor.putString(getString(R.string.phoneNumber), phoneNumber);
-                        editor.putInt(getString(R.string.userBirthday), Integer.parseInt(userBirthday));
+                        editor.putString(getString(R.string.userBirthday), userBirthday);
                         editor.putInt(getString(R.string.userClout), userClout);
                         editor.apply();
 

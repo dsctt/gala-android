@@ -27,13 +27,25 @@
         android:background="@drawable/background_state"
         android:layout_below="@id/recoveryEmailEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="36dp"/>
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:id="@+id/existsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This email address is already in use."
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="12dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_below="@id/saveButton"
+        android:layout_marginBottom="24dp"/>
 
     <TextView
         android:id="@+id/recoverAccountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/saveButton"
+        android:layout_below="@id/existsTextView"
         android:layout_marginBottom="12dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -49,5 +61,7 @@
         android:textColor="@color/lightGray"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/recoverAccountTextView"/>
+
+
 
 </RelativeLayout>
