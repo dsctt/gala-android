@@ -71,52 +71,42 @@
     </View>
 
     <TextView
-        android:id="@+id/ImLookingForTextView"
+        android:id="@+id/showMeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dividerView1"
         android:layout_alignParentLeft="true"
-        android:text="I'm looking for.."
-        android:textSize="20dp"
-        android:layout_marginBottom="12dp"
+        android:text="Show me.."
+        android:textSize="18dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="8dp"/>
 
-    <TextView
-        android:id="@+id/ageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age:"
-        android:layout_weight="1"
-        android:layout_below="@id/ImLookingForTextView"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"/>
+        <com.appyvet.materialrangebar.RangeBar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ageRangeBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            app:mrb_pinMaxFont="10sp"
+            app:mrb_rangeBarPaddingBottom="12dp"
+            app:mrb_selectorColor="@color/colorPrimary"
+            app:mrb_selectorBoundaryColor="@color/colorPrimary"
+            app:mrb_selectorBoundarySize="2dp"
+            app:mrb_pinTextColor="@color/white"
+            app:mrb_pinColor="@color/colorPrimary"
+            app:mrb_selectorSize="10dp"
+            app:mrb_temporaryPins="false"
+            app:mrb_tickEnd="100"
+            app:mrb_tickInterval="1"
+            app:mrb_tickStart="18"
+            app:mrb_tickColor="@android:color/transparent"
+            app:mrb_rangeBarColor="@color/lightGray"
+            app:mrb_connectingLineColor="@color/colorPrimary"
+            android:layout_marginBottom="36dp"
+            android:layout_below="@id/showMeTextView"
+            />
 
-
-
-    <com.appyvet.materialrangebar.RangeBar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ageRangeBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:mrb_pinMaxFont="10sp"
-        app:mrb_rangeBarPaddingBottom="12dp"
-        app:mrb_selectorColor="@color/colorPrimary"
-        app:mrb_selectorBoundaryColor="@color/colorPrimary"
-        app:mrb_selectorBoundarySize="2dp"
-        app:mrb_pinTextColor="@color/white"
-        app:mrb_pinColor="@color/colorPrimary"
-        app:mrb_selectorSize="10dp"
-        app:mrb_temporaryPins="true"
-        app:mrb_tickEnd="100"
-        app:mrb_tickInterval="1"
-        app:mrb_tickStart="18"
-        app:mrb_tickColor="@android:color/transparent"
-        app:mrb_rangeBarColor="@color/white"
-        app:mrb_connectingLineColor="@color/colorPrimary"
-        android:layout_below="@id/ageTextView"
-        android:layout_marginBottom="36dp"/>
 
     <LinearLayout
         android:id="@+id/genderLinearLayout"

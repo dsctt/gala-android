@@ -179,6 +179,8 @@ public class SettingsActivity extends AppCompatActivity {
         cloutTextView = (TextView) findViewById(R.id.cloutTextView);
         cloutTextView.setText(getEmojiByUnicode(Constants.PURPLE_HEART_UNICODE) + sharedPref.getInt(getString(R.string.userClout), 1));
 
+        ageRangeBar.setRangePinsByValue(sharedPref.getInt(getString(R.string.desiredMinAge), Constants.MIN_AGE),
+                sharedPref.getInt(getString(R.string.desiredMaxAge), Constants.MAX_AGE));
     }
 
     private void changeRecoveryEmail() {
@@ -321,5 +323,6 @@ public class SettingsActivity extends AppCompatActivity {
             changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_gray));
         }
     }
+
 
 }
