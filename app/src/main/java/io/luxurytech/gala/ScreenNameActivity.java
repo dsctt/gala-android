@@ -14,12 +14,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,15 +34,16 @@ import java.util.Map;
 public class ScreenNameActivity extends AppCompatActivity {
 
     /** Firebase components */
-//    FirebaseFirestore db;
+      FirebaseFirestore db;
 //    FirebaseAuth auth;
 
     /** The user */
 //    FirebaseUser authUser;
 //    String uid;
 
-    /** Screen name Edittext */
+    /** Screen name */
     EditText screenNameEditText;
+    TextView existsTextView;
 
     /** Save button */
     ImageButton saveButton;
@@ -50,7 +58,7 @@ public class ScreenNameActivity extends AppCompatActivity {
         context = this;
 
         // Setup firebase
-//        db = FirebaseFirestore.getInstance();
+          db = FirebaseFirestore.getInstance();
 //        auth = FirebaseAuth.getInstance();
 //        authUser = auth.getCurrentUser();
 //        if(authUser != null) {
@@ -90,16 +98,47 @@ public class ScreenNameActivity extends AppCompatActivity {
                 saveButtonClicked();
             }
         });
+
+        existsTextView = (TextView) findViewById(R.id.existsTextView);
+        existsTextView.setVisibility(View.INVISIBLE);
     }
 
-    /** Called when the SAVE button is clicked. Adds user to db with UID and recovery email */
-    public void saveButtonClicked () {
+    /** Check if screen name already exists */
+    private void saveButtonClicked() {
+
+        String selectedScreenName = screenNameEditText.getText().toString();
+
+
+        db.collection(getString(R.string.DB_COLLECTION_USERS))
+                .whereEqualTo(getString(R.string.screenName), selectedScreenName)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()) {
+                            QuerySnapshot qSnap = task.getResult();
+                            if (!qSnap.isEmpty()) {
+                                // Need to input new screen name
+                                existsTextView.setVisibility(View.VISIBLE);
+                            } else {
+                                // Save and continue
+                                saveToSharedPrefs();
+                            }
+                        }
+                    }
+                });
+
+    }
+    /** Called when the screen name is confirmed valid */
+    public void saveToSharedPrefs () {
+
+        String selectedScreenName = screenNameEditText.getText().toString();
 
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putString(getString(R.string.screenName), screenNameEditText.getText().toString());
+        editor.putString(getString(R.string.screenName), selectedScreenName);
         editor.apply();
 
         // Go to next screen
@@ -147,6 +186,7 @@ public class ScreenNameActivity extends AppCompatActivity {
             saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_gray));
         }
     }
+
 
     @Override
     public void onBackPressed() { }

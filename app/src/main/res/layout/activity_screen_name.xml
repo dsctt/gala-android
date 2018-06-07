@@ -24,6 +24,18 @@
         app:srcCompat="@drawable/baseline_arrow_forward_gray"
         android:background="@drawable/background_state"
         android:layout_below="@id/screenNameEditText"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/existsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This screen name already exists."
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="12dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_below="@id/saveButton"/>
 
 </RelativeLayout>
