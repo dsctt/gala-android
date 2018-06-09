@@ -1,9 +1,11 @@
 package io.luxurytech.gala;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -15,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.io.IOException;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,6 +32,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+
+        // Check if connected to the internet
+        checkForInternet();
 
         // Initialize firebase
         auth = FirebaseAuth.getInstance();
@@ -43,6 +50,42 @@ public class SplashActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    /** Check if connected to the internet */
+    private void checkForInternet() {
+        if(!isOnline()){
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+            // Add the message
+            builder.setTitle("Uh oh!");
+            builder.setMessage("Please make sure you are connected to the internet.");
+            // Add the buttons
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    checkForInternet();
+                }
+            });
+
+            // Create the AlertDialog
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
+
+    /** Check if the user can connect online */
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException e)          { e.printStackTrace(); }
+        catch (InterruptedException e) { e.printStackTrace(); }
+
+        return false;
     }
 
     /** Checks the server to see if Lockout
