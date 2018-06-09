@@ -139,7 +139,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
 
     }
 
-    /** Called when a gender button is clicked. Adds gender and age to user in db. */
+    /** Saves data to cache and db */
     public void saveData () {
 
         // Set desired gender
@@ -171,7 +171,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         else
             maxAgeFromUserAge = selectedAgeOfUser + 10;
 
-        // Save 'Them' values and clout and phone number to shared prefs
+        // Save 'Them' values and clout and phone number and isRegistered to shared prefs
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
         SharedPreferences sharedPref = context.getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -183,6 +183,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         editor.putString(getString(R.string.phoneNumber), userPhoneNumber);
         editor.putInt(getString(R.string.userGender), selectedGender);
         editor.putString(getString(R.string.userBirthday), sdf.format(birthdayCal.getTime()));
+        editor.putBoolean(getString(R.string.isRegistered), true);
         editor.apply();
 
         // Add appropriate values to db

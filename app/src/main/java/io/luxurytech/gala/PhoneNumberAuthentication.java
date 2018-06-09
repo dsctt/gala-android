@@ -114,36 +114,14 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
 
-
-                    if(doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
-                            doc.get(getString(R.string.screenName)) != null && doc.get(getString(R.string.screenName)).toString() != "" &&
-                            doc.get(getString(R.string.userGender)) != null && doc.get(getString(R.string.userGender)).toString() != "" &&
-                            doc.get(getString(R.string.userBirthday)) != null && doc.get(getString(R.string.userBirthday)).toString() != "" &&
-                            doc.get(getString(R.string.phoneNumber)) != null && doc.get(getString(R.string.phoneNumber)).toString() != "") {
-
-                        String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
-                        String screenName = doc.get(getString(R.string.screenName)).toString();
-                        String userGender = doc.get(getString(R.string.userGender)).toString();
-                        String userBirthday = doc.get(getString(R.string.userBirthday)).toString();
-                        String phoneNumber = doc.get(getString(R.string.phoneNumber)).toString();
-                        int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
-
-                        SharedPreferences sharedPref = context.getSharedPreferences(
-                                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString(getString(R.string.recoveryEmail), recoveryEmail);
-                        editor.putString(getString(R.string.screenName), screenName);
-                        editor.putString(getString(R.string.userGender), userGender);
-                        editor.putString(getString(R.string.phoneNumber), phoneNumber);
-                        editor.putString(getString(R.string.userBirthday), userBirthday);
-                        editor.putInt(getString(R.string.userClout), userClout);
-                        editor.apply();
-
+                    if(doc.exists()) {
                         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
                     } else {
                         // If not, go thru process
                         startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
                     }
                 }
