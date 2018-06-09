@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,10 +32,10 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PhoneNumberAuthentication"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RecoveryEmail"
             android:screenOrientation="portrait"
@@ -55,7 +56,8 @@
             android:theme="@style/Theme.Transparent" />
         <activity
             android:name=".VideoActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".LockoutActivity"></activity>
     </application>
 
 </manifest>

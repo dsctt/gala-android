@@ -32,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         // Initialize firebase
         auth = FirebaseAuth.getInstance();
 
+        // Check if user is already signed in
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
             goHomeIfUserInfoComplete();
@@ -41,6 +42,16 @@ public class SplashActivity extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
+
+    }
+
+    /** Checks the server to see if Lockout
+     * This could be:
+     * Inactive Hours
+     * Banned
+     * Old version number
+     */
+    private void checkServerForLockout() {
 
     }
 
@@ -92,6 +103,8 @@ public class SplashActivity extends AppCompatActivity {
                         editor.putString(getString(R.string.userBirthday), userBirthday);
                         editor.putInt(getString(R.string.userClout), userClout);
                         editor.apply();
+
+                        // checkForLockout
 
                         startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

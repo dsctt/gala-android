@@ -17,7 +17,8 @@
         android:inputType="textEmailAddress"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="36dp"/>
+        android:layout_marginBottom="36dp"
+        android:maxLength="50"/>
 
     <ImageButton
         android:id="@+id/saveButton"

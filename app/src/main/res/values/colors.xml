@@ -8,6 +8,7 @@
     <color name="deepPurple">#6f5193</color>
     <color name="alt">#b47bb6</color>
     <color name="lavender">#E6E6FA</color>
+    <color name="lavenderTransparent">#88E6E6FA</color>
 
     <color name="white">#FFFFFF</color>
     <color name="darkGray">#A9A9A9</color>
