@@ -36,6 +36,10 @@ public class SplashActivity extends AppCompatActivity {
         // Check if connected to the internet
         checkForInternet();
 
+    }
+
+    /** Handle user sign in */
+    private void handleUserSignIn() {
         // Initialize firebase
         auth = FirebaseAuth.getInstance();
 
@@ -49,15 +53,13 @@ public class SplashActivity extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
-
     }
 
     /** Check if connected to the internet */
     private void checkForInternet() {
         if(!isOnline()){
+
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-
             // Add the message
             builder.setTitle("Uh oh!");
             builder.setMessage("Please make sure you are connected to the internet.");
@@ -71,6 +73,8 @@ public class SplashActivity extends AppCompatActivity {
             // Create the AlertDialog
             AlertDialog dialog = builder.create();
             dialog.show();
+        } else {
+            handleUserSignIn();
         }
     }
 
@@ -122,30 +126,30 @@ public class SplashActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
 
-
-                    if(doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
-                            doc.get(getString(R.string.screenName)) != null && doc.get(getString(R.string.screenName)).toString() != "" &&
-                            doc.get(getString(R.string.userGender)) != null && doc.get(getString(R.string.userGender)).toString() != "" &&
-                            doc.get(getString(R.string.userBirthday)) != null && doc.get(getString(R.string.userBirthday)).toString() != "" &&
-                            doc.get(getString(R.string.phoneNumber)) != null && doc.get(getString(R.string.phoneNumber)).toString() != "") {
-
-                        String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
-                        String screenName = doc.get(getString(R.string.screenName)).toString();
-                        String userGender = doc.get(getString(R.string.userGender)).toString();
-                        String userBirthday = doc.get(getString(R.string.userBirthday)).toString();
-                        String phoneNumber = doc.get(getString(R.string.phoneNumber)).toString();
-                        int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
-
-                        SharedPreferences sharedPref = context.getSharedPreferences(
-                                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString(getString(R.string.recoveryEmail), recoveryEmail);
-                        editor.putString(getString(R.string.screenName), screenName);
-                        editor.putString(getString(R.string.userGender), userGender);
-                        editor.putString(getString(R.string.phoneNumber), phoneNumber);
-                        editor.putString(getString(R.string.userBirthday), userBirthday);
-                        editor.putInt(getString(R.string.userClout), userClout);
-                        editor.apply();
+                    if(doc != null) {
+//                    if(doc.get(getString(R.string.recoveryEmail))!= null && doc.get(getString(R.string.recoveryEmail)).toString() != "" &&
+//                            doc.get(getString(R.string.screenName)) != null && doc.get(getString(R.string.screenName)).toString() != "" &&
+//                            doc.get(getString(R.string.userGender)) != null && doc.get(getString(R.string.userGender)).toString() != "" &&
+//                            doc.get(getString(R.string.userBirthday)) != null && doc.get(getString(R.string.userBirthday)).toString() != "" &&
+//                            doc.get(getString(R.string.phoneNumber)) != null && doc.get(getString(R.string.phoneNumber)).toString() != "") {
+//
+//                        String recoveryEmail = doc.get(getString(R.string.recoveryEmail)).toString();
+//                        String screenName = doc.get(getString(R.string.screenName)).toString();
+//                        String userGender = doc.get(getString(R.string.userGender)).toString();
+//                        String userBirthday = doc.get(getString(R.string.userBirthday)).toString();
+//                        String phoneNumber = doc.get(getString(R.string.phoneNumber)).toString();
+//                        int userClout = Integer.parseInt(doc.get(getString(R.string.userClout)).toString());
+//
+//                        SharedPreferences sharedPref = context.getSharedPreferences(
+//                                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = sharedPref.edit();
+//                        editor.putString(getString(R.string.recoveryEmail), recoveryEmail);
+//                        editor.putString(getString(R.string.screenName), screenName);
+//                        editor.putString(getString(R.string.userGender), userGender);
+//                        editor.putString(getString(R.string.phoneNumber), phoneNumber);
+//                        editor.putString(getString(R.string.userBirthday), userBirthday);
+//                        editor.putInt(getString(R.string.userClout), userClout);
+//                        editor.apply();
 
                         // checkForLockout
 
