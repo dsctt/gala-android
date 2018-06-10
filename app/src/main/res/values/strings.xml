@@ -7,6 +7,7 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="signOutMessage">You will now be signed out of Gala.</string>
+    <string name="internetMessage">Please make sure you have an internet connection.</string>
 
 
     <string name="desiredMinAge">desiredMinAge</string>

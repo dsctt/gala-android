@@ -44,13 +44,15 @@
             android:id="@+id/femaleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            style="@style/AppTheme.RoundedCornerMaterialButton"/>
 
         <ImageButton
             android:id="@+id/maleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            style="@style/AppTheme.RoundedCornerMaterialButton"/>
 
 
     </LinearLayout>

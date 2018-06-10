@@ -46,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
         // Check if user is already signed in
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
-            goHomeIfUserInfoComplete();
+            isUserRegistered();
         } else {
             // If not, go to phone auth
             startActivity(new Intent(SplashActivity.this, PhoneNumberAuthentication.class));
@@ -62,7 +62,7 @@ public class SplashActivity extends AppCompatActivity {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             // Add the message
             builder.setTitle("Uh oh!");
-            builder.setMessage("Please make sure you are connected to the internet.");
+            builder.setMessage(getString(R.string.internetMessage));
             // Add the buttons
             builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
@@ -95,7 +95,15 @@ public class SplashActivity extends AppCompatActivity {
     /** Checks if user info is already filled in and then takes the user Home if true
      * Also updates SharedPreferences
      */
-    private void goHomeIfUserInfoComplete() {
+    private void isUserRegistered() {
+        // Check shared prefs first
+        final SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+        if(sharedPref.getBoolean(getString(R.string.isRegistered), false))
+            goHome();
+
+        // Check the db
         DocumentReference drUser;
         FirebaseFirestore db;
         String uid = null;
@@ -107,21 +115,28 @@ public class SplashActivity extends AppCompatActivity {
             uid = authUser.getUid();
         }
         drUser = db.collection(getString(R.string.DB_COLLECTION_USERS)).document(uid);
-
-        // Check if user already has full user information
-        // If so, skip to home
         drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
 
+                    SharedPreferences.Editor editor = sharedPref.edit();
+
+
                     if(doc.exists()) {
-                        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        finish();
+                        // Cache that the user is registered
+                        editor.putBoolean(getString(R.string.isRegistered), true);
+                        editor.apply();
+
+                        goHome();
+
                     } else {
-                        // If not, go thru process
+                        // Cache that the user is not registered
+                        editor.putBoolean(getString(R.string.isRegistered), false);
+                        editor.apply();
+
+                        // Go thru registration
                         startActivity(new Intent(SplashActivity.this, RecoveryEmail.class));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
@@ -135,5 +150,12 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /** Send to home screen */
+    private void goHome() {
+        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 }

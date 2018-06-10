@@ -2,6 +2,7 @@ package io.luxurytech.gala;
 
 public class Constants {
 
+    public final static int BAR_MIN = 1;
     public final static int HOUSE_PARTY_MIN = 15;
     public final static int NIGHTCLUB_MIN = 30;
     public final static int GALA_MIN = 45;
@@ -22,10 +23,5 @@ public class Constants {
     public final static int WOMAN_RAISING_HAND_UNICODE = 0x1F64B;
     public final static int MALE_SYMBOL_UNICODE = 0x2642;
     public final static int FEMALE_SYMBOL_UNICODE = 0x2640;
-
-
-    // TODO: Add common methods (goHomeIf..)
-
-
 
 }

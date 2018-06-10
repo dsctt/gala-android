@@ -45,7 +45,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         // TODO: If-statement technically not necessary anymore because it will always be false if this class is called.
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
-            goHomeIfUserInfoComplete();
+            isUserRegistered();
 
         } else {
             // not signed in
@@ -68,7 +68,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
                 // Check if they've previously completed the sign in process
-                goHomeIfUserInfoComplete();
+                isUserRegistered();
                 return;
             } else {
                 // Sign in failed
@@ -93,7 +93,7 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
     /** Checks if user info is already filled in and then takes the user Home if true
      * Also updates SharedPreferences
      */
-    private void goHomeIfUserInfoComplete() {
+    private void isUserRegistered() {
         DocumentReference drUser;
         FirebaseFirestore db;
         String uid = null;
@@ -114,11 +114,24 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot doc = task.getResult();
 
+                    SharedPreferences sharedPref = context.getSharedPreferences(
+                            getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+
                     if(doc.exists()) {
+                        // Cache that the user is registered
+                        editor.putBoolean(getString(R.string.isRegistered), true);
+                        editor.apply();
+
                         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                         finish();
                     } else {
+
+                        // Cache that the user is not registered
+                        editor.putBoolean(getString(R.string.isRegistered), false);
+                        editor.apply();
+
                         // If not, go thru process
                         startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -138,5 +151,4 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
     @Override
     public void onBackPressed() { }
 
-    // TODO: Make a method for starting activity intent
 }
