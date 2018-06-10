@@ -20,7 +20,7 @@
         android:layout_marginBottom="36dp"
         android:maxLength="50"/>
 
-    <ImageButton
+    <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

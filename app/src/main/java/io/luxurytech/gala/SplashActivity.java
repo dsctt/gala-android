@@ -12,6 +12,7 @@ import android.os.Bundle;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -22,7 +23,7 @@ import java.io.IOException;
 
 public class SplashActivity extends AppCompatActivity {
 
-    /** Firebase authentication */
+    /** Firebase */
     FirebaseAuth auth;
 
     /** User Manager */
@@ -31,6 +32,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FirebaseApp.initializeApp(this);
 
         // Set up user manager
         userManager = new UserManager(this);

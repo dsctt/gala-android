@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageButton;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -45,7 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     /** UI components */
     Button exitButton, signOutButton;
-    ImageButton changeRecoveryEmailButton;
+    AppCompatImageButton changeRecoveryEmailButton;
     ImageButton maleButton;
     ImageButton femaleButton;
     EditText recoveryEmailEditText;
@@ -85,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        changeRecoveryEmailButton = (ImageButton) findViewById(R.id.changeRecoveryEmailButton);
+        changeRecoveryEmailButton = (AppCompatImageButton) findViewById(R.id.changeRecoveryEmailButton);
         changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_gray));
         changeRecoveryEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override

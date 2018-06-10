@@ -51,7 +51,6 @@
             android:name=".SettingsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
-        <activity android:name=".LockoutActivity"></activity>
     </application>
 
 </manifest>

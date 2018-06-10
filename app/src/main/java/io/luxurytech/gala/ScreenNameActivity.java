@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageButton;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -46,7 +47,7 @@ public class ScreenNameActivity extends AppCompatActivity {
     TextView existsTextView;
 
     /** Save button */
-    ImageButton saveButton;
+    AppCompatImageButton saveButton;
 
     /** Context */
     Context context;
@@ -90,7 +91,7 @@ public class ScreenNameActivity extends AppCompatActivity {
 
             }
         });
-        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        saveButton = (AppCompatImageButton) findViewById(R.id.saveButton);
         setSaveButtonUI(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override

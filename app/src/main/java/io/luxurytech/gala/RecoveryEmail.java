@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageButton;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -50,7 +51,7 @@ public class RecoveryEmail extends AppCompatActivity {
     TextView existsTextView;
 
     /** Buttons */
-    ImageButton saveButton;
+    AppCompatImageButton saveButton;
     Button recoverAccountButton;
 
     /** Activity Context */
@@ -100,7 +101,7 @@ public class RecoveryEmail extends AppCompatActivity {
 
             }
         });
-        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        saveButton = (AppCompatImageButton) findViewById(R.id.saveButton);
         setSaveButtonUI(false);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override

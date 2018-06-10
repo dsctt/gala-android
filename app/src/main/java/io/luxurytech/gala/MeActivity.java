@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -49,7 +50,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
     ImageButton maleButton;
     ImageButton femaleButton;
     int selectedGender;
-    ImageButton saveButton;
+    AppCompatImageButton saveButton;
     EditText birthdayEditText;
     SimpleDateFormat simpleDateFormat;
 
@@ -123,7 +124,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         selectedDesiredGender = userManager.MALE; // Default
         setGenderButtonUI(false); // Default
 
-        saveButton = (ImageButton) findViewById(R.id.saveButton);
+        saveButton = (AppCompatImageButton) findViewById(R.id.saveButton);
         saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
