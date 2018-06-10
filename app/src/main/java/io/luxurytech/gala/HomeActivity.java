@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
 import java.io.IOException;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Callback, AdapterView.OnItemSelectedListener{
 
@@ -42,6 +52,10 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
 
     /** User manager */
     UserManager userManager;
+
+    /** Firebase */
+    FirebaseFirestore db;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +104,57 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 R.array.select_echelon_choices, android.R.layout.simple_spinner_item);
         selectEchelonSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectEchelonSpinner.setAdapter(selectEchelonSpinnerAdapter);
+
+        // Add a document listener for the user's information
+        auth = FirebaseAuth.getInstance();
+        String uid = null;
+        FirebaseUser authUser = auth.getCurrentUser();
+        if(authUser != null) {
+            uid = authUser.getUid();
+        }
+        db = FirebaseFirestore.getInstance();
+        final DocumentReference docRef = db.collection(getString(R.string.DB_COLLECTION_USERS)).document(uid);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w("svf", "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    // Update the cache with new data
+                    Map<String, Object> dbData = snapshot.getData();
+
+                    userManager.setRecoveryEmail(dbData.get(getString(R.string.recoveryEmail)).toString());
+                    userManager.setUserBirthday(dbData.get(getString(R.string.userBirthday)).toString());
+                    userManager.setUserPhoneNumber(dbData.get(getString(R.string.phoneNumber)).toString());
+                    userManager.setScreenName(dbData.get(getString(R.string.recoveryEmail)).toString());
+                    userManager.setUserGender(
+                            Integer.parseInt(dbData.get(getString(R.string.userGender)).toString()));
+                    userManager.setUserClout(
+                            Integer.parseInt(dbData.get(getString(R.string.userClout)).toString()));
+                    userManager.setUserFlags(
+                            Integer.parseInt(dbData.get(getString(R.string.userFlags)).toString()));
+                    userManager.setDesiredMinAge(
+                            Integer.parseInt(dbData.get(getString(R.string.userDesiredMinAge)).toString()));
+                    userManager.setDesiredMaxAge(
+                            Integer.parseInt(dbData.get(getString(R.string.userDesiredMaxAge)).toString()));
+                    userManager.setDesiredGender(
+                            Integer.parseInt(dbData.get(getString(R.string.userDesiredGender)).toString()));
+
+                    // Update Home UI with data
+                    cloutTextView.setText(getEmojiByUnicode(Constants.PURPLE_HEART_UNICODE)
+                            + Integer.parseInt(dbData.get(getString(R.string.userClout)).toString()));
+
+                    //Log.d("svf", "Current data: " + snapshot.getData());
+                } else {
+                    Log.d("svf", "Current data: null");
+                }
+            }
+        });
+
     }
 
 

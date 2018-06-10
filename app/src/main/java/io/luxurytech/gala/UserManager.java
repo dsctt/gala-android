@@ -41,12 +41,12 @@ public class UserManager {
 
     /** Returns user's desired minimum age */
     public int getDesiredMinAge() {
-        return sharedPref.getInt(context.getString(R.string.desiredMinAge), MIN_AGE);
+        return sharedPref.getInt(context.getString(R.string.userDesiredMinAge), MIN_AGE);
     }
 
     /** Sets user's desired minimum age */
     public void setDesiredMinAge(int age) {
-        editor.putInt(context.getString(R.string.desiredMinAge), age);
+        editor.putInt(context.getString(R.string.userDesiredMinAge), age);
         editor.apply();
     }
 
@@ -54,25 +54,25 @@ public class UserManager {
 
     /** Returns user's desired maximum age */
     public int getDesiredMaxAge() {
-        return sharedPref.getInt(context.getString(R.string.desiredMaxAge), MAX_AGE);
+        return sharedPref.getInt(context.getString(R.string.userDesiredMaxAge), MAX_AGE);
     }
 
 
     /** Sets user's desired maximum age */
     public void setDesiredMaxAge(int age) {
-        editor.putInt(context.getString(R.string.desiredMaxAge), age);
+        editor.putInt(context.getString(R.string.userDesiredMaxAge), age);
         editor.apply();
     }
 
 
     /** Returns user's desired gender */
     public int getDesiredGender() {
-        return sharedPref.getInt(context.getString(R.string.desiredGender), FEMALE);
+        return sharedPref.getInt(context.getString(R.string.userDesiredGender), FEMALE);
     }
 
     /** Sets user's desired gender */
     public void setDesiredGender(int gender) {
-        editor.putInt(context.getString(R.string.desiredGender), gender);
+        editor.putInt(context.getString(R.string.userDesiredGender), gender);
         editor.apply();
     }
 

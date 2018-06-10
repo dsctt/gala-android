@@ -18,7 +18,7 @@
     <string name="screenName">screenName</string>
     <string name="userGender">userGender</string>
     <string name="userBirthday">userBirthday</string>
-    <string name="userPhoneNumber">phoneNumber</string>
+    <string name="phoneNumber">phoneNumber</string>
     <string name="userFlags">userFlags</string>
     <string name="userIsRegistered">userIsRegistered</string>
 

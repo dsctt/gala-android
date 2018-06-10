@@ -33,9 +33,6 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
     /** Firebase authentication */
     FirebaseAuth auth;
 
-    /** Activity context */
-    Context context;
-
     /** User manager */
     UserManager userManager;
 
