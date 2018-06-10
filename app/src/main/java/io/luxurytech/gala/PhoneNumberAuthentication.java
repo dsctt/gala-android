@@ -21,7 +21,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
 /** Verifies if user is already signed in with phone. If not, let's them sign up. */
 public class PhoneNumberAuthentication extends AppCompatActivity {
@@ -102,6 +105,51 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
 
     /** Send to home screen */
     private void goHome() {
+        // Need to make sure everything is cached
+//        DocumentReference drUser;
+//        FirebaseFirestore db;
+//        String uid = null;
+//        FirebaseUser authUser;
+//        FirebaseAuth auth = FirebaseAuth.getInstance();
+//
+//        db = FirebaseFirestore.getInstance();
+//        authUser = auth.getCurrentUser();
+//        if(authUser != null) {
+//            uid = authUser.getUid();
+//        }
+//        drUser = db.collection(context.getString(R.string.DB_COLLECTION_USERS)).document(uid);
+//        drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if(task.isSuccessful()){
+//                    DocumentSnapshot doc = task.getResult();
+//
+//                    userManager.setRecoveryEmail(doc.get(getString(R.string.recoveryEmail)).toString());
+//                    userManager.setUserBirthday(doc.get(getString(R.string.userBirthday)).toString());
+//                    userManager.setUserGender(
+//                            Integer.parseInt(doc.get(getString(R.string.userGender)).toString()));
+//                    userManager.setUserPhoneNumber(doc.get(getString(R.string.userPhoneNumber)).toString());
+//                    userManager.setScreenName(doc.get(getString(R.string.screenName)).toString());
+//                    userManager.setUserClout(
+//                            Integer.parseInt(doc.get(getString(R.string.userClout)).toString()));
+//                    userManager.setUserFlags(
+//                            Integer.parseInt(doc.get(getString(R.string.userFlags)).toString()));
+//                    userManager.setDesiredMinAge(
+//                            Integer.parseInt(doc.get(getString(R.string.userDesiredMinAge)).toString()));
+//                    userManager.setDesiredMaxAge(
+//                            Integer.parseInt(doc.get(getString(R.string.userDesiredMaxAge)).toString()));
+//                    userManager.setDesiredGender(
+//                            Integer.parseInt(doc.get(getString(R.string.userDesiredGender)).toString()));
+//                }
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//            }
+//        });
+
+
         startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

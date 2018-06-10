@@ -10,15 +10,15 @@
     <string name="internetMessage">Please make sure you have an internet connection.</string>
 
 
-    <string name="desiredMinAge">desiredMinAge</string>
-    <string name="desiredMaxAge">desiredMaxAge</string>
-    <string name="desiredGender">desiredGender</string>
+    <string name="userDesiredMinAge">userDesiredMinAge</string>
+    <string name="userDesiredMaxAge">userDesiredMaxAge</string>
+    <string name="userDesiredGender">userDesiredGender</string>
     <string name="recoveryEmail">recoveryEmail</string>
     <string name="userClout">userClout</string>
     <string name="screenName">screenName</string>
     <string name="userGender">userGender</string>
     <string name="userBirthday">userBirthday</string>
-    <string name="phoneNumber">phoneNumber</string>
+    <string name="userPhoneNumber">phoneNumber</string>
     <string name="userFlags">userFlags</string>
     <string name="userIsRegistered">userIsRegistered</string>
 

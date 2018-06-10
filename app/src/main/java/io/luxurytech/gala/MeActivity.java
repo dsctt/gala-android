@@ -148,48 +148,33 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
             selectedDesiredGender = userManager.FEMALE;
 
         // Set desired age range
-        Calendar currCal = Calendar.getInstance();
-        Calendar birthdayCal = Calendar.getInstance();
-        birthdayCal.setTime(selectedBirthday);
-        int selectedAgeOfUser = currCal.get(Calendar.YEAR) - birthdayCal.get(Calendar.YEAR);
-        if(birthdayCal.get(Calendar.MONTH) > currCal.get(Calendar.MONTH) ||
-                (birthdayCal.get(Calendar.MONTH) == currCal.get(Calendar.MONTH)
-                        && birthdayCal.get(Calendar.DATE) > currCal.get(Calendar.DATE))) {
-            selectedAgeOfUser--;
-        }
 
-        int minAgeFromUserAge, maxAgeFromUserAge;
-
-        if(selectedAgeOfUser <= 27)
-            minAgeFromUserAge = 18;
-        else
-            minAgeFromUserAge = selectedAgeOfUser - 10;
-
-        if(selectedAgeOfUser >= 91)
-            maxAgeFromUserAge = 100;
-        else
-            maxAgeFromUserAge = selectedAgeOfUser + 10;
+        int[] ageArray = userManager.getDefaultAgeRange(selectedBirthday);
+        int minAgeFromUserAge = ageArray[0], maxAgeFromUserAge = ageArray[1];
 
         // Save 'Them' values and clout and phone number and isRegistered to shared prefs
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
 
-        userManager.setDesiredGender(selectedGender);
+        userManager.setDesiredGender(selectedDesiredGender);
         userManager.setDesiredMaxAge(maxAgeFromUserAge);
         userManager.setDesiredMinAge(minAgeFromUserAge);
         userManager.setUserClout(userManager.INITIAL_CLOUT);
         userManager.setUserPhoneNumber(userPhoneNumber);
         userManager.setUserGender(selectedGender);
-        userManager.setUserBirthday(sdf.format(birthdayCal.getTime()));
+        userManager.setUserBirthday(sdf.format(selectedBirthday));
         userManager.setUserIsRegistered(true);
 
         // Add appropriate values to db
         Map<String, Object> dbUser = new HashMap<>();
         dbUser.put(getString(R.string.recoveryEmail), regRecoveryEmail);
         dbUser.put(getString(R.string.screenName), regScreenName);
-        dbUser.put(getString(R.string.userBirthday), sdf.format(birthdayCal.getTime()));
+        dbUser.put(getString(R.string.userBirthday), sdf.format(selectedBirthday));
         dbUser.put(getString(R.string.userGender), selectedGender);
         dbUser.put(getString(R.string.userClout), userManager.INITIAL_CLOUT);
         dbUser.put(getString(R.string.phoneNumber), userPhoneNumber);
+        dbUser.put(getString(R.string.userDesiredGender), selectedDesiredGender);
+        dbUser.put(getString(R.string.userDesiredMinAge), minAgeFromUserAge);
+        dbUser.put(getString(R.string.userDesiredMaxAge), maxAgeFromUserAge);
         dbUser.put(getString(R.string.userFlags), userManager.INITIAL_FLAGS);
         db.collection(getString(R.string.DB_COLLECTION_USERS))
                 .document(uid)

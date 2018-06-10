@@ -14,6 +14,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class UserManager {
 
     public final static int MIN_AGE = 18;
@@ -223,6 +226,36 @@ public class UserManager {
         //while(!test) {System.out.print("lil");}
 
         return sharedPref.getBoolean(context.getString(R.string.userIsRegistered), false);
+    }
+
+    /** Returns a default age range for a user based on their age
+     * ageArray[0] = desiredMinAge
+     * ageArray[1] = desiredMaxAge
+     */
+    public int[] getDefaultAgeRange(Date userBirthday) {
+        int[] ageArray = new int[2];
+        Calendar currCal = Calendar.getInstance();
+        Calendar birthdayCal = Calendar.getInstance();
+        birthdayCal.setTime(userBirthday);
+        int selectedAgeOfUser = currCal.get(Calendar.YEAR) - birthdayCal.get(Calendar.YEAR);
+        if(birthdayCal.get(Calendar.MONTH) > currCal.get(Calendar.MONTH) ||
+                (birthdayCal.get(Calendar.MONTH) == currCal.get(Calendar.MONTH)
+                        && birthdayCal.get(Calendar.DATE) > currCal.get(Calendar.DATE))) {
+            selectedAgeOfUser--;
+        }
+
+
+        if(selectedAgeOfUser <= 27)
+            ageArray[0] = 18;
+        else
+            ageArray[0] = selectedAgeOfUser - 10;
+
+        if(selectedAgeOfUser >= 91)
+            ageArray[1] = 100;
+        else
+            ageArray[1] = selectedAgeOfUser + 10;
+
+        return ageArray;
     }
 
 }
