@@ -9,12 +9,6 @@ public class Constants {
     public final static int MET_GALA_MIN = 60;
 
 
-    public final static int MIN_AGE = 18;
-    public final static int MAX_AGE = 99;
-    public final static int FEMALE = 0;
-    public final static int MALE = 1;
-
-
     public final static int PURPLE_HEART_UNICODE = 0x1F49C;
     public final static int BABY_UNICODE = 0x1F476;
     public final static int MAN_TIPPING_HAND_UNICODE = 0x1F481;

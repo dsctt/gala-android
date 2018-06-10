@@ -33,11 +33,15 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
     /** Activity context */
     Context context;
 
+    /** User manager */
+    UserManager userManager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        context = this;
+        // Set up user manager
+        userManager = new UserManager(this);
 
         // Initialize firebase
         auth = FirebaseAuth.getInstance();
@@ -45,7 +49,10 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         // TODO: If-statement technically not necessary anymore because it will always be false if this class is called.
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
-            isUserRegistered();
+            if(userManager.isRegistered())
+                goHome();
+            else
+                goToRecoveryEmail();
 
         } else {
             // not signed in
@@ -68,7 +75,10 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
                 // Check if they've previously completed the sign in process
-                isUserRegistered();
+                if(userManager.isRegistered())
+                    goHome();
+                else
+                    goToRecoveryEmail();
                 return;
             } else {
                 // Sign in failed
@@ -90,62 +100,18 @@ public class PhoneNumberAuthentication extends AppCompatActivity {
         }
     }
 
-    /** Checks if user info is already filled in and then takes the user Home if true
-     * Also updates SharedPreferences
-     */
-    private void isUserRegistered() {
-        DocumentReference drUser;
-        FirebaseFirestore db;
-        String uid = null;
-        FirebaseUser authUser;
+    /** Send to home screen */
+    private void goHome() {
+        startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+    }
 
-        db = FirebaseFirestore.getInstance();
-        authUser = auth.getCurrentUser();
-        if(authUser != null) {
-            uid = authUser.getUid();
-        }
-        drUser = db.collection(getString(R.string.DB_COLLECTION_USERS)).document(uid);
-
-        // Check if user already has full user information
-        // If so, save to shared prefs, and skip to home
-        drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot doc = task.getResult();
-
-                    SharedPreferences sharedPref = context.getSharedPreferences(
-                            getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-
-                    if(doc.exists()) {
-                        // Cache that the user is registered
-                        editor.putBoolean(getString(R.string.isRegistered), true);
-                        editor.apply();
-
-                        startActivity(new Intent(PhoneNumberAuthentication.this, HomeActivity.class));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        finish();
-                    } else {
-
-                        // Cache that the user is not registered
-                        editor.putBoolean(getString(R.string.isRegistered), false);
-                        editor.apply();
-
-                        // If not, go thru process
-                        startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        finish();
-                    }
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-            }
-        });
-
+    /** Send to recovery email screen */
+    private void goToRecoveryEmail() {
+        startActivity(new Intent(PhoneNumberAuthentication.this, RecoveryEmail.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 
     @Override

@@ -25,13 +25,15 @@ public class SplashActivity extends AppCompatActivity {
     /** Firebase authentication */
     FirebaseAuth auth;
 
-    /** Activity context */
-    Context context;
+    /** User Manager */
+    UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = this;
+
+        // Set up user manager
+        userManager = new UserManager(this);
 
         // Check if connected to the internet
         checkForInternet();
@@ -46,16 +48,19 @@ public class SplashActivity extends AppCompatActivity {
         // Check if user is already signed in
         if (auth.getCurrentUser() != null) {
             // already signed in - check if other fields are complete
-            isUserRegistered();
+            if(userManager.isRegistered())
+                goHome();
+            else
+                goToRecoveryEmail();
         } else {
             // If not, go to phone auth
-            startActivity(new Intent(SplashActivity.this, PhoneNumberAuthentication.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+            goToPhoneAuth();
         }
     }
 
-    /** Check if connected to the internet */
+    /** Check if connected to the internet
+     * If yes, begins sign in flow
+     */
     private void checkForInternet() {
         if(!isOnline()){
 
@@ -92,69 +97,23 @@ public class SplashActivity extends AppCompatActivity {
         return false;
     }
 
-    /** Checks if user info is already filled in and then takes the user Home if true
-     * Also updates SharedPreferences
-     */
-    private void isUserRegistered() {
-        // Check shared prefs first
-        final SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-
-        if(sharedPref.getBoolean(getString(R.string.isRegistered), false))
-            goHome();
-
-        // Check the db
-        DocumentReference drUser;
-        FirebaseFirestore db;
-        String uid = null;
-        FirebaseUser authUser;
-
-        db = FirebaseFirestore.getInstance();
-        authUser = auth.getCurrentUser();
-        if(authUser != null) {
-            uid = authUser.getUid();
-        }
-        drUser = db.collection(getString(R.string.DB_COLLECTION_USERS)).document(uid);
-        drUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot doc = task.getResult();
-
-                    SharedPreferences.Editor editor = sharedPref.edit();
-
-
-                    if(doc.exists()) {
-                        // Cache that the user is registered
-                        editor.putBoolean(getString(R.string.isRegistered), true);
-                        editor.apply();
-
-                        goHome();
-
-                    } else {
-                        // Cache that the user is not registered
-                        editor.putBoolean(getString(R.string.isRegistered), false);
-                        editor.apply();
-
-                        // Go thru registration
-                        startActivity(new Intent(SplashActivity.this, RecoveryEmail.class));
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                        finish();
-                    }
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-            }
-        });
-
-    }
-
     /** Send to home screen */
     private void goHome() {
         startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+    }
+
+    /** Send to recovery email screen */
+    private void goToRecoveryEmail() {
+        startActivity(new Intent(SplashActivity.this, RecoveryEmail.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+    }
+
+    /** Send to phone auth screen */
+    private void goToPhoneAuth() {
+        startActivity(new Intent(SplashActivity.this, PhoneNumberAuthentication.class));
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
     }

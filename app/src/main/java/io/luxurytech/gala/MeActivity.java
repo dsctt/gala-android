@@ -39,8 +39,6 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
     FirebaseUser authUser;
     String uid;
     String userPhoneNumber;
-    int initialUserClout = 1;
-    int initialFlags = 0;
     int selectedDesiredGender; // desiredGender
     Date selectedBirthday;
 
@@ -55,8 +53,8 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
     EditText birthdayEditText;
     SimpleDateFormat simpleDateFormat;
 
-    /** Context */
-    Context context;
+    /** User manager */
+    UserManager userManager;
 
     /** Values from previous registration screens to save in db */
     String regRecoveryEmail;
@@ -66,7 +64,10 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_me);
-        context = this;
+
+
+        // Set up user manager
+        userManager = new UserManager(this);
 
         // Setup firebase
         db = FirebaseFirestore.getInstance();
@@ -79,10 +80,10 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
 
         // Setup dates
         farthestCal = Calendar.getInstance();
-        farthestCal.add(Calendar.YEAR, (-1 * Constants.MAX_AGE));
+        farthestCal.add(Calendar.YEAR, (-1 * userManager.MAX_AGE));
 
         closestCal = Calendar.getInstance();
-        closestCal.add(Calendar.YEAR, (-1 * Constants.MIN_AGE));
+        closestCal.add(Calendar.YEAR, (-1 * userManager.MIN_AGE));
 
         // Setup UI components
         simpleDateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.US);
@@ -105,7 +106,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedGender = Constants.MALE;
+                selectedGender = userManager.MALE;
                 setGenderButtonUI(true);
             }
         });
@@ -114,12 +115,12 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedGender = Constants.FEMALE;
+                selectedGender = userManager.FEMALE;
                 setGenderButtonUI(false);
             }
         });
-        selectedGender = Constants.FEMALE; // Default
-        selectedDesiredGender = Constants.MALE; // Default
+        selectedGender = userManager.FEMALE; // Default
+        selectedDesiredGender = userManager.MALE; // Default
         setGenderButtonUI(false); // Default
 
         saveButton = (ImageButton) findViewById(R.id.saveButton);
@@ -132,10 +133,8 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         });
 
         // Get values from sharedPrefs for use in saving to db
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        regRecoveryEmail = sharedPref.getString(getString(R.string.recoveryEmail), "");
-        regScreenName = sharedPref.getString(getString(R.string.screenName), "");
+        regRecoveryEmail = userManager.getRecoveryEmail();
+        regScreenName = userManager.getScreenName();
 
     }
 
@@ -143,10 +142,10 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
     public void saveData () {
 
         // Set desired gender
-        if(selectedGender == Constants.FEMALE)
-            selectedDesiredGender = Constants.MALE;
+        if(selectedGender == userManager.FEMALE)
+            selectedDesiredGender = userManager.MALE;
         else
-            selectedDesiredGender = Constants.FEMALE;
+            selectedDesiredGender = userManager.FEMALE;
 
         // Set desired age range
         Calendar currCal = Calendar.getInstance();
@@ -173,18 +172,15 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
 
         // Save 'Them' values and clout and phone number and isRegistered to shared prefs
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
-        SharedPreferences sharedPref = context.getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putInt(getString(R.string.desiredGender), selectedDesiredGender);
-        editor.putInt(getString(R.string.desiredMaxAge), maxAgeFromUserAge);
-        editor.putInt(getString(R.string.desiredMinAge), minAgeFromUserAge);
-        editor.putInt(getString(R.string.userClout), initialUserClout);
-        editor.putString(getString(R.string.phoneNumber), userPhoneNumber);
-        editor.putInt(getString(R.string.userGender), selectedGender);
-        editor.putString(getString(R.string.userBirthday), sdf.format(birthdayCal.getTime()));
-        editor.putBoolean(getString(R.string.isRegistered), true);
-        editor.apply();
+
+        userManager.setDesiredGender(selectedGender);
+        userManager.setDesiredMaxAge(maxAgeFromUserAge);
+        userManager.setDesiredMinAge(minAgeFromUserAge);
+        userManager.setUserClout(userManager.INITIAL_CLOUT);
+        userManager.setUserPhoneNumber(userPhoneNumber);
+        userManager.setUserGender(selectedGender);
+        userManager.setUserBirthday(sdf.format(birthdayCal.getTime()));
+        userManager.setUserIsRegistered(true);
 
         // Add appropriate values to db
         Map<String, Object> dbUser = new HashMap<>();
@@ -192,9 +188,9 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
         dbUser.put(getString(R.string.screenName), regScreenName);
         dbUser.put(getString(R.string.userBirthday), sdf.format(birthdayCal.getTime()));
         dbUser.put(getString(R.string.userGender), selectedGender);
-        dbUser.put(getString(R.string.userClout), initialUserClout);
+        dbUser.put(getString(R.string.userClout), userManager.INITIAL_CLOUT);
         dbUser.put(getString(R.string.phoneNumber), userPhoneNumber);
-        dbUser.put(getString(R.string.userFlags), initialFlags);
+        dbUser.put(getString(R.string.userFlags), userManager.INITIAL_FLAGS);
         db.collection(getString(R.string.DB_COLLECTION_USERS))
                 .document(uid)
                 .set(dbUser)

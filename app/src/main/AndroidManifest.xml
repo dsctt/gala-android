@@ -48,15 +48,9 @@
             android:name=".MeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ThemActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".SettingsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
-        <activity
-            android:name=".VideoActivity"
-            android:screenOrientation="portrait" />
         <activity android:name=".LockoutActivity"></activity>
     </application>
 

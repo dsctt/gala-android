@@ -40,6 +40,9 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
     /** Shared Prefs */
     SharedPreferences sharedPref;
 
+    /** User manager */
+    UserManager userManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,9 @@ public class HomeActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_home);
+
+        // Set up UserManager
+        userManager = new UserManager(this);
 
         // Setup camera preview
         surfaceView = findViewById(R.id.surfaceView);

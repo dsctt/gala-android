@@ -20,7 +20,7 @@
     <string name="userBirthday">userBirthday</string>
     <string name="phoneNumber">phoneNumber</string>
     <string name="userFlags">userFlags</string>
-    <string name="isRegistered">isRegistered</string>
+    <string name="userIsRegistered">userIsRegistered</string>
 
     <string name="DB_COLLECTION_USERS">Users</string>
 

@@ -54,18 +54,15 @@ public class SettingsActivity extends AppCompatActivity {
     /** Determines whether we need to save new information upon exit of Activity
      *  (not applicable to recoveryEmail)
      */
-    boolean desiredAgeHasChanged = false, desiredMinAgeHasChanged = false, desiredMaxAgeHasChanged = false, desiredGenderHasChanged = false;
+    boolean desiredAgeHasChanged = false, desiredGenderHasChanged = false;
     int newDesiredMinAge, newDesiredMaxAge;
     int newDesiredGender;
-
-
-    /** Shared Prefs */
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor sharedPrefEditor;
 
     /** Range bar for age */
     RangeBar ageRangeBar;
 
+    /** User manager */
+    UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +72,9 @@ public class SettingsActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settings);
-        sharedPref = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
-        sharedPrefEditor = sharedPref.edit();
+
+        // Set up user manager
+        userManager = new UserManager(this);
 
         // Setup UI
         exitButton = (Button) findViewById(R.id.exitButton);
@@ -98,7 +96,7 @@ public class SettingsActivity extends AppCompatActivity {
         setChangeRecoveryEmailButtonUI(false);
 
         recoveryEmailEditText = (EditText) findViewById(R.id.recoveryEmailEditText);
-        recoveryEmailEditText.setText(sharedPref.getString(getString(R.string.recoveryEmail), ""));
+        recoveryEmailEditText.setText(userManager.getRecoveryEmail());
         recoveryEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -127,10 +125,9 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         ageRangeBar = (RangeBar) findViewById(R.id.ageRangeBar);
-        ageRangeBar.setTickStart(Constants.MIN_AGE);
+        ageRangeBar.setTickStart(userManager.MIN_AGE);
         ageRangeBar.setTickEnd(55);
-        ageRangeBar.setRangePinsByValue(sharedPref.getInt(this.getString(R.string.desiredMinAge), Constants.MIN_AGE),
-                sharedPref.getInt(getString(R.string.desiredMaxAge), Constants.MAX_AGE));
+        ageRangeBar.setRangePinsByValue(userManager.getDesiredMinAge(), userManager.getDesiredMaxAge());
         ageRangeBar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
             @Override
             public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex, int rightPinIndex, String leftPinValue, String rightPinValue) {
@@ -147,7 +144,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 desiredGenderHasChanged = true;
-                newDesiredGender = Constants.MALE;
+                newDesiredGender = userManager.MALE;
                 setGenderButtonUI(true);
             }
         });
@@ -157,11 +154,11 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 desiredGenderHasChanged = true;
-                newDesiredGender = Constants.FEMALE;
+                newDesiredGender = userManager.FEMALE;
                 setGenderButtonUI(false);
             }
         });
-        if(sharedPref.getInt(getString(R.string.desiredGender), Constants.FEMALE) == Constants.MALE){
+        if(userManager.getDesiredGender() == userManager.MALE){
             setGenderButtonUI(true);
         }
         else {
@@ -177,10 +174,10 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         cloutTextView = (TextView) findViewById(R.id.cloutTextView);
-        cloutTextView.setText(getEmojiByUnicode(Constants.PURPLE_HEART_UNICODE) + sharedPref.getInt(getString(R.string.userClout), 1));
+        cloutTextView.setText(getEmojiByUnicode(Constants.PURPLE_HEART_UNICODE) + userManager.getUserClout());
 
-        ageRangeBar.setRangePinsByValue(sharedPref.getInt(getString(R.string.desiredMinAge), Constants.MIN_AGE),
-                sharedPref.getInt(getString(R.string.desiredMaxAge), Constants.MAX_AGE));
+        ageRangeBar.setRangePinsByValue(userManager.getDesiredMinAge(),
+                userManager.getDesiredMaxAge());
     }
 
     private void changeRecoveryEmail() {
@@ -208,8 +205,7 @@ public class SettingsActivity extends AppCompatActivity {
                         Log.d("Settings Activity", "Recovery Email added");
                         setChangeRecoveryEmailButtonUI(false);
                         // Update shared pref
-                        sharedPrefEditor.putString(getString(R.string.recoveryEmail), newRecoveryEmail);
-                        sharedPrefEditor.apply();
+                        userManager.setRecoveryEmail(newRecoveryEmail);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -243,19 +239,14 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         // Update shared prefs
-
         if (desiredAgeHasChanged) {
-            sharedPrefEditor.putInt(getString(R.string.desiredMinAge), newDesiredMinAge);
-            sharedPrefEditor.putInt(getString(R.string.desiredMaxAge), newDesiredMaxAge);
+            userManager.setDesiredMinAge(newDesiredMinAge);
+            userManager.setDesiredMaxAge(newDesiredMaxAge);
         }
-//        if (desiredMaxAgeHasChanged) {
-//            sharedPrefEditor.putInt(getString(R.string.desiredMaxAge), newDesiredMaxAge);
-//        }
         if (desiredGenderHasChanged) {
-            sharedPrefEditor.putInt(getString(R.string.desiredGender), newDesiredGender);
+            userManager.setDesiredGender(newDesiredGender);
         }
 
-        sharedPrefEditor.apply();
         startActivity(new Intent(SettingsActivity.this, HomeActivity.class));
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
