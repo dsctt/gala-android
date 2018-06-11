@@ -308,11 +308,11 @@ public class SettingsActivity extends AppCompatActivity {
     private void setChangeRecoveryEmailButtonUI(boolean en) {
         if(en) {
             changeRecoveryEmailButton.setEnabled(true);
-            changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_primary));
+            changeRecoveryEmailButton.setImageResource(R.drawable.ic_check_primary);
         } else {
 
             changeRecoveryEmailButton.setEnabled(false);
-            changeRecoveryEmailButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_gray));
+            changeRecoveryEmailButton.setImageResource(R.drawable.ic_check_gray);
         }
     }
 

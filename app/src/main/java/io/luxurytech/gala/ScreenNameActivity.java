@@ -153,11 +153,11 @@ public class ScreenNameActivity extends AppCompatActivity {
     private void setSaveButtonUI(boolean en) {
         if(en) {
             saveButton.setEnabled(true);
-            saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_primary));
+            saveButton.setImageResource(R.drawable.baseline_arrow_forward_primary);
         } else {
 
             saveButton.setEnabled(false);
-            saveButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_arrow_forward_gray));
+            saveButton.setImageResource(R.drawable.baseline_arrow_forward_gray);
         }
     }
 
