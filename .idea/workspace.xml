@@ -12,13 +12,17 @@
     <list default="true" id="f2146910-e4de-45f2-92dc-24b8826606ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ScreenNameActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ScreenNameActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_primary.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_primary.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_gray.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_gray.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_primary.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_primary.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -72,11 +76,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RecoveryEmail.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecoveryEmail.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="183" column="12" lean-forward="false" selection-start-line="183" selection-start-column="12" selection-end-line="183" selection-end-column="83" />
+            <state relative-caret-position="198">
+              <caret line="193" column="47" lean-forward="false" selection-start-line="193" selection-start-column="47" selection-end-line="193" selection-end-column="47" />
+              <folding>
+                <element signature="e#3400#3553#0" expanded="true" />
+                <element signature="e#3552#3553#0" expanded="true" />
+                <element signature="e#3728#4342#0" expanded="true" />
+                <element signature="e#4341#4342#0" expanded="true" />
+                <element signature="e#4678#4717#0" expanded="true" />
+                <element signature="e#4749#4782#0" expanded="true" />
+                <element signature="e#4861#5562#0" expanded="true" />
+                <element signature="e#5561#5562#0" expanded="true" />
+                <element signature="e#5768#5807#0" expanded="true" />
+                <element signature="e#5919#5952#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseline_arrow_forward_primary.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_primary.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baseline_arrow_forward_gray.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ic_check_primary.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_check_primary.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ic_check_gray.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_check_gray.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -2193,12 +2248,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/background_state.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/outline_videocam_24.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_grey.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_primary.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_them.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_check.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_gray.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
@@ -2220,6 +2272,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ScreenNameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_primary.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_gray.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_primary.xml" />
       </list>
     </option>
   </component>
@@ -2642,30 +2698,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SpinnerDatePicker-1.0.6.aar/7abb8bdc7cda8bc4dbd7b41a83800449/res/layout/date_picker_dialog.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.drawers/SpinnerDatePicker/1.0.6/ee9f193ebb7c36635137a5fc0f44275e08ca67af/SpinnerDatePicker-1.0.6-sources.jar!/com/tsongkha/spinnerdatepicker/OnDateChangedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.drawers/SpinnerDatePicker/1.0.6/ee9f193ebb7c36635137a5fc0f44275e08ca67af/SpinnerDatePicker-1.0.6-sources.jar!/com/tsongkha/spinnerdatepicker/DatePickerDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/libs/SpinnerDatePicker/gradlew" />
     <entry file="file://$PROJECT_DIR$/app/src/libs/SpinnerDatePicker/.idea/copyright/profiles_settings.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/libs/SpinnerDatePicker/.idea/gradle.xml" />
@@ -2845,14 +2877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_me.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -2902,10 +2926,10 @@
         <state relative-caret-position="28">
           <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
           <folding>
-            <element signature="e#2152#2187#0" expanded="true" />
-            <element signature="e#2259#2270#0" expanded="true" />
-            <element signature="e#2272#2453#0" expanded="true" />
-            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2152#2187#0" expanded="false" />
+            <element signature="e#2259#2270#0" expanded="false" />
+            <element signature="e#2272#2453#0" expanded="false" />
+            <element signature="e#2452#2453#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2936,8 +2960,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/RecoveryEmail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="183" column="12" lean-forward="false" selection-start-line="183" selection-start-column="12" selection-end-line="183" selection-end-column="83" />
+        <state relative-caret-position="198">
+          <caret line="193" column="47" lean-forward="false" selection-start-line="193" selection-start-column="47" selection-end-line="193" selection-end-column="47" />
+          <folding>
+            <element signature="e#3400#3553#0" expanded="true" />
+            <element signature="e#3552#3553#0" expanded="true" />
+            <element signature="e#3728#4342#0" expanded="true" />
+            <element signature="e#4341#4342#0" expanded="true" />
+            <element signature="e#4678#4717#0" expanded="true" />
+            <element signature="e#4749#4782#0" expanded="true" />
+            <element signature="e#4861#5562#0" expanded="true" />
+            <element signature="e#5561#5562#0" expanded="true" />
+            <element signature="e#5768#5807#0" expanded="true" />
+            <element signature="e#5919#5952#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_primary.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/baseline_arrow_forward_gray.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_check_gray.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_check_primary.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
           <folding />
         </state>
       </provider>
