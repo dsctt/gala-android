@@ -254,14 +254,16 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     /** Sets UI for gender buttons based on which is selected */
-    private void setGenderButtonUI(boolean maleSelected) {
-        if(maleSelected) {
-            maleButton.setBackgroundResource(R.color.colorPrimary);
-            femaleButton.setBackgroundResource(R.color.lightGray);
-        } else {
-            maleButton.setBackgroundResource(R.color.lightGray);
-            femaleButton.setBackgroundResource(R.color.colorPrimary);
+    private void setGenderButtonUI(boolean maleButtonIsChosen) {
+        if(maleButtonIsChosen) {
+            maleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
         }
+        else {
+            maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
+
     }
 
     /** Gets emoji from unicode value */

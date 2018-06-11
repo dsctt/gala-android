@@ -10,10 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2146910-e4de-45f2-92dc-24b8826606ea" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_me.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_me.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -77,21 +83,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MeActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="204" column="46" lean-forward="false" selection-start-line="204" selection-start-column="46" selection-end-line="204" selection-end-column="46" />
+            <state relative-caret-position="210">
+              <caret line="202" column="26" lean-forward="false" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
+              <folding>
+                <element signature="e#3219#3402#0" expanded="true" />
+                <element signature="e#3401#3402#0" expanded="true" />
+                <element signature="e#3604#3812#0" expanded="true" />
+                <element signature="e#3811#3812#0" expanded="true" />
+                <element signature="e#4023#4234#0" expanded="true" />
+                <element signature="e#4233#4234#0" expanded="true" />
+                <element signature="e#4621#4765#0" expanded="true" />
+                <element signature="e#4764#4765#0" expanded="true" />
+                <element signature="e#6153#6186#0" expanded="true" />
+                <element signature="e#6226#6256#0" expanded="true" />
+                <element signature="e#6293#6325#0" expanded="true" />
+                <element signature="e#6377#6407#0" expanded="true" />
+                <element signature="e#6445#6474#0" expanded="true" />
+                <element signature="e#6523#6554#0" expanded="true" />
+                <element signature="e#6593#6630#0" expanded="true" />
+                <element signature="e#6675#6712#0" expanded="true" />
+                <element signature="e#6753#6790#0" expanded="true" />
+                <element signature="e#6831#6860#0" expanded="true" />
+                <element signature="e#6912#6951#0" expanded="true" />
+                <element signature="e#7051#7542#0" expanded="true" />
+                <element signature="e#7541#7542#0" expanded="true" />
+                <element signature="e#7582#7804#0" expanded="true" />
+                <element signature="e#7803#7804#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SettingsActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="257" column="23" lean-forward="false" selection-start-line="257" selection-start-column="23" selection-end-line="257" selection-end-column="23" />
+            <state relative-caret-position="135">
+              <caret line="257" column="32" lean-forward="false" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -2215,7 +2255,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/UserManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recovery_email.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_screen_name.xml" />
@@ -2227,6 +2266,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_check_primary.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_me.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java" />
       </list>
@@ -2807,14 +2847,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="36" column="66" lean-forward="false" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/UserManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2805">
@@ -2870,16 +2902,16 @@
         <state relative-caret-position="1709">
           <caret line="193" column="47" lean-forward="false" selection-start-line="193" selection-start-column="47" selection-end-line="193" selection-end-column="47" />
           <folding>
-            <element signature="e#3400#3553#0" expanded="true" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3728#4342#0" expanded="true" />
-            <element signature="e#4341#4342#0" expanded="true" />
-            <element signature="e#4678#4717#0" expanded="true" />
-            <element signature="e#4749#4782#0" expanded="true" />
-            <element signature="e#4861#5562#0" expanded="true" />
-            <element signature="e#5561#5562#0" expanded="true" />
-            <element signature="e#5768#5807#0" expanded="true" />
-            <element signature="e#5919#5952#0" expanded="true" />
+            <element signature="e#3400#3553#0" expanded="false" />
+            <element signature="e#3552#3553#0" expanded="false" />
+            <element signature="e#3728#4342#0" expanded="false" />
+            <element signature="e#4341#4342#0" expanded="false" />
+            <element signature="e#4678#4717#0" expanded="false" />
+            <element signature="e#4749#4782#0" expanded="false" />
+            <element signature="e#4861#5562#0" expanded="false" />
+            <element signature="e#5561#5562#0" expanded="false" />
+            <element signature="e#5768#5807#0" expanded="false" />
+            <element signature="e#5919#5952#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2938,6 +2970,14 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/ScreenNameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -2946,18 +2986,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="257" column="23" lean-forward="false" selection-start-line="257" selection-start-column="23" selection-end-line="257" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="210">
+          <caret line="202" column="26" lean-forward="false" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
+          <folding>
+            <element signature="e#3219#3402#0" expanded="true" />
+            <element signature="e#3401#3402#0" expanded="true" />
+            <element signature="e#3604#3812#0" expanded="true" />
+            <element signature="e#3811#3812#0" expanded="true" />
+            <element signature="e#4023#4234#0" expanded="true" />
+            <element signature="e#4233#4234#0" expanded="true" />
+            <element signature="e#4621#4765#0" expanded="true" />
+            <element signature="e#4764#4765#0" expanded="true" />
+            <element signature="e#6153#6186#0" expanded="true" />
+            <element signature="e#6226#6256#0" expanded="true" />
+            <element signature="e#6293#6325#0" expanded="true" />
+            <element signature="e#6377#6407#0" expanded="true" />
+            <element signature="e#6445#6474#0" expanded="true" />
+            <element signature="e#6523#6554#0" expanded="true" />
+            <element signature="e#6593#6630#0" expanded="true" />
+            <element signature="e#6675#6712#0" expanded="true" />
+            <element signature="e#6753#6790#0" expanded="true" />
+            <element signature="e#6831#6860#0" expanded="true" />
+            <element signature="e#6912#6951#0" expanded="true" />
+            <element signature="e#7051#7542#0" expanded="true" />
+            <element signature="e#7541#7542#0" expanded="true" />
+            <element signature="e#7582#7804#0" expanded="true" />
+            <element signature="e#7803#7804#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/MeActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/io/luxurytech/gala/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="204" column="46" lean-forward="false" selection-start-line="204" selection-start-column="46" selection-end-line="204" selection-end-column="46" />
+        <state relative-caret-position="135">
+          <caret line="257" column="32" lean-forward="false" selection-start-line="257" selection-start-column="32" selection-end-line="257" selection-end-column="32" />
           <folding />
         </state>
       </provider>
