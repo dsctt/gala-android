@@ -47,8 +47,8 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
     Calendar farthestCal, closestCal;
 
     /** UI */
-    ImageButton maleButton;
-    ImageButton femaleButton;
+    AppCompatImageButton maleButton;
+    AppCompatImageButton femaleButton;
     int selectedGender;
     AppCompatImageButton saveButton;
     EditText birthdayEditText;
@@ -102,7 +102,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
             }
         });
 
-        maleButton = (ImageButton) findViewById(R.id.maleButton);
+        maleButton = (AppCompatImageButton) findViewById(R.id.maleButton);
         maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +111,7 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
                 setGenderButtonUI(true);
             }
         });
-        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
+        femaleButton = (AppCompatImageButton) findViewById(R.id.femaleButton);
         femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_female));
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,11 +201,11 @@ public class MeActivity extends AppCompatActivity implements DatePickerDialog.On
 
     private void setGenderButtonUI(boolean maleSelected) {
         if(maleSelected) {
-            maleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            femaleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+            maleButton.setBackgroundResource(R.color.colorPrimary);
+            femaleButton.setBackgroundResource(R.color.lightGray);
         } else {
-            maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
-            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            maleButton.setBackgroundResource(R.color.lightGray);
+            femaleButton.setBackgroundResource(R.color.colorPrimary);
         }
     }
 

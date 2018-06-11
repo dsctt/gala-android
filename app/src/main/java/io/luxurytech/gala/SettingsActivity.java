@@ -47,8 +47,8 @@ public class SettingsActivity extends AppCompatActivity {
     /** UI components */
     Button exitButton, signOutButton;
     AppCompatImageButton changeRecoveryEmailButton;
-    ImageButton maleButton;
-    ImageButton femaleButton;
+    AppCompatImageButton maleButton;
+    AppCompatImageButton femaleButton;
     EditText recoveryEmailEditText;
     TextView cloutTextView;
 
@@ -139,7 +139,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        maleButton = (ImageButton) findViewById(R.id.maleButton);
+        maleButton = (AppCompatImageButton) findViewById(R.id.maleButton);
         maleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_male));
         maleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +149,7 @@ public class SettingsActivity extends AppCompatActivity {
                 setGenderButtonUI(true);
             }
         });
-        femaleButton = (ImageButton) findViewById(R.id.femaleButton);
+        femaleButton = (AppCompatImageButton) findViewById(R.id.femaleButton);
         femaleButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_female));
         femaleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,16 +254,14 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     /** Sets UI for gender buttons based on which is selected */
-    private void setGenderButtonUI(boolean maleButtonIsChosen) {
-        if(maleButtonIsChosen) {
-            maleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            femaleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
+    private void setGenderButtonUI(boolean maleSelected) {
+        if(maleSelected) {
+            maleButton.setBackgroundResource(R.color.colorPrimary);
+            femaleButton.setBackgroundResource(R.color.lightGray);
+        } else {
+            maleButton.setBackgroundResource(R.color.lightGray);
+            femaleButton.setBackgroundResource(R.color.colorPrimary);
         }
-        else {
-            maleButton.setBackgroundColor(getResources().getColor(R.color.lightGray));
-            femaleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        }
-
     }
 
     /** Gets emoji from unicode value */

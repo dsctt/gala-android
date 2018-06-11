@@ -40,14 +40,14 @@
         android:layout_marginBottom="60dp">
 
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/femaleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="@style/AppTheme.RoundedCornerMaterialButton"/>
 
-        <ImageButton
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/maleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
