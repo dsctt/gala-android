@@ -1,9 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.twilio:video-android-2.0.2">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/85ec624cbab7223cb5dcf7aebbfa39ca/annotations.zip!/" />
+    </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/d1d6a2f465b8bb92e3dc37c0d87e341b/jars/libs/libjingle_peerconnection_java.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/d1d6a2f465b8bb92e3dc37c0d87e341b/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/d1d6a2f465b8bb92e3dc37c0d87e341b/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/85ec624cbab7223cb5dcf7aebbfa39ca/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/85ec624cbab7223cb5dcf7aebbfa39ca/jars/libs/libjingle_peerconnection_java.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/video-android-2.0.2.aar/85ec624cbab7223cb5dcf7aebbfa39ca/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
