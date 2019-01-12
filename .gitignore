@@ -1,4 +1,4 @@
-# Built application files
+Built application files
 *.apk
 *.ap_
 *.aab
@@ -13,7 +13,7 @@
 bin/
 gen/
 out/
-
+.DS_Store
 # Gradle files
 .gradle/
 build/
